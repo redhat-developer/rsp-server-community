@@ -29,31 +29,38 @@ public class WonkaBean extends ServerBeanType {
 	}
 	
 	private boolean isValidRoot(File f) {
-		if( new File(f, "versions.txt").isFile()) {
-			return true;
+		// Very simple pattern matching, but you can do more
+		File wonka = findWonkaFile(f);
+		if( wonka == null )
+			return false;
+		return true;
+	}
+	
+	private File findWonkaFile(File root) {
+		File[] children = root.listFiles();
+		for( int i = 0; i < children.length; i++ ) {
+			if( children[i].getName().startsWith("wonka-runtime-")) {
+				return children[i];
+			}
 		}
-		return false;
+		return null;
 	}
 	
 	@Override
 	public String getFullVersion(File root) {
 		if( !isValidRoot(root))
 			return null;
-		Properties p = new Properties();
-		try {
-			p.load(new FileInputStream(root));
-			return p.getProperty("wonka.version");
-		} catch(IOException ioe) {
-		}
-		return null;
+		File wonka = findWonkaFile(root);
+		String fName = wonka.getName();
+		fName = fName.substring("wonka-runtime-".length());
+		fName = fName.replace(".jar", "");
+		return fName;
 	}
 	@Override
 	public String getUnderlyingTypeId(File root) {
-		if( !isValidRoot(root)) 
-			return null;
-		if( new File(root, "product.properties").isFile()) {
-			return "wonka.product";
-		}
+		// Check manifests, file tree, etc, whatever
+		// to distinguish between a project and product, 
+		// or other similar runtimes
 		return "OpenWonka";
 	}
 	@Override
