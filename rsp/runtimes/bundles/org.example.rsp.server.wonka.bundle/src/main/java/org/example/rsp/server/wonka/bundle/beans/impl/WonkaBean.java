@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.example.rsp.server.wonka.bundle.servertype.impl.WonkaServerTypes;
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
 
 
@@ -24,7 +25,7 @@ public class WonkaBean extends ServerBeanType {
 	}
 	@Override
 	public String getServerAdapterTypeId(String version) {
-		return "wonka.1.0";
+		return WonkaServerTypes.WONKA_SERVER_1_0_ID;
 	}
 	
 	private boolean isValidRoot(File f) {
