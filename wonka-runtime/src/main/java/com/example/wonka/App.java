@@ -2,13 +2,19 @@ package com.example.wonka;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.util.Random;
 /**
  * Hello world!
  *
  */
 public class App {
+    public static final File shutdownMarker = new java.io.File( ".", "shutdown.marker" );
+    public static final File startedMarker = new java.io.File( ".", "wonka.started" );
+
     public static void main( String[] args ) {
+        shutdownMarker.delete();
+        startedMarker.delete();
+
         if( args.length == 0 ) {
             runServer();
         } else if( "shutdown".equals(args[0])) {
@@ -17,7 +23,6 @@ public class App {
     }
 
     public static void shutdownServer() {
-        File shutdownMarker = new java.io.File( ".", "shutdown.marker" );
         try {
             shutdownMarker.createNewFile();
         } catch(IOException ioe) {
@@ -26,12 +31,30 @@ public class App {
     }
 
     public static void runServer() {
-        System.out.println("Wonka Runtime Running.  Waiting for shutdown marker:");
-        File shutdownMarker = new java.io.File( ".", "shutdown.marker" );
+        System.out.print("Server is starting up...");
+        Random rand = new Random(); 
+        int value = rand.nextInt(60);
+        for( int i = 0; i < value+20; i++ ) {
+            System.out.print(".");
+            try {
+                Thread.sleep(100);
+            } catch(InterruptedException ie) {
+                ie.printStackTrace();
+            }
+        }
+        try {
+            startedMarker.createNewFile();
+        } catch(IOException ioe) {
+            ioe.printStackTrace();;
+        }
+
+        System.out.println("\nWonka Runtime Running.  Waiting for shutdown marker:");
+
         while(true ) {
             if( shutdownMarker.isFile()) {
-                shutdownMarker.delete();
                 System.out.println("Shutdown Marker Found. Shutting Down Wonka Runtime.");
+                shutdownMarker.delete();
+                startedMarker.delete();
                 return;
             }
             try {

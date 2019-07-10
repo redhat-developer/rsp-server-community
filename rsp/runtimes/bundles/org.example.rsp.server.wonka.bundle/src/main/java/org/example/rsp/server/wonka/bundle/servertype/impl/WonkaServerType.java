@@ -61,7 +61,7 @@ public class WonkaServerType implements IServerType {
 					"A filesystem path pointing to a server installation's root directory", null);
 			required = attrs.toPojo();
 		}
-		return optional;
+		return required;
 	}
 
 	@Override

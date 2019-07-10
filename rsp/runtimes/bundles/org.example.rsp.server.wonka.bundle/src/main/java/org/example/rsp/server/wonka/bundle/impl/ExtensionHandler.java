@@ -16,7 +16,7 @@ import org.jboss.tools.rsp.server.spi.servertype.IServerType;
 public class ExtensionHandler {
 
 	private static final IServerType[] TYPES = {
-			WonkaServerTypes.WONKA_11_TYPE
+			WonkaServerTypes.WONKA_1_0_TYPE
 	};
 
 	private ExtensionHandler() {

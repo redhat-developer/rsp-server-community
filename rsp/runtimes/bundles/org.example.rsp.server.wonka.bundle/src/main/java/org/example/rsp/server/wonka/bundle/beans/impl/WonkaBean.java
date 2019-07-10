@@ -24,7 +24,7 @@ public class WonkaBean extends ServerBeanType {
 	}
 	@Override
 	public String getServerAdapterTypeId(String version) {
-		return "wonka100";
+		return "wonka.1.0";
 	}
 	
 	private boolean isValidRoot(File f) {

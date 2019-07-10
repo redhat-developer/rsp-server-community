@@ -8,15 +8,22 @@
  ******************************************************************************/
 package org.example.rsp.server.wonka.bundle.servertype.impl;
 
+import java.io.File;
+
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
+import org.jboss.tools.rsp.eclipse.core.runtime.IPath;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
 import org.jboss.tools.rsp.eclipse.core.runtime.NullProgressMonitor;
+import org.jboss.tools.rsp.eclipse.core.runtime.Path;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
 import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.Launch;
+import org.jboss.tools.rsp.eclipse.jdt.launching.IVMInstall;
+import org.jboss.tools.rsp.eclipse.jdt.launching.StandardVMType;
 import org.jboss.tools.rsp.foundation.core.launchers.CommandConfig;
+import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.spi.launchers.GenericServerProcessRunner;
 import org.jboss.tools.rsp.server.spi.launchers.IServerShutdownLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
@@ -83,22 +90,42 @@ public class WonkaShutdownLauncher implements IServerShutdownLauncher {
 	}
 
 	protected CommandConfig getCommandConfig() {
-		String cmd = "shutdown.sh";
-		String[] parsed = new String[] {};
+		IVMInstall vm = LauncherSingleton.getDefault().getLauncher().getModel().getVMInstallModel().getDefaultVMInstall();
+		File exe = StandardVMType.findJavaExecutable(vm.getInstallLocation());
+		String wonkaJar = findWonkaJarPath();
+		
+		String cmd = exe.getAbsolutePath();
+		String[] args = new String[] {
+				"-jar",
+				wonkaJar, 
+				"shutdown"
+		};
 		String wd = getWorkingDirectory();
 		String[] env = new String[] {};
-		CommandConfig details = new CommandConfig(cmd, wd, parsed, env);
+		CommandConfig details = new CommandConfig(cmd, wd, args, env);
 		return details;
 	}
+	
+	private String findWonkaJarPath() {
+		String serverHome = getDelegate().getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_DIR, (String) null);
+		File homeDir = new File(serverHome);
+		File[] children = homeDir.listFiles();
+		for( int i = 0; i < children.length; i++ ) {
+			if( children[i].getName().endsWith(".jar")) {
+				IPath jar = new Path(serverHome).append(children[i].getName());
+				return jar.toOSString();
+			}
+		}
+		return null;
+	}
+
 
 	public String getWorkingDirectory() {
-		String serverHome = getDelegate().getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_DIR,
+		return getDelegate().getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_DIR,
 				(String) null);
-		return serverHome;
 	}
 
 	public ILaunch launch(boolean force) throws CoreException {
-		String mode = "run";
-		return launch(mode);
+		return launch("run");
 	}
 }

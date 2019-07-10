@@ -24,6 +24,7 @@ import org.jboss.tools.rsp.foundation.core.tasks.TaskModel;
 import org.jboss.tools.rsp.runtime.core.model.DownloadRuntime;
 import org.jboss.tools.rsp.runtime.core.model.IDownloadRuntimeRunner;
 import org.jboss.tools.rsp.runtime.core.model.IDownloadRuntimesProvider;
+import org.jboss.tools.rsp.runtime.core.model.IRuntimeInstaller;
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 import org.jboss.tools.rsp.server.spi.runtimes.AbstractLicenseOnlyDownloadExecutor;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
@@ -50,7 +51,7 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 				String chosenId = getUniqueServerId(suggestedId, serverIds);
 
 				CreateServerResponse response = getServerModel().createServer(
-						WonkaServerTypes.WONKA_11_TYPE.getId(), 
+						WonkaServerTypes.WONKA_1_0_TYPE.getId(), 
 						chosenId, attributes);
 				return StatusConverter.convert(response.getStatus());
 			}
@@ -59,8 +60,10 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 
 	@Override
 	public DownloadRuntime[] getDownloadableRuntimes(IProgressMonitor arg0) {
-		DownloadRuntime dlrt = new DownloadRuntime("wonka.11", "Wonka Server 1.1", 
-				"1.1.0.Final", "http://www.example.com/wonka/1.1.0.Final.zip");
+		DownloadRuntime dlrt = new DownloadRuntime("wonka.1.0", "Wonka Server 1.0", 
+				"1.0.0.Final", "https://github.com/robstryker/extend-rsp-example/raw/master/wonka-runtime/releases/wonka-runtime-1.0-SNAPSHOT.jar");
+		dlrt.setInstallationMethod(IRuntimeInstaller.BINARY_INSTALLER);
+		dlrt.setLicenseURL("https://www.gnu.org/licenses/lgpl-3.0.txt");
 		return new DownloadRuntime[] { dlrt };
 	}
 

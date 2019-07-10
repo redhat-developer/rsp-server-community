@@ -1,5 +1,7 @@
 package org.example.rsp.server.wonka.bundle.servertype.impl;
 
+import java.io.File;
+
 import org.example.rsp.server.wonka.bundle.servertype.SimpleVMRegistryDiscovery;
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.eclipse.core.runtime.IPath;
@@ -26,7 +28,7 @@ public class WonkaStartLauncher extends AbstractJavaLauncher {
 
 	@Override
 	protected String getMainTypeName() {
-		return "org.example.wonka.StartWonka";
+		return "com.example.wonka.App";
 	}
 
 	@Override
@@ -42,7 +44,14 @@ public class WonkaStartLauncher extends AbstractJavaLauncher {
 	@Override
 	protected String[] getClasspath() {
 		String serverHome = getDelegate().getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_DIR, (String) null);
-		IPath jar = new Path(serverHome).append("runWonka.jar");
-		return new String[] { jar.toOSString() };
+		File homeDir = new File(serverHome);
+		File[] children = homeDir.listFiles();
+		for( int i = 0; i < children.length; i++ ) {
+			if( children[i].getName().endsWith(".jar")) {
+				IPath jar = new Path(serverHome).append(children[i].getName());
+				return new String[] { jar.toOSString() };
+			}
+		}
+		return new String[] {};
 	}
 }

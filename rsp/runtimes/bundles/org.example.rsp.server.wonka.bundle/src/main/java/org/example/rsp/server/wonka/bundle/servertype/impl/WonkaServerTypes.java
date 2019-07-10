@@ -10,6 +10,10 @@ package org.example.rsp.server.wonka.bundle.servertype.impl;
 
 public class WonkaServerTypes {
 
-	public static final WonkaServerType WONKA_11_TYPE = 
-			new WonkaServerType("wonka.1.1", "Wonka Server 1.1", "A server adapter for Wonka Server 1.1 or greater");
+	public static final String WONKA_SERVER_1_0_ID = "wonka.1.0";
+	public static final String WONKA_SERVER_1_0_NAME = "Wonka Server 1.0";
+	public static final String WONKA_SERVER_1_0_DESC = "A server adapter for Wonka Server 1.0 or greater";
+	
+	public static final WonkaServerType WONKA_1_0_TYPE = 
+			new WonkaServerType(WONKA_SERVER_1_0_ID, WONKA_SERVER_1_0_NAME, WONKA_SERVER_1_0_DESC);
 }
