@@ -1,0 +1,5 @@
+This is an extremely simple dummy server meant to mimic 
+other servers that may respond to startup and shutdown requests. 
+It is meant solely to demonstrate many of the features available. 
+
+The server itself does almost nothing, so don't expect too much from it.
