@@ -1,0 +1,80 @@
+{
+  "name": "vscode-wonka-server-connector",
+  "displayName": "Wonka (Example) Server Connector",
+  "description": "Connects vscode with a Wonka (example) server",
+  "version": "0.20.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "publisher": "redhat",
+  "author": "Red Hat",
+  "preview": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robstryker/extend-rsp-example.git"
+  },
+  "bugs": "https://github.com/robstryker/extend-rsp-example.git",
+  "engines": {
+    "vscode": "^1.30.0"
+  },
+  "activationEvents": [
+    "onView:servers"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "server",
+    "runtimes",
+    "adapters",
+    "wonka"
+  ],
+  "icon": "images/frog1.png",
+  "main": "./out/src/extension",
+  "scripts": {
+    "package": "node ./build/package.js",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "update-deps": "node_modules/.bin/ncu --upgrade --loglevel verbose --packageFile package.json && npm update",
+    "coverage:upload": "codecov -f coverage/coverage-final.json",
+    "build": "npm run compile && npm run package"
+  },
+  "extensionDependencies": [
+    "redhat.vscode-rsp-ui"
+  ],
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.10",
+    "@types/sinon": "^7.0.13",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "codecov": "^3.5.0",
+    "decache": "^4.5.1",
+    "decompress": "^4.2.0",
+    "download": "^7.1.0",
+    "glob": "^7.1.4",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.1.4",
+    "mocha-jenkins-reporter": "^0.4.1",
+    "remap-istanbul": "^0.13.0",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "tslint": "^5.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.5.2",
+    "vscode": "^1.1.35"
+  },
+  "dependencies": {
+    "expand-home-dir": "0.0.3",
+    "find-java-home": "^0.2.0",
+    "fs-extra": "7.0.0",
+    "path": "0.12.7",
+    "path-exists": "^3.0.0",
+    "portfinder": "^1.0.20",
+    "rsp-client": "^0.15.0",
+    "vscode-server-connector-api": "0.1.5",
+    "wait-on": "^3.0.1"
+  }
+}

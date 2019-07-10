@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/ch.qos.logback.classic_1.1.2.v20171220-1825.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/ch.qos.logback.core_1.1.2.v20160208-0839.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/com.google.gson_2.8.2.v20180104-1110.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/jansi-1.17.1.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/jline-3.7.0.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.apache.commons.compress_1.6.0.v201310281400.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.apache.felix.bundlerepository-2.0.10.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.apache.felix.log_1.2.0.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.eclipse.lsp4j.jsonrpc_0.7.0.v20190228-1517.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.everit.osgi.bundles.org.apache.xmlcommons.full_1.4.1.20150918.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.api_0.20.0.201907091654.jar" sourcepath="/home/rob/code/work/jbtools/rsp/rsp-server/api/bundles/org.jboss.tools.rsp.api/src/main/java/org/jboss/tools/rsp/api/dao/util/CreateServerAttributesUtility.java"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.foundation.core_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.launching.java_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.launching_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.logging_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.runtime.core_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.secure_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.server.minishift_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.server.redhat.download_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.server.spi_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.server.wildfly_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.server_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.jboss.tools.rsp.stacks.core_0.20.0.201907091654.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bundle/org.slf4j.api_1.7.10.v20170428-1633.jar"/>
+	<classpathentry kind="lib" path="/home/rob/code/work/jbtools/rsp/extend-rsp-example/rsp/targetplatform/mavendeps/rsp-distribution/bin/felix.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
