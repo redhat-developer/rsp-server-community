@@ -50,15 +50,7 @@ export class ExtensionAPI implements RSPController {
     }
 
     private getFilename(serverType: string): string {
-        if (serverType.startsWith('org.jboss.ide.eclipse.as.7')) {
-            return 'jbossas7_ligature.svg';
-        } else if (serverType.startsWith('org.jboss.ide.eclipse.as.wildfly.')) {
-            return 'wildfly_icon.svg';
-        } else if (serverType.startsWith('org.jboss.ide.eclipse.as.eap.')) {
-            return 'jboss.eap.png';
-        } else {
-            return 'server-light.png';
-        }
+        return "frog2.svg";
     }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {

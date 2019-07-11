@@ -27,7 +27,7 @@
     "adapters",
     "wonka"
   ],
-  "icon": "images/jboss.eap.png",
+  "icon": "images/frog1.png",
   "main": "./out/src/extension",
   "scripts": {
     "package": "node ./build/package.js",
