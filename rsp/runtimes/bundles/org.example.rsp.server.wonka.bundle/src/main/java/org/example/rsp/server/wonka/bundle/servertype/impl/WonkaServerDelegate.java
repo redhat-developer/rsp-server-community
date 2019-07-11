@@ -16,7 +16,6 @@ import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.Attributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.api.dao.DeployableReference;
-import org.jboss.tools.rsp.api.dao.DeployableState;
 import org.jboss.tools.rsp.api.dao.LaunchParameters;
 import org.jboss.tools.rsp.api.dao.ServerAttributes;
 import org.jboss.tools.rsp.api.dao.ServerStartingAttributes;
@@ -41,7 +40,6 @@ import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerWorkingCopy;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
-import org.jboss.tools.rsp.server.wildfly.servertype.IJBossServerAttributes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +60,7 @@ public class WonkaServerDelegate extends AbstractServerDelegate {
 	 */
 	@Override
 	public void setDefaults(IServerWorkingCopy server) {
-		server.setAttribute(IJBossServerAttributes.LAUNCH_OVERRIDE_BOOLEAN, false);
+		server.setAttribute("wonka.color.default", "blue");
 	}
 
 	/*
