@@ -4,9 +4,9 @@
  *-----------------------------------------------------------------------------------------------*/
 
 /**
- * RSP Provider ID
+ * RSP Provider ID - it is equal to publisher.name (see package.json)
  */
-export const RSP_PROVIDER_ID = 'wonka.vscode-server-connector';
+export const RSP_PROVIDER_ID = 'redhat.vscode-wonka-server-connector';
 /**
  * RSP Provider Name - it will be displayed in the tree node
  */
