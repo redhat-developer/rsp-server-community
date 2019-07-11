@@ -5,7 +5,9 @@
 
 import { RSP_PROVIDER_NAME } from './constants';
 import { EventEmitter } from 'events';
+import * as path from 'path';
 import * as server from './server';
+import { Uri } from 'vscode';
 import { RSPController, ServerInfo, ServerState } from 'vscode-server-connector-api';
 
 export class ExtensionAPI implements RSPController {
@@ -37,6 +39,26 @@ export class ExtensionAPI implements RSPController {
         server.terminate().catch(error => {
             return Promise.reject(`RSP Error - ${error ? error : ''}`);
         });
+    }
+
+    public getImage(serverType: string): Uri {
+        if (!serverType) {
+            return null;
+        }
+
+        return Uri.file(path.join(__dirname, '..', '..', 'images', this.getFilename(serverType)));
+    }
+
+    private getFilename(serverType: string): string {
+        if (serverType.startsWith('org.jboss.ide.eclipse.as.7')) {
+            return 'jbossas7_ligature.svg';
+        } else if (serverType.startsWith('org.jboss.ide.eclipse.as.wildfly.')) {
+            return 'wildfly_icon.svg';
+        } else if (serverType.startsWith('org.jboss.ide.eclipse.as.eap.')) {
+            return 'jboss.eap.png';
+        } else {
+            return 'server-light.png';
+        }
     }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {
