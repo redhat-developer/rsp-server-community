@@ -55,7 +55,7 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 				String suggestedId = new File(newHome).getName();
 				String chosenId = getUniqueServerId(suggestedId, serverIds);
 				
-				CreateServerResponse response = getServerModel().createServer(serverType, id, attributes);
+				CreateServerResponse response = getServerModel().createServer("SERVER_TOMCAT_90", "tomcat", attributes);
 				return StatusConverter.convert(response.getStatus());
 			}
 			
