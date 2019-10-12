@@ -8,7 +8,6 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 
 	public TomcatServerDelegate(IServer server) {
 		super(server);
-		setServerState(ServerManagementAPIConstants.STATE_STOPPED);
 	}
 
 }

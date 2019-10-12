@@ -3,27 +3,30 @@ package org.jboss.tools.rsp.server.tomcat.beans.impl;
 import java.io.File;
 
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
+import org.jboss.tools.rsp.server.tomcat.beans.impl.ManifestUtility;
 
 public class TomcatBean9 extends ServerBeanType implements IServerConstants {
+	protected String systemJarPath;
 	public TomcatBean9() {
 		super(ID_TOMCAT, NAME_TOMCAT);
+		this.systemJarPath = BIN_TWIDDLE_PATH;
 	}
 
 	@Override
 	public boolean isServerRoot(File location) {
-		return getFullVersion(location) != null;
+		File tomcatJar = new File(location, systemJarPath);
+		if (tomcatJar.exists() && tomcatJar.isFile()) {
+			String title = ManifestUtility.getJarProperty(tomcatJar, IMPLEMENTATION_TITLE);
+			boolean isTomcat = title != null && title.contains(ID_TOMCAT); //$NON-NLS-1$
+			return !isTomcat;
+		}
+		return false;
 	}
 
 	@Override
 	public String getFullVersion(File location) {
-		String vers = JBossManifestUtility.getManifestPropFromJBossModulesFolder(
-				new File[]{new File(location, MODULES)}, 
-				"org.jboss.as.product", "wildfly-full/dir/META-INF", 
-				MANIFEST_PROD_RELEASE_VERS);
-		if( vers != null && vers.startsWith("9.")) {
-			return vers;
-		}
-		return null;
+		return ManifestUtility.getFullServerVersionFromZipLegacy(new File(location, systemJarPath), new String[]{
+				"Bundle-Version", "Specification-Version", "Implementation-Version"});
 	}
 
 	@Override
