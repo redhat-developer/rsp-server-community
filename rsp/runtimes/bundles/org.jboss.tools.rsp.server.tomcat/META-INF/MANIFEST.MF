@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.jboss.tools.rsp.server.tomcat
 Bundle-SymbolicName: org.jboss.tools.rsp.server.tomcat
 Automatic-Module-Name: org.jboss.tools.rsp.server.wildfly
-Bundle-Version: 0.20.1.qualifier
+Bundle-Version: 0.21.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.json,
@@ -44,7 +44,6 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.server.spi.runtimes,
  org.jboss.tools.rsp.server.spi.servertype,
  org.jboss.tools.rsp.server.spi.util,
- org.jboss.tools.rsp.server.wildfly.servertype.launch,
  org.jboss.tools.rsp.stacks.core.model,
  org.osgi.framework,
  org.slf4j

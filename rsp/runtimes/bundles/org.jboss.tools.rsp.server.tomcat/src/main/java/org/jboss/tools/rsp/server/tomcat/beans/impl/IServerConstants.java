@@ -11,7 +11,7 @@ public interface IServerConstants {
 	
 	public static final String IMPLEMENTATION_TITLE = "Implementation-Title"; //$NON-NLS-1$
 	
-	public static final String BIN = "bin"; //$NON-NLS-1$
-	public static final String TWIDDLE_JAR_NAME = "twiddle.jar"; //$NON-NLS-1$
-	public static final String BIN_TWIDDLE_PATH = FileUtil.asPath(BIN,TWIDDLE_JAR_NAME);
+	public static final String LIB = "lib"; //$NON-NLS-1$
+	public static final String CATALINA_JAR_NAME = "catalina.jar"; //$NON-NLS-1$
+	public static final String LIB_TWIDDLE_PATH = FileUtil.asPath(LIB,CATALINA_JAR_NAME);
 }

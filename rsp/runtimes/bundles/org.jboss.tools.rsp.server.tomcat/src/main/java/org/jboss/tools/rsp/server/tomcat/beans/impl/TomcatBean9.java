@@ -9,7 +9,7 @@ public class TomcatBean9 extends ServerBeanType implements IServerConstants {
 	protected String systemJarPath;
 	public TomcatBean9() {
 		super(ID_TOMCAT, NAME_TOMCAT);
-		this.systemJarPath = BIN_TWIDDLE_PATH;
+		this.systemJarPath = LIB_TWIDDLE_PATH;
 	}
 
 	@Override

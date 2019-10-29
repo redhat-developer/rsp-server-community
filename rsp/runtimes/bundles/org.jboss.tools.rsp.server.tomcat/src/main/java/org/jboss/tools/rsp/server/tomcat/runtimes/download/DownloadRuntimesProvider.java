@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 
-import org.jboss.jdf.stacks.parser.Parser;
-
 import org.jboss.tools.rsp.eclipse.core.runtime.IProgressMonitor;
 import org.jboss.tools.rsp.server.redhat.download.stacks.AbstractStacksDownloadRuntimesProvider;
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
@@ -40,9 +38,10 @@ public class DownloadRuntimesProvider extends AbstractStacksDownloadRuntimesProv
 
 	@Override
 	protected Stacks[] getStacks(IProgressMonitor monitor) {
-		//Stacks ret = new StacksManager(getDataFolder()).getStacks(TOMCAT_YAML_URL, 
-		//		"Loading Tomcat Downloadable Runtimes", monitor);
-		///////for testing purpose
+		Stacks ret = new StacksManager(getDataFolder()).getStacks(TOMCAT_YAML_URL, 
+				"Loading Tomcat Downloadable Runtimes", monitor);
+	//for testing purpose
+	/*
 			Stacks ret = null;
 			File f = new File("/home/luca/Public/github.com/redhat-developer/rsp-server/minishifttest.yaml");
 			if (f != null && f.exists()) {
@@ -53,6 +52,7 @@ public class DownloadRuntimesProvider extends AbstractStacksDownloadRuntimesProv
 					String s = "";
 				}
 			}
+	*/
 		return ret == null ? null : new Stacks[] {ret};
 	}
 

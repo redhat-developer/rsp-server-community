@@ -1,15 +1,13 @@
 package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
-import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
 import org.jboss.tools.rsp.eclipse.core.runtime.Path;
-import org.jboss.tools.rsp.eclipse.core.runtime.Status;
 import org.jboss.tools.rsp.eclipse.jdt.launching.IVMInstallRegistry;
 import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.launchers.IServerStartLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
-import org.jboss.tools.rsp.server.tomcat.servertype.launch.TomcatDefaultLaunchArguments;
 import org.jboss.tools.rsp.server.tomcat.servertype.launch.IDefaultLaunchArguments;
+import org.jboss.tools.rsp.server.tomcat.servertype.launch.TomcatDefaultLaunchArguments;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
