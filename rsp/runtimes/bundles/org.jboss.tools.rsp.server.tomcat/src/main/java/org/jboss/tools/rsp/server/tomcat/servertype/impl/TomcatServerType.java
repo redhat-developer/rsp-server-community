@@ -5,6 +5,7 @@ import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.Attributes;
 import org.jboss.tools.rsp.api.dao.ServerLaunchMode;
 import org.jboss.tools.rsp.api.dao.util.CreateServerAttributesUtility;
+import org.jboss.tools.rsp.launching.java.ILaunchModes;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerType;
@@ -58,8 +59,12 @@ public class TomcatServerType implements IServerType{
 
 	@Override
 	public Attributes getOptionalAttributes() {
-		// TODO Auto-generated method stub
-		return null;
+		if (optional == null) {
+			CreateServerAttributesUtility attrs = new CreateServerAttributesUtility();
+			//fillOptionalAttributes(attrs);
+			this.optional = attrs.toPojo();
+		}
+		return optional;
 	}
 
 	@Override
@@ -76,8 +81,10 @@ public class TomcatServerType implements IServerType{
 
 	@Override
 	public ServerLaunchMode[] getLaunchModes() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ServerLaunchMode[] {
+				new ServerLaunchMode(ILaunchModes.RUN, ILaunchModes.RUN_DESC),
+				new ServerLaunchMode(ILaunchModes.DEBUG, ILaunchModes.DEBUG_DESC)
+		};
 	}
 
 

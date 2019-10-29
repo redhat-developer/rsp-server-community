@@ -1,0 +1,119 @@
+# Copyright 2018s, Red Hat, Inc. and/or its affiliates, and individual
+# contributors by the @authors tag. 
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.#All Rules
+
+
+licenses:
+ - &apache20 http://www.apache.org/licenses/LICENSE-2.0.txt
+
+
+##########################################################################
+#                                                                        #
+#   L I S T    O F    A L L     A V A I L A B L E    R U N T I M E S     #
+#                                                                        #
+##########################################################################
+
+availableRuntimes:
+
+   ########################
+   #   MiniShift 1.14.0   #
+   ########################
+
+ - &minishift1140
+   id: minishift1140
+   name: Minishift v1.14.0
+   version: 1.14.0
+   license: *apache20
+   url: https://github.com/minishift/minishift/releases
+   labels: {
+        requiresCredentials: false,
+        runtime-category: MINISHIFT,
+        runtime-type: MINISHIFT,
+        runtime-size: 5359259,
+        additionalDownloadURLs: {
+            "win32": "https://github.com/minishift/minishift/releases/download/v1.14.0/minishift-1.14.0-windows-amd64.zip",
+            "linux": "https://github.com/minishift/minishift/releases/download/v1.14.0/minishift-1.14.0-linux-amd64.tgz",
+            "macosx": "https://github.com/minishift/minishift/releases/download/v1.14.0/minishift-1.14.0-darwin-amd64.tgz",
+        },
+        wtp-runtime-type: org.jboss.tools.openshift.cdk.server.runtime.type.minishift.17
+   }
+   
+   
+   ########################
+   #   MiniShift 1.15.1   #
+   ########################
+
+ - &minishift1151
+   id: minishift1151
+   name: Minishift v1.15.1
+   version: 1.15.1
+   license: *apache20
+   url: https://github.com/minishift/minishift/releases
+   labels: {
+        requiresCredentials: false,
+        runtime-category: MINISHIFT,
+        runtime-type: MINISHIFT,
+        runtime-size: 5488875,
+        additionalDownloadURLs: {
+            "win32": "https://github.com/minishift/minishift/releases/download/v1.15.1/minishift-1.15.1-windows-amd64.zip",
+            "linux": "https://github.com/minishift/minishift/releases/download/v1.15.1/minishift-1.15.1-linux-amd64.tgz",
+            "macosx": "https://github.com/minishift/minishift/releases/download/v1.15.1/minishift-1.15.1-darwin-amd64.tgz",
+        },
+        wtp-runtime-type: org.jboss.tools.openshift.cdk.server.runtime.type.minishift.17
+   }
+
+   ########################
+   #   CRC 1.0   #
+   ########################
+
+ - &crc1000
+   id: crc1000
+   name: CRC v1.0.0
+   version: 1.0.0
+   license: *apache20
+   url: https://github.com/minishift/minishift/releases
+   labels: {
+        requiresCredentials: false,
+        runtime-category: MINISHIFT,
+        runtime-type: CRC,
+        runtime-size: 1743236,
+        additionalDownloadURLs: {
+            "win32": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip",
+            "linux": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz",
+            "macosx": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz",
+        },
+        wtp-runtime-type: org.jboss.tools.openshift.cdk.server.runtime.type.crc.100
+   }
+   ########################
+   #   Tomcat 1.0   #
+   ########################
+
+ - &tomcat9000
+   id: tomcat9000
+   name: Tomcat v9.0.0
+   version: 1.0.0
+   license: *apache20
+   url: https://github.com/minishift/minishift/releases
+   labels: {
+        requiresCredentials: false,
+        runtime-category: TOMCAT,
+        runtime-type: TOMCAT,
+        runtime-size: 10500000,
+        additionalDownloadURLs: {
+            "win32": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip",
+            "linux": "https://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz",
+            "macosx": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz",
+        },
+        wtp-runtime-type: org.jboss.ide.eclipse.as.runtime.tomcat.90
+   }
+
+  

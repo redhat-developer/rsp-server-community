@@ -88,16 +88,5 @@ public class DownloadRuntimesProvider extends AbstractStacksDownloadRuntimesProv
 
 		return new TomcatLicenseOnlyDownloadExecutor(dr, model);
 	}
-	
-
-	@Override
-	public DownloadRuntime[] getDownloadableRuntimes(IProgressMonitor monitor) {
-		//to be modified
-		DownloadRuntime dlrt = new DownloadRuntime("tomcat.1.0", "Tomcat Server", 
-				"1.0.0.Final", "https://github.com/robstryker/extend-rsp-example/raw/master/wonka-runtime/releases/wonka-runtime-1.0-SNAPSHOT.jar");
-		//dlrt.setInstallationMethod(IRuntimeInstaller.BINARY_INSTALLER);
-		//dlrt.setLicenseURL("https://www.gnu.org/licenses/lgpl-3.0.txt");
-		//return new DownloadRuntime[] { dlrt };
-	}
 
 }
