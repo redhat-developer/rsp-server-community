@@ -5,10 +5,11 @@
    </description>
    <bundle id="ch.qos.logback.classic"/>
    <bundle id="ch.qos.logback.core"/>
-   <bundle id="org.slf4j.api"/>
+   <bundle id="slf4j.api"/>
    <bundle id="org.eclipse.lsp4j.jsonrpc"/>
    <bundle id="com.google.gson"/>
    <bundle id="org.apache.commons.compress"/>
+   <bundle id="org.tukaani.xz"/>
    <bundle id="org.apache.felix.log" version="1.2.0"/>
    <bundle id="org.everit.osgi.bundles.org.apache.xmlcommons.full" version="1.4.1.20150918"/>
    <bundle id="org.jboss.tools.rsp.api"/>
@@ -21,5 +22,6 @@
    <bundle id="org.jboss.tools.rsp.runtime.core"/>
    <bundle id="org.jboss.tools.rsp.server.spi"/>
    <bundle id="org.jboss.tools.rsp.server"/>
-   <bundle id="org.example.rsp.server.wonka.bundle"/>
+   <bundle id="org.jboss.tools.rsp.server.redhat.download"/>
+   <bundle id="org.jboss.tools.rsp.server.tomcat"/>
 </site>

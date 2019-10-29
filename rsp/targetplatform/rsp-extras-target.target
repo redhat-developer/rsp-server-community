@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.6"?>
+<target includeMode="feature" name="rsp-extras-target-0.21.2-SNAPSHOT">
+	<locations>
+		<!-- To get around NEXUS validation rules, CHANGE THE VERSION AT THE TOP OF THIS FILE -->
+
+		<!-- don't forget to increment these files when moving up a version: build.xml, *.target -->
+
+		<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+			<repository location="http://download.jboss.org/jbosstools/updates/requirements/orbit/R20180905201904/" />
+
+			<unit id="org.junit" version="4.12.0.v201504281640" />
+			<unit id="com.google.gson" version="2.8.2.v20180104-1110" />
+
+			<unit id="org.apache.commons.compress" version="1.6.0.v201310281400" />
+			<unit id="org.tukaani.xz" version="1.8.0.v20180207-1613" />
+
+			<!-- Docker Tooling deps -->
+			<unit id="org.assertj" version="1.7.1.v20170413-2026" />
+			<unit id="org.json" version="1.0.0.v201011060100" />
+			<unit id="org.mockito" version="1.9.5.v201605172210" />
+		</location>
+
+
+		<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.jboss.org/jbosstools/updates/requirements/logback/1.2.3/" />
+
+			<!-- qos.logback 1.2.3 requires org.slf4j.spi [1.7.10,1.8.0) -->
+			<unit id="ch.qos.logback.classic" version="1.2.3" />
+			<unit id="ch.qos.logback.core" version="1.2.3" />
+			<unit id="slf4j.api" version="1.7.28" />
+		</location>
+
+		<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.jboss.org/jbosstools/updates/requirements/lsp4j/0.8.1.v20190925-0747/" />
+			<!-- lsp4j -->
+			<unit id="org.eclipse.lsp4j.jsonrpc" version="0.8.1.v20190925-0746" />
+		</location>
+
+
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer"
+			includeSource="true" type="InstallableUnit">
+			<repository
+				location="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/jbosstools-locus/1.8.0/jbosstools-locus-1.8.0-updatesite.zip-unzip" />
+			<!-- Test dependencies -->
+			<unit id="org.jboss.tools.locus.mockito" version="1.9.5.v20131024-0922" />
+			<unit id="org.assertj.core" version="2.1.0" />
+			<unit id="org.apache.felix.log" version="1.2.0" />
+			<unit id="org.everit.osgi.bundles.org.apache.xmlcommons.full" version="1.4.1.20150918" />
+		</location>
+
+		<!-- SimRel -->
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer"
+			type="InstallableUnit" includeSource="true">
+			<repository
+				location="http://download.jboss.org/jbosstools/updates/requirements/simrel/20190301-0700-Simrel.2019-03.M3/" />
+
+			<!-- p2.discovery -->
+			<unit id="org.eclipse.equinox.p2.discovery" version="1.1.100.v20180822-1302" />
+			<unit id="org.eclipse.equinox.p2.discovery.compatibility" version="1.1.100.v20180822-1302" />
+			<unit id="org.eclipse.equinox.p2.ui.discovery" version="1.1.100.v20180822-1357" />
+
+			<!-- Platform: CVS, JDT, RCP, PDE, Equinox, Help -->
+			<!-- <unit id="com.ibm.icu.base" version="56.1.0.v201601250100"/> -->
+			<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.300.v20190213-1655" />
+			<unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.2.200.v20190129-1112" />
+			<unit id="org.eclipse.equinox.p2.user.ui.feature.group" version="2.4.300.v20190220-1158" />
+			<!-- <unit id="org.eclipse.equinox.http.registry" version="1.1.500.v20171221-2204"/> -->
+			<unit id="org.eclipse.equinox.server.core.feature.group" version="1.9.0.v20190218-2100" />
+			<unit id="org.eclipse.equinox.server.jetty.feature.group" version="1.8.0.v20190223-1328" />
+			<unit id="org.eclipse.help.feature.group" version="2.2.500.v20190301-0040" />
+			<unit id="org.eclipse.jdt.feature.group" version="3.17.0.v20190301-0040" />
+			<unit id="org.eclipse.pde.feature.group" version="3.13.400.v20190301-0538" />
+			<unit id="org.eclipse.platform.feature.group" version="4.11.0.v20190301-0040" />
+			<unit id="org.eclipse.rcp.feature.group" version="4.11.0.v20190301-0040" />
+
+			<!-- required for swtbot and reddeer -->
+			<!-- org.eclipse.linuxtools.docker.reddeer 2.1.0.201805161441 requires org.hamcrest.library 1.3.0 -->
+			<unit id="org.hamcrest.core" version="1.3.0.v20180420-1519" />
+			<unit id="org.hamcrest.library" version="1.3.0.v20180524-2246" />
+
+			<!-- required for java 11 -->
+			<unit id="javax.annotation" version="1.2.0.v201602091430" />
+		</location>
+
+	</locations>
+	<targetJRE
+		path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8" />
+
+
+</target>

@@ -5,11 +5,11 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.example.rsp.server.wonka</groupId>
+    <groupId>org.example.rsp.server.extras</groupId>
     <artifactId>parent</artifactId>
-    <version>0.20.0-SNAPSHOT</version>
+    <version>0.21.2-SNAPSHOT</version>
   </parent>
-  <groupId>org.example.rsp.server.wonka</groupId>
+  <groupId>org.example.rsp.server.extras</groupId>
   <artifactId>distribution</artifactId>
   <name>Runtime Server Protocol : Distribution Parent</name>
   <packaging>pom</packaging>
@@ -19,6 +19,6 @@
   </properties>
 
   <modules>
-    <module>distribution.wonka</module>
+    <module>distribution.extras</module>
   </modules>
 </project>
