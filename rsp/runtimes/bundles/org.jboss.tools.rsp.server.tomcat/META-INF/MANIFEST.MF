@@ -47,3 +47,4 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.stacks.core.model,
  org.osgi.framework,
  org.slf4j
+Bundle-Activator: org.jboss.tools.rsp.server.tomcat.impl.Activator
