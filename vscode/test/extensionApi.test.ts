@@ -68,7 +68,7 @@ suite('Extension API', () => {
                 await extensionApi.startRSP(stdCallback, stdCallback);
                 expect.fail();
             } catch (err) {
-                expect(err).equals('RSP Error - RSP Server (Wildfly, Eap) failed to start - Error: Error');
+                expect(err).equals('RSP Error - RSP Server (Extras) failed to start - Error: Error');
             }
         });
 
