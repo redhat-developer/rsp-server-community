@@ -1,8 +1,7 @@
-package org.jboss.tools.rsp.server.tomcat.impl;
+package org.jboss.tools.rsp.server.tomcat.impl.discovery;
 
 import org.jboss.tools.rsp.server.spi.discovery.IServerBeanTypeProvider;
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
-import org.jboss.tools.rsp.server.tomcat.beans.impl.TomcatBean9;
 
 public class TomcatServerBeanTypeProvider implements IServerBeanTypeProvider{
 	

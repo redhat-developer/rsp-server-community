@@ -1,17 +1,15 @@
 package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jboss.tools.rsp.server.spi.servertype.IServerType;
+import org.jboss.tools.rsp.server.tomcat.beans.impl.IServerConstants;
 
-public class TomcatServerTypes implements ServerTypeStringConstants{
+public class TomcatServerTypes {
+	public static final String TC9_ID = IServerConstants.TOMCAT_90_SERVER_TYPE_ID;
+	public static final String TC9_NAME = "Tomcat 9.x";
+	public static final String TC9_DESC = "A server adapter capable of discovering and controlling a Tomcat 9.x runtime instance.";
 	
+
 	public static final IServerType TC9_SERVER_TYPE = 
 			new TomcatServerType(TC9_ID, TC9_NAME, TC9_DESC);
 
-	public static final Map<String, String> RUNTIME_TO_SERVER = new HashMap<>();
-	static {
-		RUNTIME_TO_SERVER.put(RUNTIME_TC_9_ID, TC9_ID);		
-	};
 }

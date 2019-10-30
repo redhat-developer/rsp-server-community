@@ -6,38 +6,18 @@ import org.jboss.tools.rsp.api.dao.Attributes;
 import org.jboss.tools.rsp.api.dao.ServerLaunchMode;
 import org.jboss.tools.rsp.api.dao.util.CreateServerAttributesUtility;
 import org.jboss.tools.rsp.launching.java.ILaunchModes;
+import org.jboss.tools.rsp.server.spi.servertype.AbstractServerType;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerType;
 
-public class TomcatServerType implements IServerType{
+public class TomcatServerType extends AbstractServerType {
 	
 	protected Attributes required = null;
 	protected Attributes optional = null;
 	
-	private String id;
-	private String name;
-	private String desc;
-	
 	public TomcatServerType(String id, String name, String desc) {
-		this.id = id;
-		this.name = name;
-		this.desc = desc;
-	}
-
-	@Override
-	public String getId() {
-		return id;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public String getDescription() {
-		return desc;
+		super(id, name, desc);
 	}
 
 	@Override

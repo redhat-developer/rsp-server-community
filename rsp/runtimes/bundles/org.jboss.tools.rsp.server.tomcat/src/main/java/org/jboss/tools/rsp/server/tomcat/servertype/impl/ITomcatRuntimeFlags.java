@@ -1,6 +1,6 @@
-package org.jboss.tools.rsp.server.tomcat.impl.util;
+package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
-public interface ITomcatRuntimeConstants {
+public interface ITomcatRuntimeFlags {
 	// Launch configuration constants / Command Line Args
 	public static final String SPACE = " ";//$NON-NLS-1$
 	public static final String DASH = "-"; //$NON-NLS-1$

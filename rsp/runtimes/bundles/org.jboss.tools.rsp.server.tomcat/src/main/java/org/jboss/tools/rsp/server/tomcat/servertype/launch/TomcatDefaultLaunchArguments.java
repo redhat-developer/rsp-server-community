@@ -5,11 +5,11 @@ import java.util.HashMap;
 import org.jboss.tools.rsp.eclipse.core.runtime.IPath;
 import org.jboss.tools.rsp.eclipse.core.runtime.Path;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
-import org.jboss.tools.rsp.server.tomcat.impl.util.ITomcatRuntimeConstants;
-import org.jboss.tools.rsp.server.tomcat.impl.util.ITomcatRuntimeResourceConstants;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatRuntimeFlags;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatRuntimeResourceConstants;
 import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
 
-public class TomcatDefaultLaunchArguments implements IDefaultLaunchArguments, ITomcatRuntimeConstants, ITomcatRuntimeResourceConstants {
+public class TomcatDefaultLaunchArguments implements IDefaultLaunchArguments, ITomcatRuntimeFlags, ITomcatRuntimeResourceConstants {
 	
 	protected IServer server;
 	private IPath serverHome;
@@ -81,7 +81,7 @@ public class TomcatDefaultLaunchArguments implements IDefaultLaunchArguments, IT
 	@Override
 	public String getStartDefaultProgramArgs() {
 		return getCatalinaArgs() + getJavaTmpDir() +  
-				SPACE + CATALINA_STARTUP_BOOTSTRAP + SPACE + "start"; 
+				SPACE + "start"; 
 	}
 
 	@Override
@@ -98,14 +98,14 @@ public class TomcatDefaultLaunchArguments implements IDefaultLaunchArguments, IT
 
 	@Override
 	public String getDefaultStopArgs() {
-		// TODO Auto-generated method stub
-		return null;
+		return getCatalinaArgs() + getJavaTmpDir() +  
+				SPACE +  "stop"; 
 	}
 
 	@Override
 	public String getDefaultStopVMArgs() {
-		// TODO Auto-generated method stub
-		return null;
+		return getLoggingArgs() + getSecurityArgs() + 
+				getIgnoreEndorsedDirs();
 	}
 
 }

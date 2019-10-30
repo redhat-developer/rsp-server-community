@@ -1,4 +1,6 @@
-package org.jboss.tools.rsp.server.tomcat.impl.util;
+package org.jboss.tools.rsp.server.tomcat.servertype.impl;
+
+import org.jboss.tools.rsp.launching.utils.FileUtil;
 
 public interface ITomcatRuntimeResourceConstants {
 	
@@ -13,4 +15,10 @@ public interface ITomcatRuntimeResourceConstants {
 	public static final String CATALINA_HOME = "catalina.home"; //$NON-NLS-1$
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir"; //$NON-NLS-1$
 	public static final String CATALINA_STARTUP_BOOTSTRAP = "org.apache.catalina.startup.Bootstrap"; //$NON-NLS-1$
+	
+	public static final String LIB = "lib"; //$NON-NLS-1$
+	public static final String CATALINA_JAR_NAME = "catalina.jar"; //$NON-NLS-1$
+	public static final String LIB_CATALINA_PATH = FileUtil.asPath(LIB,CATALINA_JAR_NAME);
+
+	
 }

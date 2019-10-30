@@ -11,6 +11,7 @@ import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.eclipse.osgi.util.NLS;
 import org.jboss.tools.rsp.server.model.AbstractServerDelegate;
+import org.jboss.tools.rsp.server.spi.launchers.IServerShutdownLauncher;
 import org.jboss.tools.rsp.server.spi.launchers.IServerStartLauncher;
 import org.jboss.tools.rsp.server.spi.model.polling.IPollResultListener;
 import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller;
@@ -33,6 +34,25 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 		super(server);
 		setServerState(ServerManagementAPIConstants.STATE_STOPPED);
 	}
+	public IStatus canStop() {
+		return Status.OK_STATUS;
+	}
+
+	@Override
+	public IStatus stop(boolean force) {
+		setServerState(IServerDelegate.STATE_STOPPING);
+		ILaunch stopLaunch = null;
+		launchPoller(IServerStatePoller.SERVER_STATE.DOWN);
+		try {
+			stopLaunch = getStopLauncher().launch(force);
+			if( stopLaunch != null)
+				registerLaunch(stopLaunch);
+		} catch(CoreException ce) {
+			setServerState(IServerDelegate.STATE_STARTED);
+			return ce.getStatus();
+		}
+		return Status.OK_STATUS;
+	}
 	
 	@Override
 	public IStatus canStart(String launchMode) {
@@ -52,6 +72,9 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 			return Status.OK_STATUS;
 		}
 		return Status.CANCEL_STATUS;
+	}
+	private IServerShutdownLauncher getStopLauncher() {
+		return new TomcatShutdownLauncher(this);
 	}
 	
 	private IServerStartLauncher getStartLauncher() {

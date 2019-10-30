@@ -1,15 +1,17 @@
-package org.jboss.tools.rsp.server.tomcat.beans.impl;
+package org.jboss.tools.rsp.server.tomcat.impl.discovery;
 
 import java.io.File;
 
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
-import org.jboss.tools.rsp.server.tomcat.beans.impl.ManifestUtility;
+import org.jboss.tools.rsp.server.tomcat.beans.impl.IServerConstants;
+import org.jboss.tools.rsp.server.tomcat.impl.util.ManifestUtility;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatRuntimeResourceConstants;
 
 public class TomcatBean9 extends ServerBeanType implements IServerConstants {
 	protected String systemJarPath;
 	public TomcatBean9() {
 		super(ID_TOMCAT, NAME_TOMCAT);
-		this.systemJarPath = LIB_TWIDDLE_PATH;
+		this.systemJarPath = ITomcatRuntimeResourceConstants.LIB_CATALINA_PATH;
 	}
 
 	@Override
@@ -37,7 +39,7 @@ public class TomcatBean9 extends ServerBeanType implements IServerConstants {
 
 	@Override
 	public String getServerAdapterTypeId(String version) {
-		return IServerConstants.RUNTIME_TOMCAT_90;
+		return IServerConstants.TOMCAT_90_SERVER_TYPE_ID;
 	}
 
 }

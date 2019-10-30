@@ -2,6 +2,7 @@ package org.jboss.tools.rsp.server.tomcat.impl;
 
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 import org.jboss.tools.rsp.server.spi.servertype.IServerType;
+import org.jboss.tools.rsp.server.tomcat.impl.discovery.TomcatServerBeanTypeProvider;
 import org.jboss.tools.rsp.server.tomcat.runtimes.download.DownloadRuntimesProvider;
 import org.jboss.tools.rsp.server.tomcat.servertype.impl.TomcatServerTypes;
 

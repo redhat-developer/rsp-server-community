@@ -6,7 +6,7 @@
  * 
  * Contributors: Red Hat, Inc.
  ******************************************************************************/
-package org.jboss.tools.rsp.server.tomcat.beans.impl;
+package org.jboss.tools.rsp.server.tomcat.impl.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
