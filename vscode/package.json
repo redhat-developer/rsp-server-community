@@ -47,6 +47,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.0.10",
     "@types/sinon": "^7.0.13",
+    "@types/vscode": "^1.30.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.5.0",
@@ -62,8 +63,7 @@
     "sinon-chai": "^3.3.0",
     "tslint": "^5.18.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.5.2",
-    "vscode": "^1.1.35"
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "expand-home-dir": "0.0.3",
