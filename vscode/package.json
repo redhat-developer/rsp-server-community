@@ -2,7 +2,7 @@
   "name": "vscode-extras-server-connector",
   "displayName": "Vscode Server Connector Extras",
   "description": "Connects vscode with servers which are not included with Red Hat's rsp-server",
-  "version": "0.20.0",
+  "version": "0.21.2",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
   "author": "Red Hat",
