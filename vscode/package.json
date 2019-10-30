@@ -1,7 +1,7 @@
 {
-  "name": "vscode-wonka-server-connector",
-  "displayName": "Wonka (Example) Server Connector",
-  "description": "Connects vscode with a Wonka (example) server",
+  "name": "vscode-extras-server-connector",
+  "displayName": "Vscode Server Connector Extras",
+  "description": "Connects vscode with servers which are not included with Red Hat's rsp-server",
   "version": "0.20.0",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
@@ -9,9 +9,9 @@
   "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/robstryker/extend-rsp-example.git"
+    "url": "https://github.com/robstryker/rsp-server-extras.git"
   },
-  "bugs": "https://github.com/robstryker/extend-rsp-example.git",
+  "bugs": "https://github.com/robstryker/rsp-server-extras.git",
   "engines": {
     "vscode": "^1.30.0"
   },
@@ -24,8 +24,7 @@
   "keywords": [
     "server",
     "runtimes",
-    "adapters",
-    "wonka"
+    "adapters"
   ],
   "icon": "images/frog1.png",
   "main": "./out/src/extension",
