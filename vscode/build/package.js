@@ -2,8 +2,8 @@ const fs = require('fs-extra');
 const download = require('download');
 const decompress = require('decompress');
 
-const RSP_SERVER_JAR_NAME = 'org.example.rsp.server.wonka.distribution-0.20.0-SNAPSHOT.zip';
-const RSP_SERVER_ZIP = __dirname + `/../../rsp/distribution/distribution.wonka/target/${RSP_SERVER_JAR_NAME}`;
+const RSP_SERVER_JAR_NAME = 'org.example.rsp.server.extras.distribution-0.21.2-SNAPSHOT.zip';
+const RSP_SERVER_ZIP = __dirname + `/../../rsp/distribution/distribution.extras/target/${RSP_SERVER_JAR_NAME}`;
 
 function clean() {
     console.log(RSP_SERVER_ZIP);
