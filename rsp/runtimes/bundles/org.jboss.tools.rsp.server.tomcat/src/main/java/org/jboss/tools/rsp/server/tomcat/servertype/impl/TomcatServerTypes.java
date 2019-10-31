@@ -1,7 +1,6 @@
 package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
 import org.jboss.tools.rsp.server.spi.servertype.IServerType;
-import org.jboss.tools.rsp.server.tomcat.beans.impl.IServerConstants;
 
 public class TomcatServerTypes {
 	public static final String TC9_ID = IServerConstants.TOMCAT_90_SERVER_TYPE_ID;

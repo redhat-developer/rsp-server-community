@@ -24,4 +24,5 @@
    <bundle id="org.jboss.tools.rsp.server"/>
    <bundle id="org.jboss.tools.rsp.server.redhat.download"/>
    <bundle id="org.jboss.tools.rsp.server.tomcat"/>
+   <bundle id="org.jboss.tools.rsp.server.felix"/>
 </site>

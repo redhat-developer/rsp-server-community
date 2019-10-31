@@ -3,8 +3,8 @@ package org.jboss.tools.rsp.server.tomcat.impl.discovery;
 import java.io.File;
 
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
-import org.jboss.tools.rsp.server.tomcat.beans.impl.IServerConstants;
 import org.jboss.tools.rsp.server.tomcat.impl.util.ManifestUtility;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.IServerConstants;
 import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatRuntimeResourceConstants;
 
 public class TomcatBean9 extends ServerBeanType implements IServerConstants {

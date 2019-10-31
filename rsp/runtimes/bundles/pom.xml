@@ -15,5 +15,6 @@
 
   <modules>
     <module>org.jboss.tools.rsp.server.tomcat</module>
+    <module>org.jboss.tools.rsp.server.felix</module>
   </modules>
 </project>

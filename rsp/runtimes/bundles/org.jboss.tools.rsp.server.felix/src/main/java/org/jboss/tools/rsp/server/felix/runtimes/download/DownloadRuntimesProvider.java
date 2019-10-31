@@ -1,4 +1,4 @@
-package org.jboss.tools.rsp.server.tomcat.runtimes.download;
+package org.jboss.tools.rsp.server.felix.runtimes.download;
 
 import java.io.File;
 import java.util.HashMap;
@@ -13,14 +13,14 @@ import org.jboss.tools.rsp.foundation.core.tasks.TaskModel;
 import org.jboss.tools.rsp.runtime.core.model.DownloadRuntime;
 import org.jboss.tools.rsp.runtime.core.model.IDownloadRuntimeRunner;
 import org.jboss.tools.rsp.runtime.core.model.IDownloadRuntimesProvider;
+import org.jboss.tools.rsp.server.felix.servertype.impl.IServerConstants;
+import org.jboss.tools.rsp.server.felix.servertype.impl.IFelixServerAttributes;
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 import org.jboss.tools.rsp.server.spi.runtimes.AbstractLicenseOnlyDownloadExecutor;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
-import org.jboss.tools.rsp.server.tomcat.servertype.impl.IServerConstants;
-import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
 
 public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
-	private static final String DLRT_ID_PREFIX = "tomcat-";
+	private static final String DLRT_ID_PREFIX = "felix-";
 	private IServerManagementModel model;
 
 	public DownloadRuntimesProvider(IServerManagementModel model) {
@@ -38,8 +38,9 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 	@Override
 	public DownloadRuntime[] getDownloadableRuntimes(IProgressMonitor monitor) {
 		// id, name, version, url
-		DownloadRuntime tomcat9 = new DownloadRuntime("tomcat-9.0.27", "Tomcat 9.0.27", "9.0.27", "http://apache.osuosl.org/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.zip");
-		return new DownloadRuntime[] {tomcat9};
+		DownloadRuntime felix60 = new DownloadRuntime("felix-6.0.3", "Apache Felix 6.0.3", "6.0.3", 
+				"http://apache.mirrors.hoobly.com//felix/org.apache.felix.main.distribution-6.0.3.zip");
+		return new DownloadRuntime[] {felix60};
 	}
 
 	@Override
@@ -58,7 +59,7 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 					String chosenId = getUniqueServerId(suggestedId, serverIds);
 					
 					Map<String,Object> attributes = new HashMap<>();
-					attributes.put(ITomcatServerAttributes.SERVER_HOME, newHome);
+					attributes.put(IFelixServerAttributes.SERVER_HOME, newHome);
 					
 					CreateServerResponse response = getServerModel().createServer(serverTypeId, chosenId, attributes);
 					return StatusConverter.convert(response.getStatus());
@@ -69,8 +70,8 @@ public class DownloadRuntimesProvider implements IDownloadRuntimesProvider {
 	}
 	
 	private String getServerType(DownloadRuntime dlrt) {
-		if( dlrt.getVersion().startsWith("9.")) {
-			return IServerConstants.TOMCAT_90_SERVER_TYPE_ID;
+		if( dlrt.getVersion().startsWith("6.0.")) {
+			return IServerConstants.FELIX_6X_SERVER_TYPE_ID;
 		}
 		return null;
 	}

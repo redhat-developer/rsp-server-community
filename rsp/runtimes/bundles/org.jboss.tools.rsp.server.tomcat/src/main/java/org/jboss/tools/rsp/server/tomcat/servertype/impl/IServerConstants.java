@@ -1,4 +1,4 @@
-package org.jboss.tools.rsp.server.tomcat.beans.impl;
+package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
 public interface IServerConstants {
 
