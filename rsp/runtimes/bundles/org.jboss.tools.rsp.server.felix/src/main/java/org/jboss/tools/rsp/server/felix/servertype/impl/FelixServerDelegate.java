@@ -11,13 +11,11 @@ import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.server.felix.impl.Activator;
 import org.jboss.tools.rsp.server.model.AbstractServerDelegate;
-import org.jboss.tools.rsp.server.spi.launchers.IServerShutdownLauncher;
 import org.jboss.tools.rsp.server.spi.launchers.IServerStartLauncher;
 import org.jboss.tools.rsp.server.spi.model.polling.AbstractPoller;
 import org.jboss.tools.rsp.server.spi.model.polling.IPollResultListener;
 import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller;
 import org.jboss.tools.rsp.server.spi.model.polling.PollThreadUtils;
-import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller.SERVER_STATE;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
@@ -36,6 +34,19 @@ public class FelixServerDelegate extends AbstractServerDelegate {
 	}
 	public IStatus canStop() {
 		return Status.OK_STATUS;
+	}
+	
+	@Override
+	protected void processTerminated(IProcess p) {
+		ILaunch l = p.getLaunch();
+		if( l == getStartLaunch() ) {
+			if( allProcessesTerminated(l)) {
+				setMode(null);
+				setStartLaunch(null);
+				setServerState(IServerDelegate.STATE_STOPPED);
+			}
+		}
+		fireServerProcessTerminated(getProcessId(p));
 	}
 
 	private void terminateAllProcesses(ILaunch launch) {
@@ -106,12 +117,13 @@ public class FelixServerDelegate extends AbstractServerDelegate {
 		
 		CommandLineDetails launchedDetails = null;
 		try {
-			launchPoller(IServerStatePoller.SERVER_STATE.UP);
+			//launchPoller(IServerStatePoller.SERVER_STATE.UP);
 			IServerStartLauncher launcher = getStartLauncher();
 			startLaunch = launcher.launch(mode);
 			launchedDetails = launcher.getLaunchedDetails();
 			setStartLaunch(startLaunch);
 			registerLaunch(startLaunch);
+			setServerState(IServerDelegate.STATE_STARTED);
 		} catch(CoreException ce) {
 			if( startLaunch != null ) {
 				IProcess[] processes = startLaunch.getProcesses();

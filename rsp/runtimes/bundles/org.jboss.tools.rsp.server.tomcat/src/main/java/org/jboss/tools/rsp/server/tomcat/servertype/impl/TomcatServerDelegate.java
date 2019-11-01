@@ -84,7 +84,11 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 	private void setStartLaunch(ILaunch launch) {
 		putSharedData(TOMCAT_START_LAUNCH_SHARED_DATA, launch);
 	}
-	
+
+	private ILaunch getStartLaunch() {
+		return (ILaunch)getSharedData(TOMCAT_START_LAUNCH_SHARED_DATA);
+	}
+
 	@Override
 	public StartServerResponse start(String mode) {
 		IStatus stat = canStart(mode);
@@ -151,4 +155,29 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 		return url;
 	}
 
+
+	@Override
+	protected void processTerminated(IProcess p) {
+		ILaunch l = p.getLaunch();
+		if( l == getStartLaunch() ) {
+			if( allProcessesTerminated(l)) {
+				setMode(null);
+				setStartLaunch(null);
+				setServerState(IServerDelegate.STATE_STOPPED);
+			}
+		}
+		fireServerProcessTerminated(getProcessId(p));
+	}
+	
+	private boolean allProcessesTerminated(ILaunch launch) {
+		if( launch != null ) {
+			IProcess[] processes = launch.getProcesses();
+			for( int i = 0; i < processes.length; i++ ) {
+				if( !processes[i].isTerminated()) { 
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
