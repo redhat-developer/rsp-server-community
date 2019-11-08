@@ -6,10 +6,14 @@ import org.jboss.tools.rsp.server.ServerManagementServerLauncher;
 public class FelixServerMain extends ServerManagementServerLauncher {
 
 	public static void main(String[] args) throws Exception {
-		FelixServerMain instance = new FelixServerMain();
+		FelixServerMain instance = new FelixServerMain(args[0]);
 		LauncherSingleton.getDefault().setLauncher(instance);
-		instance.launch(args[0]);
+		instance.launch();
 		instance.shutdownOnInput();
+	}
+	
+	public FelixServerMain(String string) {
+		super(string);
 	}
 	
 	@Override

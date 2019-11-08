@@ -19,7 +19,7 @@ public class FelixStartLauncher extends AbstractJavaLauncher implements IServerS
 	@Override
 	protected String getWorkingDirectory() {
 		String serverHome =  getServer().getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
-		return serverHome + "/bin";
+		return serverHome;
 	}
 
 	@Override

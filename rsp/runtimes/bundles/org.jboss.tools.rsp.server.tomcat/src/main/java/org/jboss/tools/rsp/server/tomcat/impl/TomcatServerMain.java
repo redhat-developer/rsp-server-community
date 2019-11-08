@@ -6,10 +6,14 @@ import org.jboss.tools.rsp.server.ServerManagementServerLauncher;
 public class TomcatServerMain extends ServerManagementServerLauncher {
 
 	public static void main(String[] args) throws Exception {
-		TomcatServerMain instance = new TomcatServerMain();
+		TomcatServerMain instance = new TomcatServerMain(args[0]);
 		LauncherSingleton.getDefault().setLauncher(instance);
-		instance.launch(args[0]);
+		instance.launch();
 		instance.shutdownOnInput();
+	}
+	
+	public TomcatServerMain(String string) {
+		super(string);
 	}
 	
 	@Override

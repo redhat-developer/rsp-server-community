@@ -1,8 +1,18 @@
 package org.jboss.tools.rsp.server.felix.servertype.impl;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableReference;
+import org.jboss.tools.rsp.api.dao.ListServerActionResponse;
+import org.jboss.tools.rsp.api.dao.ServerActionRequest;
+import org.jboss.tools.rsp.api.dao.ServerActionWorkflow;
 import org.jboss.tools.rsp.api.dao.StartServerResponse;
+import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
@@ -12,10 +22,8 @@ import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.server.felix.impl.Activator;
 import org.jboss.tools.rsp.server.model.AbstractServerDelegate;
 import org.jboss.tools.rsp.server.spi.launchers.IServerStartLauncher;
-import org.jboss.tools.rsp.server.spi.model.polling.AbstractPoller;
-import org.jboss.tools.rsp.server.spi.model.polling.IPollResultListener;
-import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller;
-import org.jboss.tools.rsp.server.spi.model.polling.PollThreadUtils;
+import org.jboss.tools.rsp.server.spi.publishing.AbstractFilesystemPublishController;
+import org.jboss.tools.rsp.server.spi.publishing.IPublishController;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
@@ -141,32 +149,6 @@ public class FelixServerDelegate extends AbstractServerDelegate {
 		}
 		return new StartServerResponse(StatusConverter.convert(Status.OK_STATUS), launchedDetails);
 	}
-
-	protected void launchPoller(IServerStatePoller.SERVER_STATE expectedState) {
-		IPollResultListener listener = expectedState == IServerStatePoller.SERVER_STATE.DOWN ? 
-				shutdownServerResultListener() : launchServerResultListener();
-		IServerStatePoller poller = getPoller(expectedState);
-		PollThreadUtils.pollServer(getServer(), expectedState, poller, listener);
-	}
-	
-	protected IServerStatePoller getPoller(IServerStatePoller.SERVER_STATE expectedState) {
-		final long beg = System.currentTimeMillis();
-		return new AbstractPoller() {
-			
-			@Override
-			protected SERVER_STATE onePing(IServer server) {
-				long curr = System.currentTimeMillis();
-				if( curr > (beg + 5000))
-					return SERVER_STATE.UP;
-				return SERVER_STATE.DOWN;
-			}
-			
-			@Override
-			protected String getThreadName() {
-				return "Felix Poller";
-			}
-		};
-	}
 	
 	private IServerStartLauncher getStartLauncher() {
 		return new FelixStartLauncher(this);
@@ -180,5 +162,87 @@ public class FelixServerDelegate extends AbstractServerDelegate {
 		return (ILaunch)getSharedData(FELIX_START_LAUNCH_SHARED_DATA);
 	}
 
+	private IPublishController publishController;
+	protected IPublishController getOrCreatePublishController() {
+		if( publishController == null ) {
+			publishController = createPublishController();
+		}
+		return publishController;
+	}
+	
+	protected IPublishController createPublishController() {
+		return new AbstractFilesystemPublishController(getServer(), this) {
+			
+			@Override
+			protected String[] getSupportedSuffixes() {
+				return new String[] { ".jar"};
+			}
+			
+			@Override
+			protected Path getDeploymentFolder() {
+				String serverHome =  getServer().getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
+				return serverHome == null ? null : 
+					new File(serverHome, "bundle").toPath();
+			}
+			
+			@Override
+			protected boolean supportsExplodedDeployment() {
+				return false;
+			}
+		};
+	}
+	
+	@Override
+	public IStatus canAddDeployable(DeployableReference ref) {
+		return getOrCreatePublishController().canAddDeployable(ref);
+	}
+	
+	@Override
+	public IStatus canRemoveDeployable(DeployableReference reference) {
+		return getOrCreatePublishController().canRemoveDeployable(getServerPublishModel().fillOptionsFromCache(reference));
+	}
+	
+	@Override
+	public IStatus canPublish() {
+		return getOrCreatePublishController().canPublish();
+	}
+
+	@Override
+	protected void publishStart(int publishType) throws CoreException {
+		getOrCreatePublishController().publishStart(publishType);
+	}
+
+	@Override
+	protected void publishFinish(int publishType) throws CoreException {
+		getOrCreatePublishController().publishFinish(publishType);
+		super.publishFinish(publishType);
+	}
+
+	@Override
+	protected void publishDeployable(DeployableReference reference, 
+			int publishRequestType, int modulePublishState) throws CoreException {
+		int syncState = getOrCreatePublishController()
+				.publishModule(reference, publishRequestType, modulePublishState);
+		setDeployablePublishState(reference, syncState);
+		setDeployableState(reference, ServerManagementAPIConstants.STATE_STARTED);
+	}
+
+	@Override
+	public ListServerActionResponse listServerActions() {
+		ListServerActionResponse ret = new ListServerActionResponse();
+		ret.setStatus(StatusConverter.convert(Status.OK_STATUS));
+		List<ServerActionWorkflow> allActions = new ArrayList<>();
+		ServerActionWorkflow wf1 = FelixWipeCacheRestartAction.getInitialWorkflow(this);
+		allActions.add(wf1);
+		ret.setWorkflows(allActions);
+		return ret;
+	}
+	@Override
+	public WorkflowResponse executeServerAction(ServerActionRequest req) {
+		if( FelixWipeCacheRestartAction.ACTION_WIPE_CACHE_RESTART_ID.equals(req.getActionId() )) {
+			return new FelixWipeCacheRestartAction(this).handle(req);
+		}
+		return cancelWorkflowResponse();
+	}
 
 }
