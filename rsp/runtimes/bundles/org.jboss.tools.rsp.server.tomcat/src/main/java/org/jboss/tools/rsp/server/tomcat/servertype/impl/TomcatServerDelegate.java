@@ -1,7 +1,11 @@
 package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
+import java.io.File;
+import java.nio.file.Path;
+
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableReference;
 import org.jboss.tools.rsp.api.dao.StartServerResponse;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
@@ -17,6 +21,8 @@ import org.jboss.tools.rsp.server.spi.model.polling.IPollResultListener;
 import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller;
 import org.jboss.tools.rsp.server.spi.model.polling.PollThreadUtils;
 import org.jboss.tools.rsp.server.spi.model.polling.WebPortPoller;
+import org.jboss.tools.rsp.server.spi.publishing.AbstractFilesystemPublishController;
+import org.jboss.tools.rsp.server.spi.publishing.IPublishController;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
@@ -179,5 +185,74 @@ public class TomcatServerDelegate extends AbstractServerDelegate {
 			}
 		}
 		return true;
+	}
+	
+	/*
+	 * Publishing
+	 */
+
+	private IPublishController publishController;
+	protected IPublishController getOrCreatePublishController() {
+		if( publishController == null ) {
+			publishController = createPublishController();
+		}
+		return publishController;
+	}
+	
+	protected IPublishController createPublishController() {
+		return new AbstractFilesystemPublishController(getServer(), this) {
+			
+			@Override
+			protected String[] getSupportedSuffixes() {
+				return new String[] { ".jar", ".war"};
+			}
+			
+			@Override
+			protected Path getDeploymentFolder() {
+				String serverHome =  getServer().getAttribute(ITomcatServerAttributes.SERVER_HOME, (String) null);
+				return serverHome == null ? null : 
+					new File(serverHome, "bundle").toPath();
+			}
+			
+			@Override
+			protected boolean supportsExplodedDeployment() {
+				return true;
+			}
+		};
+	}
+	
+	@Override
+	public IStatus canAddDeployable(DeployableReference ref) {
+		return getOrCreatePublishController().canAddDeployable(ref);
+	}
+	
+	@Override
+	public IStatus canRemoveDeployable(DeployableReference reference) {
+		return getOrCreatePublishController().canRemoveDeployable(getServerPublishModel().fillOptionsFromCache(reference));
+	}
+	
+	@Override
+	public IStatus canPublish() {
+		return getOrCreatePublishController().canPublish();
+	}
+
+	@Override
+	protected void publishStart(int publishType) throws CoreException {
+		getOrCreatePublishController().publishStart(publishType);
+	}
+
+	@Override
+	protected void publishFinish(int publishType) throws CoreException {
+		getOrCreatePublishController().publishFinish(publishType);
+		super.publishFinish(publishType);
+	}
+
+	@Override
+	protected void publishDeployable(DeployableReference reference, 
+			int publishRequestType, int modulePublishState) throws CoreException {
+		int syncState = getOrCreatePublishController()
+				.publishModule(reference, publishRequestType, modulePublishState);
+		setDeployablePublishState(reference, syncState);
+		setDeployableState(reference, ServerManagementAPIConstants.STATE_STARTED);
 	}
 }
