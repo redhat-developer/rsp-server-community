@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.jboss.tools.rsp.server.felix
-Bundle-SymbolicName: org.jboss.tools.rsp.server.felix
-Automatic-Module-Name: org.jboss.tools.rsp.server.felix
+Bundle-Name: org.jboss.tools.rsp.server.generic
+Bundle-SymbolicName: org.jboss.tools.rsp.server.generic
+Automatic-Module-Name: org.jboss.tools.rsp.server.generic
 Bundle-Version: 0.21.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.lsp4j.jsonrpc,
@@ -33,11 +33,9 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.server,
  org.jboss.tools.rsp.server.discovery,
  org.jboss.tools.rsp.server.discovery.serverbeans,
- org.jboss.tools.rsp.server.generic,
  org.jboss.tools.rsp.server.model,
  org.jboss.tools.rsp.server.spi,
  org.jboss.tools.rsp.server.spi.discovery,
- org.jboss.tools.rsp.server.spi.jobs,
  org.jboss.tools.rsp.server.spi.launchers,
  org.jboss.tools.rsp.server.spi.model,
  org.jboss.tools.rsp.server.spi.model.polling,
@@ -47,4 +45,5 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.server.spi.util,
  org.osgi.framework,
  org.slf4j
-Bundle-Activator: org.jboss.tools.rsp.server.felix.impl.Activator
+Bundle-Activator: org.jboss.tools.rsp.server.generic.impl.Activator
+Export-Package: org.jboss.tools.rsp.server.generic

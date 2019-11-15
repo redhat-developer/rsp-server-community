@@ -1,0 +1,30 @@
+{
+  "servers": {
+       "org.jboss.ide.eclipse.as.server.tomcat.90": {
+            "discoveries": {
+                "discovery1": {
+                    "discoveryType": "jarManifest",
+                    "id": "Tomcat 9.x",
+                    "name": "Tomcat 9.x",
+                    "nameFile": "lib/catalina.jar",
+                    "nameKey": "Implementation-Title",
+                    "nameRequiredPrefix": "Apache Tomcat",
+                    "versionFile": "lib/catalina.jar",
+                    "versionKey": "Bundle-Version",
+                    "versionRequiredPrefix": "9.0."
+                }
+            },
+            "downloads": {
+                "downloadProviderId": "tomcat",
+                "download1": {
+                    "id": "tomcat-9.0.27",
+                    "name": "Apache Tomcat 9.0.27",
+                    "fullVersion": "9.0.27",
+                    "downloadUrl": "http://apache.osuosl.org/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.zip",
+                    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+                    "installationMethod": "archive"
+                }
+            }
+       }
+  }
+}

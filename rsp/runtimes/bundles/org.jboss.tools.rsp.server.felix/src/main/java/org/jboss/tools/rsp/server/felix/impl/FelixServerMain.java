@@ -18,7 +18,9 @@ public class FelixServerMain extends ServerManagementServerLauncher {
 	
 	@Override
 	public void launch(int port) throws Exception {
-		ExtensionHandler.addExtensions(serverImpl.getModel());
+		FelixGenericServerExtensionModel model = new FelixGenericServerExtensionModel(
+				serverImpl.getModel(), Activator.getServerTypeModelStreamImpl());
+		model.registerExtensions();
 		super.launch(port);
 	}
 

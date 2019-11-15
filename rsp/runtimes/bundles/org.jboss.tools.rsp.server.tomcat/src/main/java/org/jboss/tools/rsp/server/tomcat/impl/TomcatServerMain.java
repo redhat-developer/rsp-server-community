@@ -18,7 +18,9 @@ public class TomcatServerMain extends ServerManagementServerLauncher {
 	
 	@Override
 	public void launch(int port) throws Exception {
-		ExtensionHandler.addExtensions(serverImpl.getModel());
+		TomcatGenericServerExtensionModel model = new TomcatGenericServerExtensionModel(serverImpl.getModel(), 
+				Activator.getServerTypeModelStreamImpl());
+		model.registerExtensions();
 		super.launch(port);
 	}
 

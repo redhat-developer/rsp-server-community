@@ -1,0 +1,30 @@
+{
+  "servers": {
+       "org.jboss.ide.eclipse.as.server.felix.60": {
+            "discoveries": {
+                "discovery1": {
+                    "discoveryType": "jarManifest",
+                    "id": "Apache Felix 6.x",
+                    "name": "Apache Felix 6.x",
+                    "nameFile": "bin/felix.jar",
+                    "nameKey": "Bundle-Name",
+                    "nameRequiredPrefix": "Apache Felix",
+                    "versionFile": "bin/felix.jar",
+                    "versionKey": "Bundle-Version",
+                    "versionRequiredPrefix": "6.0."
+                }
+            },
+            "downloads": {
+                "downloadProviderId": "felix",
+                "download1": {
+                    "id": "felix-6.0.3",
+                    "name": "Apache Felix 6.0.3",
+                    "fullVersion": "6.0.3",
+                    "downloadUrl": "http://apache.mirrors.hoobly.com//felix/org.apache.felix.main.distribution-6.0.3.zip",
+                    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+                    "installationMethod": "archive"
+                }
+            }
+       }
+  }
+}
