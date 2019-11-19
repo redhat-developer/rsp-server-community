@@ -18,7 +18,7 @@ public class FelixStartLauncher extends AbstractJavaLauncher implements IServerS
 	
 	@Override
 	protected String getWorkingDirectory() {
-		String serverHome =  getServer().getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
+		String serverHome =  getServer().getAttribute(IFelixConstants.SERVER_HOME, (String) null);
 		return serverHome;
 	}
 
@@ -39,7 +39,7 @@ public class FelixStartLauncher extends AbstractJavaLauncher implements IServerS
 	
 	@Override
 	protected String[] getClasspath() {
-		String serverHome = getServer().getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
+		String serverHome = getServer().getAttribute(IFelixConstants.SERVER_HOME, (String) null);
 		String felixJar = serverHome + "/bin/felix.jar";
 		return new String[] {felixJar};
 	}

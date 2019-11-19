@@ -180,7 +180,7 @@ public class FelixServerDelegate extends AbstractServerDelegate {
 			
 			@Override
 			protected Path getDeploymentFolder() {
-				String serverHome =  getServer().getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
+				String serverHome =  getServer().getAttribute(IFelixConstants.SERVER_HOME, (String) null);
 				return serverHome == null ? null : 
 					new File(serverHome, "bundle").toPath();
 			}

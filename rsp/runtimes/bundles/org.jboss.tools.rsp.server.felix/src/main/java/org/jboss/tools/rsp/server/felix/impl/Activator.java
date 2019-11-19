@@ -3,9 +3,12 @@ package org.jboss.tools.rsp.server.felix.impl;
 import java.io.InputStream;
 
 import org.jboss.tools.rsp.server.ServerCoreActivator;
+import org.jboss.tools.rsp.server.felix.servertype.impl.FelixServerDelegate;
+import org.jboss.tools.rsp.server.felix.servertype.impl.IFelixConstants;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
-import org.jboss.tools.rsp.server.generic.GenericServerExtensionModel;
-import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
+import org.jboss.tools.rsp.server.generic.IServerDelegateProvider;
+import org.jboss.tools.rsp.server.spi.servertype.IServer;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,11 +29,6 @@ public class Activator extends GenericServerActivator {
 		removeExtensions(ServerCoreActivator.BUNDLE_ID, context);
 	}
 
-	protected GenericServerExtensionModel createGenericExtensionModel(IServerManagementModel rspModel) {
-		// TODO replace with actual generic when fully implemented
-		return new FelixGenericServerExtensionModel(rspModel, getServerTypeModelStream());
-		//return new GenericServerExtensionModel(rspModel, getServerTypeModelStream());
-	}
 	@Override
 	protected String getBundleId() {
 		return BUNDLE_ID;
@@ -43,5 +41,19 @@ public class Activator extends GenericServerActivator {
 	public static final InputStream getServerTypeModelStreamImpl() {
 		return Activator.class.getResourceAsStream("/servers.json");
 	}
-
+	@Override
+	public IServerDelegateProvider getDelegateProvider() {
+		return getDelegateProviderImpl();
+	}
+	public static IServerDelegateProvider getDelegateProviderImpl() {
+		return new IServerDelegateProvider() {
+			@Override
+			public IServerDelegate createServerDelegate(String typeId, IServer server) {
+				if( IFelixConstants.FELIX_6X_SERVER_TYPE_ID.equals(typeId)) {
+					return new FelixServerDelegate(server);
+				}
+				return null;
+			}
+		};
+	}
 }

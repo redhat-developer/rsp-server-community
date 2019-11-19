@@ -2,6 +2,7 @@ package org.jboss.tools.rsp.server.tomcat.impl;
 
 import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.ServerManagementServerLauncher;
+import org.jboss.tools.rsp.server.generic.GenericServerExtensionModel;
 
 public class TomcatServerMain extends ServerManagementServerLauncher {
 
@@ -18,7 +19,8 @@ public class TomcatServerMain extends ServerManagementServerLauncher {
 	
 	@Override
 	public void launch(int port) throws Exception {
-		TomcatGenericServerExtensionModel model = new TomcatGenericServerExtensionModel(serverImpl.getModel(), 
+		GenericServerExtensionModel model = new GenericServerExtensionModel(serverImpl.getModel(), 
+				Activator.getDelegateProviderImpl(),
 				Activator.getServerTypeModelStreamImpl());
 		model.registerExtensions();
 		super.launch(port);

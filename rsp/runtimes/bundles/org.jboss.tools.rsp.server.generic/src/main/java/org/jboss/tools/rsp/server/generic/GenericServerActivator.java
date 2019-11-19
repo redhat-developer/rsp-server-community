@@ -1,11 +1,7 @@
 package org.jboss.tools.rsp.server.generic;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.stream.Collectors;
 
-import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.spi.RSPExtensionBundle;
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
@@ -51,12 +47,19 @@ public abstract class GenericServerActivator extends RSPExtensionBundle {
 		this.extensionModel = createGenericExtensionModel(rspModel);
 		this.extensionModel.registerExtensions();
 	}
-	
-	protected GenericServerExtensionModel createGenericExtensionModel(IServerManagementModel rspModel) {
-		return new GenericServerExtensionModel(rspModel, getServerTypeModelStream());
-	}
 
 	public void removeExtensions(IServerManagementModel rspModel) {
 		this.extensionModel.unregisterExtensions();
+	}
+	
+	protected GenericServerExtensionModel createGenericExtensionModel(IServerManagementModel rspModel) {
+		return new GenericServerExtensionModel(rspModel, getDelegateProvider(), getServerTypeModelStream());
+	}
+	
+	/*
+	 * Subclass should override
+	 */
+	protected IServerDelegateProvider getDelegateProvider() {
+		return null;
 	}
 }

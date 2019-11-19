@@ -3,6 +3,9 @@ package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 
 public interface ITomcatServerAttributes extends DefaultServerAttributes {
+	public static final String TOMCAT_90_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.tomcat.90";
+	
+
 	/*
 	 * Required attributes
 	 */

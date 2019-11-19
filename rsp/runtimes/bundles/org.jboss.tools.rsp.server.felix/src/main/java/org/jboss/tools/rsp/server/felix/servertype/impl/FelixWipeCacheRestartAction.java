@@ -89,7 +89,7 @@ public class FelixWipeCacheRestartAction extends ServerActionWorkflow {
 	    return directoryToBeDeleted.delete();
 	}
 	private Path getCacheFolder(IServer server) {
-		String serverHome =  server.getAttribute(IFelixServerAttributes.SERVER_HOME, (String) null);
+		String serverHome =  server.getAttribute(IFelixConstants.SERVER_HOME, (String) null);
 		if( serverHome == null )
 			return null;
 		return new File(serverHome, "felix-cache").toPath();

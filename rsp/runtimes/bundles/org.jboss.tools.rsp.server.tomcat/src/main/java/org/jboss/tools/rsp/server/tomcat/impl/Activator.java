@@ -4,8 +4,11 @@ import java.io.InputStream;
 
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
-import org.jboss.tools.rsp.server.generic.GenericServerExtensionModel;
-import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
+import org.jboss.tools.rsp.server.generic.IServerDelegateProvider;
+import org.jboss.tools.rsp.server.spi.servertype.IServer;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.TomcatServerDelegate;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +28,7 @@ public class Activator extends GenericServerActivator {
 		LOG.info("Bundle {} stopping...", context.getBundle().getSymbolicName());
 		removeExtensions(ServerCoreActivator.BUNDLE_ID, context);
 	}
-	protected GenericServerExtensionModel createGenericExtensionModel(IServerManagementModel rspModel) {
-		// TODO replace with actual generic when fully implemented
-		return new TomcatGenericServerExtensionModel(rspModel, getServerTypeModelStream());
-		//return new GenericServerExtensionModel(rspModel, getServerTypeModelStream());
-	}
-	
+
 	@Override
 	protected String getBundleId() {
 		return BUNDLE_ID;
@@ -43,6 +41,21 @@ public class Activator extends GenericServerActivator {
 	
 	public static final InputStream getServerTypeModelStreamImpl() {
 		return Activator.class.getResourceAsStream("/servers.json");
+	}
+
+	protected IServerDelegateProvider getDelegateProvider() {
+		return getDelegateProviderImpl();
+	}
+	public static IServerDelegateProvider getDelegateProviderImpl() {
+		return new IServerDelegateProvider() {
+			@Override
+			public IServerDelegate createServerDelegate(String typeId, IServer server) {
+				if( ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
+					return new TomcatServerDelegate(server);
+				}
+				return null;
+			}
+		};
 	}
 
 }

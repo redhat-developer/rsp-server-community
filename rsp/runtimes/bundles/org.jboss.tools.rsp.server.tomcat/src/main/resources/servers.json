@@ -1,30 +1,46 @@
 {
-  "servers": {
-       "org.jboss.ide.eclipse.as.server.tomcat.90": {
-            "discoveries": {
-                "discovery1": {
-                    "discoveryType": "jarManifest",
-                    "id": "Tomcat 9.x",
-                    "name": "Tomcat 9.x",
-                    "nameFile": "lib/catalina.jar",
-                    "nameKey": "Implementation-Title",
-                    "nameRequiredPrefix": "Apache Tomcat",
-                    "versionFile": "lib/catalina.jar",
-                    "versionKey": "Bundle-Version",
-                    "versionRequiredPrefix": "9.0."
-                }
-            },
-            "downloads": {
-                "downloadProviderId": "tomcat",
-                "download1": {
-                    "id": "tomcat-9.0.27",
-                    "name": "Apache Tomcat 9.0.27",
-                    "fullVersion": "9.0.27",
-                    "downloadUrl": "http://apache.osuosl.org/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.zip",
-                    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
-                    "installationMethod": "archive"
-                }
-            }
-       }
-  }
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.tomcat.90": {
+			"discoveries": {
+				"tomcat.9.x": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 9.x",
+					"nameFile": "lib/catalina.jar",
+					"nameKey": "Implementation-Title",
+					"nameRequiredPrefix": "Apache Tomcat",
+					"versionFile": "lib/catalina.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "9.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat9.0.x",
+				"tomcat-9.0.27": {
+					"name": "Apache Tomcat 9.0.27",
+					"fullVersion": "9.0.27",
+					"downloadUrl": "http://apache.osuosl.org/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.zip",
+					"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+					"installationMethod": "archive"
+				}
+			},
+			"type": {
+				"name": "Tomcat 9.x",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 9.x runtime instance.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						
+					}
+				}
+			}
+		}
+	}
 }
