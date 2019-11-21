@@ -2,11 +2,13 @@ package org.jboss.tools.rsp.server.felix.impl;
 
 import java.io.InputStream;
 
+import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.felix.servertype.impl.FelixServerDelegate;
-import org.jboss.tools.rsp.server.felix.servertype.impl.IFelixConstants;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
-import org.jboss.tools.rsp.server.generic.IServerDelegateProvider;
+import org.jboss.tools.rsp.server.generic.GenericServerBehaviorProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.osgi.framework.BundleContext;
@@ -42,18 +44,21 @@ public class Activator extends GenericServerActivator {
 		return Activator.class.getResourceAsStream("/servers.json");
 	}
 	@Override
-	public IServerDelegateProvider getDelegateProvider() {
+	public IServerBehaviorFromJSONProvider getDelegateProvider() {
 		return getDelegateProviderImpl();
 	}
-	public static IServerDelegateProvider getDelegateProviderImpl() {
-		return new IServerDelegateProvider() {
+	public static IServerBehaviorFromJSONProvider getDelegateProviderImpl() {
+		return new IServerBehaviorFromJSONProvider() {
 			@Override
-			public IServerDelegate createServerDelegate(String typeId, IServer server) {
-				if( IFelixConstants.FELIX_6X_SERVER_TYPE_ID.equals(typeId)) {
-					return new FelixServerDelegate(server);
-				}
-				return null;
+			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
+				return new GenericServerBehaviorProvider(behaviorMemento) {
+					@Override
+					public IServerDelegate createServerDelegate(String typeId, IServer server) {
+						return new FelixServerDelegate(server, behaviorMemento);
+					}
+				};
 			}
 		};
 	}
+	
 }

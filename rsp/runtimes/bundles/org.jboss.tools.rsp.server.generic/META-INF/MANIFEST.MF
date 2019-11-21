@@ -46,4 +46,5 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.osgi.framework,
  org.slf4j
 Bundle-Activator: org.jboss.tools.rsp.server.generic.impl.Activator
-Export-Package: org.jboss.tools.rsp.server.generic
+Export-Package: org.jboss.tools.rsp.server.generic,
+ org.jboss.tools.rsp.server.generic.servertype

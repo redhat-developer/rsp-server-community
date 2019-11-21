@@ -8,14 +8,13 @@ import org.jboss.tools.rsp.server.generic.discovery.ExplodedManifestDiscovery;
 import org.jboss.tools.rsp.server.generic.discovery.GenericServerBeanTypeProvider;
 import org.jboss.tools.rsp.server.generic.discovery.JarManifestDiscovery;
 import org.jboss.tools.rsp.server.generic.runtimes.download.GenericDownloadRuntimesProvider;
-import org.jboss.tools.rsp.server.generic.servertype.impl.GenericServerType;
+import org.jboss.tools.rsp.server.generic.servertype.GenericServerType;
 import org.jboss.tools.rsp.server.spi.discovery.ServerBeanType;
 import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 
-public class GenericServerTypeExtensionModel {
+public class GenericServerTypeExtensionModel implements IServerBehaviorFromJSONProvider {
 
-	private JSONMemento serverType;
-	private IServerDelegateProvider delegateProvider;
+	private IServerBehaviorFromJSONProvider delegateProvider;
 	private GenericServerBeanTypeProvider myDiscovery;
 	private GenericDownloadRuntimesProvider myDownloadRuntimeProvider;
 	private GenericServerType myServerType;
@@ -23,22 +22,33 @@ public class GenericServerTypeExtensionModel {
 
 	public GenericServerTypeExtensionModel(
 			IServerManagementModel rspModel,
-			IServerDelegateProvider delegateProvider,
+			IServerBehaviorFromJSONProvider delegateProvider,
 			JSONMemento serverType) {
 		this.rspModel = rspModel;
-		this.serverType = serverType;
 		this.delegateProvider = delegateProvider;
+		if( this.delegateProvider == null )
+			this.delegateProvider = this;
+		
 		String serverTypeId = serverType.getNodeName();
 		JSONMemento discoveries = serverType.getChild("discoveries");
 		loadDiscovery(serverTypeId, discoveries);
+		
 		JSONMemento downloads = serverType.getChild("downloads");
 		loadDownloads(serverTypeId, downloads);
+		
 		JSONMemento type = serverType.getChild("type");
-		loadServerType(serverTypeId, delegateProvider, type);
+		JSONMemento behavior = type.getChild("behavior");
+		IServerBehaviorProvider delegateProviderFromJson = this.delegateProvider.loadBehaviorFromJSON(serverTypeId, behavior);
+		loadServerType(serverTypeId, delegateProviderFromJson, type);
 	}
 
+	public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
+		return new GenericServerBehaviorProvider(behaviorMemento);
+	}
+	
+
 	private void loadServerType(String serverTypeId, 
-			IServerDelegateProvider delegateProvider, JSONMemento type) {
+			IServerBehaviorProvider delegateProvider, JSONMemento type) {
 		String name = type.getString("name");
 		String desc = type.getString("description");
 		String launchModes = type.getString("launchModes");
@@ -132,7 +142,7 @@ public class GenericServerTypeExtensionModel {
 		}
 	}
 
-	public IServerDelegateProvider getDelegateProvider() {
+	public IServerBehaviorFromJSONProvider getDelegateProvider() {
 		return delegateProvider;
 	}
 

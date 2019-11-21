@@ -39,6 +39,28 @@
 					"optional": {
 						
 					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "bundles/",
+						"approvedSuffixes": "jar",
+						"supportsExploded": "false"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "",
+							"mainType": "org.apache.felix.main.Main",
+							"programArgs": "",
+							"vmArgs": "",
+							"classpath": "bin/felix.jar"
+						},
+						"poller": "automaticSuccess",
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "terminateProcess"
+					}
 				}
 			}
 		}

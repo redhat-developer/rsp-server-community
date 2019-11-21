@@ -11,7 +11,7 @@ public class GenericServerExtensionModel {
 	private IServerManagementModel rspModel;
 	private HashMap<String, GenericServerTypeExtensionModel> map;
 	public GenericServerExtensionModel(IServerManagementModel rspModel, 
-			IServerDelegateProvider delegateProvider, InputStream is) {
+			IServerBehaviorFromJSONProvider delegateProvider, InputStream is) {
 
 		this.rspModel = rspModel;
 		this.map = new HashMap<>();
@@ -26,7 +26,8 @@ public class GenericServerExtensionModel {
 		}
 	}
 
-	private GenericServerTypeExtensionModel loadOneServer(JSONMemento serverMemento, IServerDelegateProvider delegateProvider) {
+	private GenericServerTypeExtensionModel loadOneServer(JSONMemento serverMemento, 
+			IServerBehaviorFromJSONProvider delegateProvider) {
 		return new GenericServerTypeExtensionModel(getRspModel(), delegateProvider, serverMemento);
 	}
 

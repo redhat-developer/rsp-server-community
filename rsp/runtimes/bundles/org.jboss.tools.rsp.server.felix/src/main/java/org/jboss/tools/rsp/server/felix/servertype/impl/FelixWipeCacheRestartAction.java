@@ -25,9 +25,9 @@ import org.jboss.tools.rsp.server.spi.util.StatusConverter;
 public class FelixWipeCacheRestartAction extends ServerActionWorkflow {
 	public static final String ACTION_WIPE_CACHE_RESTART_LABEL = "Wipe container cache and restart server";
 	public static final String ACTION_WIPE_CACHE_RESTART_ID = "FelixWipeCacheRestartAction";
-	private FelixServerDelegate felixServerDelegate;
+	private IServerDelegate felixServerDelegate;
 
-	public static ServerActionWorkflow getInitialWorkflow(FelixServerDelegate felixServerDelegate) {
+	public static ServerActionWorkflow getInitialWorkflow(IServerDelegate felixServerDelegate) {
 		WorkflowResponse workflow = new WorkflowResponse();
 		workflow.setStatus(StatusConverter.convert(
 				new Status(IStatus.INFO, Activator.BUNDLE_ID, ACTION_WIPE_CACHE_RESTART_LABEL)));
@@ -36,7 +36,7 @@ public class FelixWipeCacheRestartAction extends ServerActionWorkflow {
 		return action;
 	}
 
-	public FelixWipeCacheRestartAction(FelixServerDelegate felixServerDelegate) {
+	public FelixWipeCacheRestartAction(IServerDelegate felixServerDelegate) {
 		this.felixServerDelegate = felixServerDelegate;
 	}
 

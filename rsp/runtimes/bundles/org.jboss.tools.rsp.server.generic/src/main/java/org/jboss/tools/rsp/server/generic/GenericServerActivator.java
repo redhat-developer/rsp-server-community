@@ -59,7 +59,7 @@ public abstract class GenericServerActivator extends RSPExtensionBundle {
 	/*
 	 * Subclass should override
 	 */
-	protected IServerDelegateProvider getDelegateProvider() {
+	protected IServerBehaviorFromJSONProvider getDelegateProvider() {
 		return null;
 	}
 }

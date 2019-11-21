@@ -4,11 +4,7 @@ import java.io.InputStream;
 
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
-import org.jboss.tools.rsp.server.generic.IServerDelegateProvider;
-import org.jboss.tools.rsp.server.spi.servertype.IServer;
-import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
-import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
-import org.jboss.tools.rsp.server.tomcat.servertype.impl.TomcatServerDelegate;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,24 +34,32 @@ public class Activator extends GenericServerActivator {
 	protected InputStream getServerTypeModelStream() {
 		return getServerTypeModelStreamImpl();
 	}
-	
+
 	public static final InputStream getServerTypeModelStreamImpl() {
 		return Activator.class.getResourceAsStream("/servers.json");
 	}
 
-	protected IServerDelegateProvider getDelegateProvider() {
+	protected IServerBehaviorFromJSONProvider getDelegateProvider() {
 		return getDelegateProviderImpl();
 	}
-	public static IServerDelegateProvider getDelegateProviderImpl() {
-		return new IServerDelegateProvider() {
-			@Override
-			public IServerDelegate createServerDelegate(String typeId, IServer server) {
-				if( ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
-					return new TomcatServerDelegate(server);
-				}
-				return null;
-			}
-		};
+
+	public static IServerBehaviorFromJSONProvider getDelegateProviderImpl() {
+//		return new IServerBehaviorFromJSONProvider() {
+//
+//			@Override
+//			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
+//				return new IServerBehaviorProvider() {
+//					@Override
+//					public IServerDelegate createServerDelegate(String typeId, IServer server) {
+//						if (ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
+//							return new TomcatServerDelegate(server);
+//						}
+//						return null;
+//					}
+//				};
+//			}
+//		};
+		return null;
 	}
 
 }
