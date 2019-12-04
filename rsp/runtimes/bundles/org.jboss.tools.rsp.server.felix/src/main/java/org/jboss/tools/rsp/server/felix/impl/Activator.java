@@ -1,38 +1,64 @@
 package org.jboss.tools.rsp.server.felix.impl;
 
-import org.jboss.tools.rsp.server.LauncherSingleton;
+import java.io.InputStream;
+
+import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.ServerCoreActivator;
-import org.jboss.tools.rsp.server.spi.RSPExtensionBundle;
+import org.jboss.tools.rsp.server.felix.servertype.impl.FelixServerDelegate;
+import org.jboss.tools.rsp.server.generic.GenericServerActivator;
+import org.jboss.tools.rsp.server.generic.GenericServerBehaviorProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
+import org.jboss.tools.rsp.server.spi.servertype.IServer;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Activator extends RSPExtensionBundle {
+public class Activator extends GenericServerActivator {
 	public static final String BUNDLE_ID = "org.jboss.tools.rsp.server.felix";
 	private static final Logger LOG = LoggerFactory.getLogger(Activator.class);
 
 	@Override
 	public void start(BundleContext context) throws Exception {
 		LOG.info("Bundle {} starting...", context.getBundle().getSymbolicName());
-
 		addExtensions(ServerCoreActivator.BUNDLE_ID, context);
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		LOG.info("Bundle {} stopping...", context.getBundle().getSymbolicName());
-
 		removeExtensions(ServerCoreActivator.BUNDLE_ID, context);
 	}
 
 	@Override
-	protected void addExtensions() {
-		ExtensionHandler.addExtensions(LauncherSingleton.getDefault().getLauncher().getModel());
+	protected String getBundleId() {
+		return BUNDLE_ID;
 	}
-
 	@Override
-	protected void removeExtensions() {
-		ExtensionHandler.removeExtensions(LauncherSingleton.getDefault().getLauncher().getModel());
+	protected InputStream getServerTypeModelStream() {
+		return getServerTypeModelStreamImpl();
 	}
-
+	
+	public static final InputStream getServerTypeModelStreamImpl() {
+		return Activator.class.getResourceAsStream("/servers.json");
+	}
+	@Override
+	public IServerBehaviorFromJSONProvider getDelegateProvider() {
+		return getDelegateProviderImpl();
+	}
+	public static IServerBehaviorFromJSONProvider getDelegateProviderImpl() {
+		return new IServerBehaviorFromJSONProvider() {
+			@Override
+			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
+				return new GenericServerBehaviorProvider(behaviorMemento) {
+					@Override
+					public IServerDelegate createServerDelegate(String typeId, IServer server) {
+						return new FelixServerDelegate(server, behaviorMemento);
+					}
+				};
+			}
+		};
+	}
+	
 }

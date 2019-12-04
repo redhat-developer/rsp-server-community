@@ -1,0 +1,82 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.tomcat.90": {
+			"discoveries": {
+				"tomcat.9.x": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 9.x",
+					"nameFile": "lib/catalina.jar",
+					"nameKey": "Implementation-Title",
+					"nameRequiredPrefix": "Apache Tomcat",
+					"versionFile": "lib/catalina.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "9.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat9.0.x",
+				"tomcat-9.0.27": {
+					"name": "Apache Tomcat 9.0.27",
+					"fullVersion": "9.0.27",
+					"downloadUrl": "http://apache.osuosl.org/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.zip",
+					"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+					"installationMethod": "archive"
+				}
+			},
+			"type": {
+				"name": "Tomcat 9.x",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 9.x runtime instance.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "webapps/",
+						"approvedSuffixes": "war",
+						"supportsExploded": "true"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "bin",
+							"mainType": "org.apache.catalina.startup.Bootstrap",
+							"programArgs": "start",
+							"vmArgs": "-Djava.util.logging.config.file=${server.home.dir}/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcatalina.base=${server.home.dir} -Dcatalina.home=${server.home.dir} -Djava.io.tmpdir=${server.home.dir}/temp",
+							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://localhost:8080"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "bin",
+							"mainType": "org.apache.catalina.startup.Bootstrap",
+							"programArgs": "stop",
+							"vmArgs": "-Djava.util.logging.config.file=${server.home.dir}/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcatalina.base=${server.home.dir} -Dcatalina.home=${server.home.dir} -Djava.io.tmpdir=${server.home.dir}/temp",
+							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://localhost:8080"
+						}
+					}
+				}
+			}
+		}
+	}
+}

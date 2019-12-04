@@ -7,13 +7,14 @@
   <parent>
     <groupId>org.example.rsp.server.extras</groupId>
     <artifactId>runtimes</artifactId>
-    <version>0.21.2-SNAPSHOT</version>
+    <version>0.22.1-SNAPSHOT</version>
   </parent>
   <groupId>org.example.rsp.server.extras</groupId>
   <artifactId>bundles</artifactId>
   <packaging>pom</packaging>
 
   <modules>
+    <module>org.jboss.tools.rsp.server.generic</module>
     <module>org.jboss.tools.rsp.server.tomcat</module>
     <module>org.jboss.tools.rsp.server.felix</module>
   </modules>

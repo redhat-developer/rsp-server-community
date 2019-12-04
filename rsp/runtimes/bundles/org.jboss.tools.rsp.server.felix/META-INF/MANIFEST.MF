@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.jboss.tools.rsp.server.felix
 Bundle-SymbolicName: org.jboss.tools.rsp.server.felix
 Automatic-Module-Name: org.jboss.tools.rsp.server.felix
-Bundle-Version: 0.21.2.qualifier
+Bundle-Version: 0.22.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.json,
@@ -33,12 +33,16 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.server,
  org.jboss.tools.rsp.server.discovery,
  org.jboss.tools.rsp.server.discovery.serverbeans,
+ org.jboss.tools.rsp.server.generic,
+ org.jboss.tools.rsp.server.generic.servertype,
  org.jboss.tools.rsp.server.model,
  org.jboss.tools.rsp.server.spi,
  org.jboss.tools.rsp.server.spi.discovery,
+ org.jboss.tools.rsp.server.spi.jobs,
  org.jboss.tools.rsp.server.spi.launchers,
  org.jboss.tools.rsp.server.spi.model,
  org.jboss.tools.rsp.server.spi.model.polling,
+ org.jboss.tools.rsp.server.spi.publishing,
  org.jboss.tools.rsp.server.spi.runtimes,
  org.jboss.tools.rsp.server.spi.servertype,
  org.jboss.tools.rsp.server.spi.util,

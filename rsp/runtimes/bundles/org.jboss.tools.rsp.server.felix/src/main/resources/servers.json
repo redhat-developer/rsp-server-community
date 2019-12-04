@@ -1,0 +1,68 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.felix.60": {
+			"discoveries": {
+				"apache.felix.6x": {
+					"discoveryType": "jarManifest",
+					"name": "Apache Felix 6.x",
+					"nameFile": "bin/felix.jar",
+					"nameKey": "Bundle-Name",
+					"nameRequiredPrefix": "Apache Felix",
+					"versionFile": "bin/felix.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "6.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "felix6x.download",
+				"felix-6.0.3": {
+					"name": "Apache Felix 6.0.3",
+					"fullVersion": "6.0.3",
+					"downloadUrl": "http://apache.mirrors.hoobly.com//felix/org.apache.felix.main.distribution-6.0.3.zip",
+					"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+					"installationMethod": "archive"
+				}
+			},
+			"type": {
+				"name": "Apache Felix 6.x",
+				"description": "A server adapter capable of discovering and controlling an Apache Felix 6.x OSGi Container.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "bundles/",
+						"approvedSuffixes": "jar",
+						"supportsExploded": "false"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "",
+							"mainType": "org.apache.felix.main.Main",
+							"programArgs": "",
+							"vmArgs": "",
+							"classpath": "bin/felix.jar"
+						},
+						"poller": "automaticSuccess",
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "terminateProcess"
+					}
+				}
+			}
+		}
+	}
+}
