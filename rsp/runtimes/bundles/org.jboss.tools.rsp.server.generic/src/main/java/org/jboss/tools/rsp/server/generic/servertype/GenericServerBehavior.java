@@ -42,6 +42,7 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 	public GenericServerBehavior(IServer server, JSONMemento behaviorMemento) {
 		super(server);
 		this.behaviorMemento = behaviorMemento;
+		setServerState(IServerDelegate.STATE_STOPPED);
 	}
 
 	protected ILaunch getStartLaunch() {
