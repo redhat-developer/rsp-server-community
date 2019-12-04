@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.jboss.tools.rsp.server.generic
 Bundle-SymbolicName: org.jboss.tools.rsp.server.generic
 Automatic-Module-Name: org.jboss.tools.rsp.server.generic
-Bundle-Version: 0.21.2.qualifier
+Bundle-Version: 0.22.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.json,
@@ -11,7 +11,6 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.messages,
  org.eclipse.lsp4j.jsonrpc.services,
  org.eclipse.lsp4j.jsonrpc.validation,
- org.jboss.jdf.stacks.model,
  org.jboss.tools.rsp.api,
  org.jboss.tools.rsp.api.dao,
  org.jboss.tools.rsp.api.dao.util,
@@ -43,6 +42,7 @@ Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.jboss.tools.rsp.server.spi.runtimes,
  org.jboss.tools.rsp.server.spi.servertype,
  org.jboss.tools.rsp.server.spi.util,
+ org.jboss.tools.rsp.stacks.core.model,
  org.osgi.framework,
  org.slf4j
 Bundle-Activator: org.jboss.tools.rsp.server.generic.impl.Activator
