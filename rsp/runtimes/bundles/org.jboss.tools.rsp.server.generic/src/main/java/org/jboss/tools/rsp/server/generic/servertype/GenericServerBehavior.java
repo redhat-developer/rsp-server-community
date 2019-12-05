@@ -1,13 +1,20 @@
 package org.jboss.tools.rsp.server.generic.servertype;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.Attributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.api.dao.DeployableReference;
 import org.jboss.tools.rsp.api.dao.LaunchParameters;
+import org.jboss.tools.rsp.api.dao.ListServerActionResponse;
+import org.jboss.tools.rsp.api.dao.ServerActionRequest;
+import org.jboss.tools.rsp.api.dao.ServerActionWorkflow;
 import org.jboss.tools.rsp.api.dao.ServerAttributes;
 import org.jboss.tools.rsp.api.dao.ServerStartingAttributes;
 import org.jboss.tools.rsp.api.dao.StartServerResponse;
+import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
@@ -16,6 +23,7 @@ import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.IPublishControllerWithOptions;
+import org.jboss.tools.rsp.server.generic.servertype.actions.ShowInBrowserActionHandler;
 import org.jboss.tools.rsp.server.generic.servertype.launch.GenericJavaLauncher;
 import org.jboss.tools.rsp.server.generic.servertype.launch.TerminateShutdownLauncher;
 import org.jboss.tools.rsp.server.model.AbstractServerDelegate;
@@ -308,6 +316,48 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 
 	public void setServerState(int state, boolean fire) {
 		super.setServerState(state, fire);
+	}
+	
+	public String getPollURL(IServer server) {
+		JSONMemento startupMemento = behaviorMemento.getChild("startup");
+		if (startupMemento != null) {
+			JSONMemento props = startupMemento.getChild("pollerProperties");
+			if( props != null ) {
+				String url = props.getString("url");
+				return url;
+			}
+		}		
+		return null;
+	}
+	
+	@Override
+	public ListServerActionResponse listServerActions() {
+		ListServerActionResponse ret = new ListServerActionResponse();
+		ret.setStatus(StatusConverter.convert(Status.OK_STATUS));
+		List<ServerActionWorkflow> allActions = new ArrayList<>();
+		JSONMemento props = behaviorMemento.getChild("actions");
+		if( props != null ) {
+			JSONMemento[] actionsToAdd = props.getChildren();
+			for (JSONMemento actionToAdd : actionsToAdd) {
+				ServerActionWorkflow wf1 = null;
+				if (actionToAdd.getNodeName().equals("showinbrowser")) {
+					wf1 = ShowInBrowserActionHandler.getInitialWorkflow(this);
+				}
+				if (wf1 != null) {
+					allActions.add(wf1);
+				}				
+			}
+		}		
+		ret.setWorkflows(allActions);
+		return ret;
+	}
+	
+	@Override
+	public WorkflowResponse executeServerAction(ServerActionRequest req) {
+		if( ShowInBrowserActionHandler.ACTION_SHOW_IN_BROWSER_ID.equals(req.getActionId() )) {
+			return new ShowInBrowserActionHandler(this).handle(req);
+		}
+		return cancelWorkflowResponse();
 	}
 
 }

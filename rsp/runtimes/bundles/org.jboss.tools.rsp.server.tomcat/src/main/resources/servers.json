@@ -74,6 +74,9 @@
 						"pollerProperties": {
 							"url": "http://localhost:8080"
 						}
+					},
+					"actions": {
+						"showinbrowser": {}
 					}
 				}
 			}
