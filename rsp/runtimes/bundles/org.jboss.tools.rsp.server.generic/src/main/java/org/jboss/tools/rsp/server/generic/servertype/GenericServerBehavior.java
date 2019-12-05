@@ -23,6 +23,7 @@ import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.IPublishControllerWithOptions;
+import org.jboss.tools.rsp.server.generic.servertype.actions.EditServerConfigurationActionHandler;
 import org.jboss.tools.rsp.server.generic.servertype.actions.ShowInBrowserActionHandler;
 import org.jboss.tools.rsp.server.generic.servertype.launch.GenericJavaLauncher;
 import org.jboss.tools.rsp.server.generic.servertype.launch.TerminateShutdownLauncher;
@@ -145,6 +146,10 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 		JSONMemento shutdownMemento = behaviorMemento.getChild("shutdown");
 		return getLauncher(shutdownMemento);
 	}
+	public JSONMemento getActionsJSON() {
+		return behaviorMemento.getChild("actions");
+	}
+	
 	protected IServerShutdownLauncher getLauncher(JSONMemento memento) {
 		String launchType = memento.getString("launchType");
 		if( "java-launch".equals(launchType)) {
@@ -343,6 +348,9 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 				if (actionToAdd.getNodeName().equals("showinbrowser")) {
 					wf1 = ShowInBrowserActionHandler.getInitialWorkflow(this);
 				}
+				if (actionToAdd.getNodeName().equals("editserverconfiguration")) {
+					wf1 = EditServerConfigurationActionHandler.getInitialWorkflow(this);
+				}
 				if (wf1 != null) {
 					allActions.add(wf1);
 				}				
@@ -356,6 +364,9 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 	public WorkflowResponse executeServerAction(ServerActionRequest req) {
 		if( ShowInBrowserActionHandler.ACTION_SHOW_IN_BROWSER_ID.equals(req.getActionId() )) {
 			return new ShowInBrowserActionHandler(this).handle(req);
+		}
+		if( EditServerConfigurationActionHandler.ACTION_ID.equals(req.getActionId() )) {
+			return new EditServerConfigurationActionHandler(this).handle(req);
 		}
 		return cancelWorkflowResponse();
 	}
