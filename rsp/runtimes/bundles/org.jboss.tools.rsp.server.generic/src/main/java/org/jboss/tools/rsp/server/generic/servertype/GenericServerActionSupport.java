@@ -42,7 +42,7 @@ public class GenericServerActionSupport {
 				if (actionToAdd.getNodeName().equals("showinbrowser")) {
 					wf1 = ShowInBrowserActionHandler.getInitialWorkflow(behavior);
 				}
-				if (actionToAdd.getNodeName().equals("editserverconfiguration")) {
+				if (actionToAdd.getNodeName().equals("editServerConfiguration")) {
 					wf1 = EditServerConfigurationActionHandler.getInitialWorkflow(behavior);
 				}
 				if (wf1 != null) {

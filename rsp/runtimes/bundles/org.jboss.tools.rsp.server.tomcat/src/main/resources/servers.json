@@ -77,8 +77,8 @@
 					},
 					"actions": {
 						"showinbrowser": {},
-						"editserverconfiguration": {
-							"path": "conf/server.xml"
+						"editServerConfiguration": {
+							"paths": "conf/server.xml,conf/web.xml"
 						}
 					}
 				}
