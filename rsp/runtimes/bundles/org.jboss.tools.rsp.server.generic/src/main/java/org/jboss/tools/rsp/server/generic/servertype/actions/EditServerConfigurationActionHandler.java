@@ -10,6 +10,7 @@ import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.ServerActionRequest;
 import org.jboss.tools.rsp.api.dao.ServerActionWorkflow;
+import org.jboss.tools.rsp.api.dao.WorkflowPromptDetails;
 import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.api.dao.WorkflowResponseItem;
 import org.jboss.tools.rsp.eclipse.core.runtime.IPath;
@@ -25,7 +26,9 @@ import org.jboss.tools.rsp.server.spi.util.StatusConverter;
 public class EditServerConfigurationActionHandler {
 	public static final String ACTION_ID = "EditServerConfigurationActionHandler.actionId";
 	public static final String ACTION_LABEL = "Edit Configuration File...";
-
+	public static final String ACTION_EDIT_FILE_PROMPT_ID = "EditServerConfigurationActionHandler.selection.id";
+	public static final String ACTION_EDIT_FILE_PROMPT_LABEL = "EditServerConfigurationActionHandler.selection.label";
+	
 	public static final ServerActionWorkflow getInitialWorkflow(GenericServerBehavior genericServerDelegate2) {
 		return new EditServerConfigurationActionHandler(genericServerDelegate2).getInitialWorkflowInternal();
 	}
@@ -36,6 +39,31 @@ public class EditServerConfigurationActionHandler {
 	}
 	
 	protected ServerActionWorkflow getInitialWorkflowInternal() {
+		String[] possiblePaths = getConfigurationFilesRelative();
+		ArrayList<String> asList = new ArrayList<String>();
+		String home = getDefaultWorkingDirectory();
+
+		if( possiblePaths != null ) {
+			for( int i = 0; i < possiblePaths.length; i++ ) {
+				IPath tmpPath = new Path(home).append(possiblePaths[i]);
+				if( tmpPath.toFile().isFile()) {
+					asList.add(possiblePaths[i]);
+				}
+			}
+		}
+		
+		if( asList.size() == 0 ) {
+			return cancelWorkflow();
+		}
+		
+		if( asList.size() == 1 ) {
+			return executePath(asList.get(0));
+		}
+		
+		return fileChoiceWorkflow(asList);
+	}
+	
+	private ServerActionWorkflow fileChoiceWorkflow(ArrayList<String> choices) {
 		WorkflowResponse workflow = new WorkflowResponse();
 		ServerActionWorkflow action = new ServerActionWorkflow(
 				ACTION_ID, ACTION_LABEL, workflow);
@@ -43,40 +71,82 @@ public class EditServerConfigurationActionHandler {
 		List<WorkflowResponseItem> items = new ArrayList<>();
 		workflow.setItems(items);
 
-		String configFilePath = getConfigurationFile();
-		if( !(new File(configFilePath).exists())) {
-			workflow.setStatus(StatusConverter.convert(
-					new Status(IStatus.CANCEL, Activator.BUNDLE_ID, ACTION_LABEL)));
-			return action;
+		WorkflowPromptDetails prompt = new WorkflowPromptDetails();
+		prompt.setResponseSecret(false);
+		prompt.setResponseType(ServerManagementAPIConstants.ATTR_TYPE_STRING);
+		prompt.setValidResponses(choices);
+		
+		// Simple action entirely on the UI side
+		WorkflowResponseItem item1 = new WorkflowResponseItem();
+		item1.setItemType(ServerManagementAPIConstants.WORKFLOW_TYPE_PROMPT_SMALL);
+		item1.setPrompt(prompt);
+		item1.setId(ACTION_EDIT_FILE_PROMPT_ID);
+		item1.setLabel(ACTION_EDIT_FILE_PROMPT_LABEL);
+		
+		items.add(item1);
+		workflow.setStatus(StatusConverter.convert(
+				new Status(IStatus.INFO, Activator.BUNDLE_ID, ACTION_LABEL)));
+		return action;
+	}
+
+	private ServerActionWorkflow cancelWorkflow() {
+		WorkflowResponse workflow = new WorkflowResponse();
+		ServerActionWorkflow action = new ServerActionWorkflow(
+				ACTION_ID, ACTION_LABEL, workflow);
+		
+		List<WorkflowResponseItem> items = new ArrayList<>();
+		workflow.setItems(items);
+
+
+		workflow.setStatus(StatusConverter.convert(
+				new Status(IStatus.CANCEL, Activator.BUNDLE_ID, ACTION_LABEL)));
+		return action;
+	}
+
+	protected ServerActionWorkflow executePath(String relative) {
+		String home = getDefaultWorkingDirectory();
+		IPath tmpPath = new Path(home).append(relative);
+		if(!tmpPath.toFile().isFile()) {
+			return cancelWorkflow();
 		}
 		
 		// Simple action entirely on the UI side
 		WorkflowResponseItem item1 = new WorkflowResponseItem();
 		item1.setItemType(ServerManagementAPIConstants.WORKFLOW_TYPE_OPEN_EDITOR);
 		Map<String,String> propMap = new HashMap<>();
-		propMap.put(ServerManagementAPIConstants.WORKFLOW_EDITOR_PROPERTY_PATH, configFilePath);
+		propMap.put(ServerManagementAPIConstants.WORKFLOW_EDITOR_PROPERTY_PATH, tmpPath.toOSString());
 		item1.setProperties(propMap);
 		item1.setId(ACTION_ID);
 		item1.setLabel(ACTION_LABEL);
+
+		WorkflowResponse workflow = new WorkflowResponse();
+		ServerActionWorkflow action = new ServerActionWorkflow(
+				ACTION_ID, ACTION_LABEL, workflow);
 		
+		List<WorkflowResponseItem> items = new ArrayList<>();
+		workflow.setItems(items);
+
+
 		items.add(item1);
 		workflow.setStatus(StatusConverter.convert(
 				new Status(IStatus.OK, Activator.BUNDLE_ID, ACTION_LABEL)));
 		return action;
 	}
+	
 
-	protected String getConfigurationFile() {
-		String home = getDefaultWorkingDirectory();
-		String configFile = "";
+	protected String[] getConfigurationFilesRelative() {
+		String configFiles = "";
 		JSONMemento actions = this.genericServerDelegate.getActionsJSON();
 		if (actions != null) {
-			JSONMemento editConfigAction = actions.getChild("editserverconfiguration");
+			JSONMemento editConfigAction = actions.getChild("editServerConfiguration");
 			if (editConfigAction != null) {
-				configFile = editConfigAction.getString("path");
+				configFiles = editConfigAction.getString("paths");
 			}			
 		}
-		IPath configFilePath = new Path(home).append(configFile);
-		return configFilePath.toOSString();
+		if( configFiles == null || configFiles.length() == 0 )
+			return null;
+		String[] filesArr = configFiles.split(",");
+		return (filesArr == null || filesArr.length == 0 ) ? null : filesArr;
 	}
 	
 	private String getDefaultWorkingDirectory() {
@@ -92,9 +162,13 @@ public class EditServerConfigurationActionHandler {
 	}
 
 	public WorkflowResponse handle(ServerActionRequest req) {
-		if( req == null || req.getData() == null ) 
+		if( req == null || req.getData() == null || req.getData().size() == 0 ) 
 			return AbstractServerDelegate.okWorkflowResponse();
-		return null;
+		String path = (String)req.getData().get(ACTION_EDIT_FILE_PROMPT_ID);
+		if( path != null ) {
+			return executePath(path).getActionWorkflow();
+		}
+		return cancelWorkflow().getActionWorkflow();
 	}
 	
 }
