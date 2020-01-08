@@ -236,7 +236,7 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 			JSONMemento publishMemento = behaviorMemento.getChild("publish");
 			String deployPath = publishMemento.getString("deployPath");
 			String approvedSuffixes = publishMemento.getString("approvedSuffixes");
-			String[] suffixes = approvedSuffixes == null ? null : approvedSuffixes.split(",");
+			String[] suffixes = approvedSuffixes == null ? null : approvedSuffixes.split(",", -1);
 			String supportsExploded = publishMemento.getString("supportsExploded");
 			boolean exploded = (supportsExploded == null ? false : Boolean.parseBoolean(supportsExploded));
 			this.publishController = new GenericServerSuffixPublishController(

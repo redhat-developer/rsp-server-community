@@ -43,7 +43,7 @@
 				"behavior": {
 					"publish": {
 						"deployPath": "webapps/",
-						"approvedSuffixes": "war",
+						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
 					"startup": {

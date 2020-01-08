@@ -92,13 +92,19 @@ public class ShowInBrowserActionHandler {
 
 	private String getContextRoot(DeployableState ds) {
 		String strat = getDeploymentStrategy();
+		String deployableOutputName = new Path(ds.getReference().getPath()).lastSegment();
+		if( ds.getReference().getOptions() != null ) {
+			String outputName = (String)ds.getReference().getOptions().get(ServerManagementAPIConstants.DEPLOYMENT_OPTION_OUTPUT_NAME);
+			if( outputName != null ) 
+				deployableOutputName = outputName;
+		}
 		if( "appendDeploymentNameRemoveSuffix".equals(strat)) {
-			String depName = new Path(ds.getReference().getPath()).lastSegment();
+			String depName = deployableOutputName;
 			if (depName.indexOf(".") > 0)
 				depName = depName.substring(0, depName.lastIndexOf("."));
 			return depName;
 		} else if( "appendDeploymentName".equals(strat)) {
-			return new Path(ds.getReference().getPath()).lastSegment();
+			return deployableOutputName;
 		}
 		return null;
 	}
