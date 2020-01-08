@@ -16,13 +16,16 @@ import org.jboss.tools.rsp.api.dao.WorkflowPromptDetails;
 import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.api.dao.WorkflowResponseItem;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
+import org.jboss.tools.rsp.eclipse.core.runtime.Path;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
+import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.impl.Activator;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.model.AbstractServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
 
 public class ShowInBrowserActionHandler {
+	public static final String ACTION_SHOW_IN_BROWSER_JSON_ID = "showInBrowser";
 	public static final String ACTION_SHOW_IN_BROWSER_ID = "ShowInBrowserActionHandler.actionId";
 	public static final String ACTION_SHOW_IN_BROWSER_LABEL = "Show in browser...";
 	public static final String ACTION_SHOW_IN_BROWSER_SELECTED_PROMPT_ID = "ShowInBrowserActionHandler.selection.id";
@@ -88,11 +91,14 @@ public class ShowInBrowserActionHandler {
 	}
 
 	private String getContextRoot(DeployableState ds) {
-		DeployableReference ref = ds.getReference();
-		String outputName = getOutputName(ref);
-		
-		if( outputName.endsWith(".war") || outputName.endsWith(".ear")) {
-			return outputName.substring(0, outputName.length() - 4);
+		String strat = getDeploymentStrategy();
+		if( "appendDeploymentNameRemoveSuffix".equals(strat)) {
+			String depName = new Path(ds.getReference().getPath()).lastSegment();
+			if (depName.indexOf(".") > 0)
+				depName = depName.substring(0, depName.lastIndexOf("."));
+			return depName;
+		} else if( "appendDeploymentName".equals(strat)) {
+			return new Path(ds.getReference().getPath()).lastSegment();
 		}
 		return null;
 	}
@@ -151,7 +157,13 @@ public class ShowInBrowserActionHandler {
 	}
 	
 	protected String getBaseUrl() {
-		return genericServerBehavior.getPollURL(genericServerBehavior.getServer());
+		JSONMemento mem = genericServerBehavior.getActionsJSON().getChild(ACTION_SHOW_IN_BROWSER_JSON_ID);
+		return mem.getString("baseUrl");
+	}
+
+	protected String getDeploymentStrategy() {
+		JSONMemento mem = genericServerBehavior.getActionsJSON().getChild(ACTION_SHOW_IN_BROWSER_JSON_ID);
+		return mem.getString("deploymentStrategy");
 	}
 
 }
