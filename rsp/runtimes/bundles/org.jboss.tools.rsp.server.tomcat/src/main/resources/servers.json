@@ -76,7 +76,10 @@
 						}
 					},
 					"actions": {
-						"showinbrowser": {},
+						"showInBrowser": {
+							"baseUrl": "http://localhost:8080",
+							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
+						},
 						"editServerConfiguration": {
 							"paths": "conf/server.xml,conf/web.xml"
 						}

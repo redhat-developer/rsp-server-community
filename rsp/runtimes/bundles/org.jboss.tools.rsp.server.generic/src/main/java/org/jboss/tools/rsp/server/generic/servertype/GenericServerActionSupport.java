@@ -39,7 +39,7 @@ public class GenericServerActionSupport {
 			JSONMemento[] actionsToAdd = props.getChildren();
 			for (JSONMemento actionToAdd : actionsToAdd) {
 				ServerActionWorkflow wf1 = null;
-				if (actionToAdd.getNodeName().equals("showinbrowser")) {
+				if (actionToAdd.getNodeName().equals("showInBrowser")) {
 					wf1 = ShowInBrowserActionHandler.getInitialWorkflow(behavior);
 				}
 				if (actionToAdd.getNodeName().equals("editServerConfiguration")) {
