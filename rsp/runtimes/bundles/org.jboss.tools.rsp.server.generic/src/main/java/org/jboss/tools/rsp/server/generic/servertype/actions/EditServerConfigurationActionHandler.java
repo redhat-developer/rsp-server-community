@@ -146,6 +146,9 @@ public class EditServerConfigurationActionHandler {
 		if( configFiles == null || configFiles.length() == 0 )
 			return null;
 		String[] filesArr = configFiles.split(",");
+		for( int i = 0; i < filesArr.length; i++ ) {
+			filesArr[i] = filesArr[i].trim();
+		}
 		return (filesArr == null || filesArr.length == 0 ) ? null : filesArr;
 	}
 	
