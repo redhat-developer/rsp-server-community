@@ -126,10 +126,12 @@ public class GenericServerTypeExtensionModel implements IServerBehaviorFromJSONP
 			String downloadUrl = oneDownload.getString("downloadUrl");
 			String licenseUrl = oneDownload.getString("licenseUrl");
 			String installationMethod = oneDownload.getString("installationMethod");
+			String size = oneDownload.getString("size");
 			
 			DownloadRuntime oneDLRT = new DownloadRuntime(id,  name,  fullVersion, downloadUrl);
 			oneDLRT.setLicenseURL(licenseUrl);
 			oneDLRT.setInstallationMethod(installationMethod);
+			oneDLRT.setSize(size);
 			collector.add(oneDLRT);
 		}
 				
