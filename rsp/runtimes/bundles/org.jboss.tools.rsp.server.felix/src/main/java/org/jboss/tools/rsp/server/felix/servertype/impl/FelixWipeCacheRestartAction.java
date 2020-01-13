@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.dao.ServerActionRequest;
 import org.jboss.tools.rsp.api.dao.ServerActionWorkflow;
 import org.jboss.tools.rsp.api.dao.ServerHandle;
@@ -89,7 +90,7 @@ public class FelixWipeCacheRestartAction extends ServerActionWorkflow {
 	    return directoryToBeDeleted.delete();
 	}
 	private Path getCacheFolder(IServer server) {
-		String serverHome =  server.getAttribute(IFelixConstants.SERVER_HOME, (String) null);
+		String serverHome =  server.getAttribute(DefaultServerAttributes.SERVER_HOME_DIR, (String) null);
 		if( serverHome == null )
 			return null;
 		return new File(serverHome, "felix-cache").toPath();
