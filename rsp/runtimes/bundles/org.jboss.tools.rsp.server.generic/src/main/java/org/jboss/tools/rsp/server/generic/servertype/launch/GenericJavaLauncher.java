@@ -1,6 +1,8 @@
 package org.jboss.tools.rsp.server.generic.servertype.launch;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
@@ -142,18 +144,32 @@ public class GenericJavaLauncher extends AbstractGenericJavaLauncher
 					postSub = applySubstitutions(postSub);
 				} catch(CoreException ce) {
 				}
-				
-				String[] relatives = postSub.split(";");
-				String[] ret = new String[relatives.length];
-				for (int i = 0; i < ret.length; i++) {
-					ret[i] = new File(serverHome, relatives[i]).getAbsolutePath();
-				}
-				return ret;
+				return convertStringToClasspathEntries(serverHome, postSub);
 			}
 		}
 		return null;
 	}
 	
+	private String[] convertStringToClasspathEntries(String serverHome, String postSub) {
+		String[] relatives = postSub.split(";");
+		List<String> ret = new ArrayList<String>();
+		File absolute = null;
+		for (int i = 0; i < relatives.length; i++) {
+			absolute = new File(serverHome, relatives[i]);
+			if( absolute.isFile()) {
+				ret.add(absolute.getAbsolutePath());
+			} else if( absolute.isDirectory()) {
+				File[] children = absolute.listFiles();
+				for( int j = 0; j < children.length; j++ ) {
+					if( children[j].getName().endsWith(".jar")) {
+						ret.add(children[j].getAbsolutePath());
+					}
+				}
+			}
+		}
+		return (String[]) ret.toArray(new String[ret.size()]);
+	}
+
 	private String applySubstitutions(String input) throws CoreException {
 		return new StringSubstitutionEngine().performStringSubstitution(input, 
 				true, true, new ServerStringVariableManager(getServer()));

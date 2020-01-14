@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class GenericServerActivator extends RSPExtensionBundle {
+	public static final String BUNDLE_ID = "org.jboss.tools.rsp.server.generic";
 	private static final Logger LOG = LoggerFactory.getLogger(GenericServerActivator.class);
 	
 	private IServerManagementModel rspModel;

@@ -9,7 +9,7 @@
 					"nameKey": "Implementation-Title",
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
+					"versionKey": "Implementation-Version",
 					"versionRequiredPrefix": "9.0."
 				}
 			},
@@ -97,7 +97,7 @@
 					"nameKey": "Implementation-Title",
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
+					"versionKey": "Implementation-Version",
 					"versionRequiredPrefix": "8.5."
 				}
 			},
@@ -185,7 +185,7 @@
 					"nameKey": "Implementation-Title",
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
+					"versionKey": "Implementation-Version",
 					"versionRequiredPrefix": "8.0."
 				}
 			},
@@ -273,7 +273,7 @@
 					"nameKey": "Implementation-Title",
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
+					"versionKey": "Implementation-Version",
 					"versionRequiredPrefix": "7.0."
 				}
 			},
@@ -361,7 +361,7 @@
 					"nameKey": "Implementation-Title",
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
+					"versionKey": "Implementation-Version",
 					"versionRequiredPrefix": "6.0."
 				}
 			},
@@ -445,12 +445,12 @@
 				"tomcat.5.5": {
 					"discoveryType": "jarManifest",
 					"name": "Tomcat 5.5.x",
-					"nameFile": "lib/catalina.jar",
-					"nameKey": "Implementation-Title",
-					"nameRequiredPrefix": "Apache Tomcat",
-					"versionFile": "lib/catalina.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "5.5."
+					"nameFile": "server/lib/catalina.jar",
+					"nameKey": "Created-By",
+					"nameRequiredPrefix": "1.4.2_19-b04",
+					"versionFile": "server/lib/tomcat-coyote.jar",
+					"versionKey": "Created-By",
+					"versionRequiredPrefix": "1.4.2_19-b04"
 				}
 			},
 			"downloads": {

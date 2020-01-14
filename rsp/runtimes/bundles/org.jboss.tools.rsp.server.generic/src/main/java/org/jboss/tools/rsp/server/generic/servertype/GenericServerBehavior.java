@@ -8,6 +8,11 @@
  ******************************************************************************/
 package org.jboss.tools.rsp.server.generic.servertype;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.Attributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
@@ -26,6 +31,8 @@ import org.jboss.tools.rsp.eclipse.debug.core.DebugException;
 import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
 import org.jboss.tools.rsp.eclipse.debug.core.model.IProcess;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
+import org.jboss.tools.rsp.server.discovery.serverbeans.ServerBeanLoader;
+import org.jboss.tools.rsp.server.generic.GenericServerActivator;
 import org.jboss.tools.rsp.server.generic.IPublishControllerWithOptions;
 import org.jboss.tools.rsp.server.generic.servertype.launch.GenericJavaLauncher;
 import org.jboss.tools.rsp.server.generic.servertype.launch.TerminateShutdownLauncher;
@@ -37,6 +44,7 @@ import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller;
 import org.jboss.tools.rsp.server.spi.model.polling.IServerStatePoller.SERVER_STATE;
 import org.jboss.tools.rsp.server.spi.model.polling.PollThreadUtils;
 import org.jboss.tools.rsp.server.spi.model.polling.WebPortPoller;
+import org.jboss.tools.rsp.server.spi.servertype.CreateServerValidation;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
@@ -152,6 +160,41 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 		return behaviorMemento.getChild("actions");
 	}
 	
+	@Override
+	public CreateServerValidation validate() {
+		String key = getServerHomeKey();
+		if( key != null ) {
+			String path = getServer().getAttribute(key, (String)null); // Should not be null
+			if( path != null ) {
+				IStatus stat = validateServerHome(path);
+				if( stat != null ) {
+					return new CreateServerValidation(stat, Arrays.asList(new String[] {key}));
+				}
+			}
+		}
+		return new CreateServerValidation(Status.OK_STATUS, new ArrayList<String>());
+	}
+
+	private String getServerHomeKey() {
+		String path = getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_DIR, (String)null);
+		if( path != null )
+			return DefaultServerAttributes.SERVER_HOME_DIR;
+
+		path = getServer().getAttribute(DefaultServerAttributes.SERVER_HOME_FILE, (String)null);
+		if( path != null )
+			return DefaultServerAttributes.SERVER_HOME_FILE;
+		return null;
+	}
+	
+	private IStatus validateServerHome(String path) {
+		ServerBeanLoader sbl = new ServerBeanLoader(new File(path), getServer().getServerManagementModel());
+		String foundType = sbl.getServerAdapterId();
+		if( !getServer().getServerType().getId().equals(foundType))  {
+			return new Status(IStatus.ERROR, GenericServerActivator.BUNDLE_ID, "Server type not found at given server home");
+		}
+		return null;
+	}
+
 	protected IServerShutdownLauncher getLauncher(JSONMemento memento) {
 		String launchType = memento.getString("launchType");
 		if( "java-launch".equals(launchType)) {

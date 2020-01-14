@@ -3,6 +3,7 @@ package org.jboss.tools.rsp.server.felix.impl;
 import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.ServerManagementServerLauncher;
 import org.jboss.tools.rsp.server.generic.GenericServerExtensionModel;
+import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 
 public class FelixServerMain extends ServerManagementServerLauncher {
 
@@ -19,9 +20,9 @@ public class FelixServerMain extends ServerManagementServerLauncher {
 	
 	@Override
 	public void launch(int port) throws Exception {
-		GenericServerExtensionModel model = new GenericServerExtensionModel(
+		GenericServerExtensionModel felixModel = new GenericServerExtensionModel(
 				serverImpl.getModel(), Activator.getDelegateProviderImpl(), Activator.getServerTypeModelStreamImpl());
-		model.registerExtensions();
+		felixModel.registerExtensions();
 		super.launch(port);
 	}
 

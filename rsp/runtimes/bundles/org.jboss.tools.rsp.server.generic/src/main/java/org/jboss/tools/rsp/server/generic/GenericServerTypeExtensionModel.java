@@ -134,7 +134,7 @@ public class GenericServerTypeExtensionModel implements IServerBehaviorFromJSONP
 			oneDLRT.setSize(size);
 			collector.add(oneDLRT);
 		}
-				
+
 		if( !collector.isEmpty()) {
 			DownloadRuntime[] dlrtArr = collector.toArray(new DownloadRuntime[collector.size()]);
 			GenericDownloadRuntimesProvider dlrtProvider =new GenericDownloadRuntimesProvider(
