@@ -84,21 +84,29 @@ public class GenericServerTypeExtensionModel implements IServerBehaviorFromJSONP
 			String versionKey = oneDiscovery.getString("versionKey");
 			String requiredVersionPrefix = oneDiscovery.getString("versionRequiredPrefix");
 			
+			String nameFilePattern = oneDiscovery.getString("nameFilePattern");
+			String versionFilePattern = oneDiscovery.getString("versionFilePattern");
+			boolean nameIsPattern = nameFilePattern != null;
+			boolean versionIsPattern = versionFilePattern != null;
+			
+			String nameString = nameIsPattern ? nameFilePattern : fileContainingName;
+			String versionString = versionIsPattern ? versionFilePattern : fileContainingVersion;
+			
 			if( discoveryType == null ) {
 				continue;
 			}
 			if( "manifest".equals(discoveryType)) {
 				collector.add(new ExplodedManifestDiscovery(id, name, serverTypeId, 
-						fileContainingName, nameKey, requiredNamePrefix, 
-						fileContainingVersion, versionKey, requiredVersionPrefix));
+						nameString, nameIsPattern, nameKey, requiredNamePrefix, 
+						versionString, versionIsPattern, versionKey, requiredVersionPrefix));
 			} else if( "jarManifest".equals(discoveryType)) {
 				collector.add(new JarManifestDiscovery(id, name, serverTypeId, 
-						fileContainingName, nameKey, requiredNamePrefix, 
-						fileContainingVersion, versionKey, requiredVersionPrefix));
+						nameString, nameIsPattern, nameKey, requiredNamePrefix, 
+						versionString, versionIsPattern, versionKey, requiredVersionPrefix));
 			} else if( "properties".equals(discoveryType)) {
 				collector.add(new JarManifestDiscovery(id, name, serverTypeId, 
-						fileContainingName, nameKey, requiredNamePrefix, 
-						fileContainingVersion, versionKey, requiredVersionPrefix));
+						nameString, nameIsPattern, nameKey, requiredNamePrefix, 
+						versionString, versionIsPattern, versionKey, requiredVersionPrefix));
 			}
 		}
 		
