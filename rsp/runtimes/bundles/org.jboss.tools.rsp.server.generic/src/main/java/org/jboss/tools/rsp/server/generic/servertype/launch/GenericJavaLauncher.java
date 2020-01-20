@@ -8,6 +8,7 @@ import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.Path;
 import org.jboss.tools.rsp.eclipse.debug.core.ILaunch;
+import org.jboss.tools.rsp.eclipse.jdt.launching.IVMInstall;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.generic.servertype.variables.IDynamicVariable;
@@ -188,11 +189,25 @@ public class GenericJavaLauncher extends AbstractGenericJavaLauncher
 			return new IValueVariable() {
 				@Override
 				public String getValue() {
+					String nonServerVal = getNonServerKeyValues(name);
+					if( nonServerVal != null ) {
+						return nonServerVal;
+					}
 					return server.getAttribute(name, (String) null);
 				}
 			};
 		}
 
+		public String getNonServerKeyValues(String name) {
+			if( "java.home".equals(name)) {
+				IVMInstall vmi = getVMInstall(getDelegate());
+				if( vmi != null ) {
+					return vmi.getInstallLocation().getAbsolutePath();
+				}
+			}
+			return null;
+		}
+		
 		@Override
 		public IDynamicVariable getDynamicVariable(String name) {
 			// TODO Auto-generated method stub

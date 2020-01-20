@@ -17,5 +17,6 @@
     <module>org.jboss.tools.rsp.server.generic</module>
     <module>org.jboss.tools.rsp.server.tomcat</module>
     <module>org.jboss.tools.rsp.server.felix</module>
+    <module>org.jboss.tools.rsp.server.karaf</module>
   </modules>
 </project>

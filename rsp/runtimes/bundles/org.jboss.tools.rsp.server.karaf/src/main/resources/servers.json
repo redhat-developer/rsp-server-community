@@ -1,0 +1,78 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.karaf.42": {
+			"discoveries": {
+				"apache.karaf.42": {
+					"discoveryType": "jarManifest",
+					"name": "Apache Karaf 4.2",
+					"nameFilePattern": "lib/boot/org.apache.karaf.main-*.jar",
+					"nameKey": "Bundle-Name",
+					"nameRequiredPrefix": "Apache Karaf",
+					"versionFilePattern": "lib/boot/org.apache.karaf.main-*.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "4.2."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "karaf42.download",
+				"karaf-4.2.7": {
+					"name": "Apache Karaf 4.2.7",
+					"fullVersion": "4.2.7",
+					"downloadUrl": "https://www-us.apache.org/dist/karaf/4.2.7/apache-karaf-4.2.7.zip",
+					"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+					"installationMethod": "archive",
+					"size": "22699925"
+				}
+			},
+			"type": {
+				"name": "Apache Karaf 4.2",
+				"description": "A server adapter capable of discovering and controlling an Apache Karaf 4.2 Container.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "deploy/",
+						"approvedSuffixes": "jar",
+						"supportsExploded": "false"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "",
+							"mainType": "org.apache.karaf.main.Main",
+							"programArgs": "",
+							"vmArgs": "-Xms128M -Xmx512M -XX:+UnlockDiagnosticVMOptions -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=${java.home}/lib/endorsed:${java.home}/jre/lib/endorsed:${server.home.dir}/lib/endorsed -Djava.ext.dirs=${java.home}/lib/ext:${java.home}/jre/lib/ext:${server.home.dir}/lib/ext -Dkaraf.instances=${server.home.dir}/instances -Dkaraf.home=${server.home.dir} -Dkaraf.base=${server.home.dir} -Dkaraf.data=${server.home.dir}/data -Dkaraf.etc=${server.home.dir}/etc -Dkaraf.log=${server.home.dir}/data/log -Dkaraf.restart.jvm.supported=true -Djava.io.tmpdir=${server.home.dir}/data/tmp -Djava.util.logging.config.file=${server.home.dir}/etc/java.util.logging.properties -Dkaraf.startLocalConsole=false -Dkaraf.startRemoteShell=true",
+							"classpath": "lib/boot/"
+						},
+						"poller": "automaticSuccess",
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "",
+							"mainType": "org.apache.karaf.main.Stop",
+							"programArgs": "",
+							"vmArgs": "-Xms128M -Xmx512M -XX:+UnlockDiagnosticVMOptions -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=${java.home}/lib/endorsed:${java.home}/jre/lib/endorsed:${server.home.dir}/lib/endorsed -Djava.ext.dirs=${java.home}/lib/ext:${java.home}/jre/lib/ext:${server.home.dir}/lib/ext -Dkaraf.instances=${server.home.dir}/instances -Dkaraf.home=${server.home.dir} -Dkaraf.base=${server.home.dir} -Dkaraf.data=${server.home.dir}/data -Dkaraf.etc=${server.home.dir}/etc -Dkaraf.log=${server.home.dir}/data/log -Dkaraf.restart.jvm.supported=true -Djava.io.tmpdir=${server.home.dir}/data/tmp -Djava.util.logging.config.file=${server.home.dir}/etc/java.util.logging.properties -Dkaraf.startLocalConsole=false -Dkaraf.startRemoteShell=true",
+							"classpath": "lib/boot/"
+						},
+						"poller": "automaticSuccess",
+						"onProcessTerminated": "setServerStateStopped"
+					}
+				}
+			}
+		}
+	}
+}
