@@ -23,8 +23,10 @@ public class KarafServerDelegate extends GenericServerBehavior {
 		ListServerActionResponse ret = new ListServerActionResponse();
 		ret.setStatus(StatusConverter.convert(Status.OK_STATUS));
 		List<ServerActionWorkflow> allActions = new ArrayList<>();
-		ServerActionWorkflow wf1 = KarafWipeCacheRestartAction.getInitialWorkflow(this);
-		allActions.add(wf1);
+		ServerActionWorkflow wfWipeAndRestart = KarafWipeCacheRestartAction.getInitialWorkflow(this);
+		ServerActionWorkflow wfOpenShell = KarafOpenShellAction.getInitialWorkflow(this);
+		allActions.add(wfWipeAndRestart);
+		allActions.add(wfOpenShell);
 		ret.setWorkflows(allActions);
 		return ret;
 	}
@@ -34,6 +36,9 @@ public class KarafServerDelegate extends GenericServerBehavior {
 		if( KarafWipeCacheRestartAction.ACTION_WIPE_CACHE_RESTART_ID.equals(req.getActionId() )) {
 			return new KarafWipeCacheRestartAction(this).handle(req);
 		}
+//		if( KarafOpenShellAction.ACTION_OPEN_SHELL_ID.equals(req.getActionId() )) {
+//			return new KarafOpenShellAction(this).handle(req);
+//		}
 		return cancelWorkflowResponse();
 	}
 
