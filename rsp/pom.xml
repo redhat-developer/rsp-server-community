@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.example.rsp.server.extras</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.22.1-SNAPSHOT</version>
+	<version>0.22.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Runtime Server Protocol: extras</name>
 	<description>A runtime-server protocol based on LSP</description>
