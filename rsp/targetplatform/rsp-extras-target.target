@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.6"?><target includeMode="feature" name="rsp-extras-target-0.22.3-SNAPSHOT">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+<target includeMode="feature" name="rsp-extras-target-0.22.3-SNAPSHOT">
 	<locations>
 		<!-- To get around NEXUS validation rules, CHANGE THE VERSION AT THE TOP OF THIS FILE -->
 
-		<!-- don't forget to increment these files when moving up a version: build.xml, *.target -->
+		<!-- dont forget to increment these files when moving up a version: build.xml, *.target -->
 
 		<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 			<repository location="http://download.jboss.org/jbosstools/updates/requirements/orbit/R20180905201904/"/>
@@ -75,6 +77,21 @@
 
 			<!-- required for java 11 -->
 			<unit id="javax.annotation" version="1.2.0.v201602091430"/>
+		</location>
+
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.jboss.org/jbosstools/vscode/snapshots/rsp-server/p2/0.22.3-SNAPSHOT/"/>
+			<unit id="org.jboss.tools.rsp.api" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.foundation.core" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.launching" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.launching.java" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.logging" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.runtime.core" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.secure" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.server" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.server.redhat.download" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.server.spi" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.stacks.core" version="0.0.0"/>
 		</location>
 	</locations>
 	<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
