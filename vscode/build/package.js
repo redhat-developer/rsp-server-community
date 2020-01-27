@@ -2,18 +2,32 @@ const fs = require('fs-extra');
 const download = require('download');
 const decompress = require('decompress');
 
-const RSP_SERVER_JAR_NAME = 'org.example.rsp.server.extras.distribution-0.21.2-SNAPSHOT.zip';
-const RSP_SERVER_ZIP = __dirname + `/../../rsp/distribution/distribution.extras/target/${RSP_SERVER_JAR_NAME}`;
+const RSP_SERVER_JAR_PREFIX = 'org.example.rsp.server.extras.distribution-';
+const RSP_DIR_TO_SEARCH = __dirname + `/../../rsp/distribution/distribution.extras/target/`
+
+const RSP_FOUND_DISTRO_NAME = findZip(RSP_DIR_TO_SEARCH);
+const RSP_FOUND_DISTRO_FULL_PATH = RSP_DIR_TO_SEARCH + RSP_FOUND_DISTRO_NAME;
+
 
 function clean() {
-    console.log(RSP_SERVER_ZIP);
-    return Promise.resolve()
-        .then(()=>fs.remove('server'))
-        .then(()=>fs.pathExists(RSP_SERVER_JAR_NAME))
-        .then((exists)=>(exists?fs.unlink(RSP_SERVER_JAR_NAME):undefined));
+	return Promise.resolve()
+		.then(()=>fs.remove('server'))
+		.then(()=>fs.pathExists(RSP_FOUND_DISTRO_NAME))
+		.then((exists)=>(exists?fs.unlink(RSP_FOUND_DISTRO_NAME):undefined));
 }
+
+function findZip(basedir) {
+	var result = "";
+	fs.readdirSync(basedir).forEach(file => {
+		if( file.endsWith("zip")) {
+			result = file;
+		}
+	});
+	return result;
+}
+
 
 Promise.resolve()
     .then(clean)
-    .then(()=> decompress(RSP_SERVER_ZIP, './server', { strip: 1 }))
+    .then(()=> decompress(RSP_FOUND_DISTRO_FULL_PATH, './server', { strip: 1 }))
     .catch((err)=>{ throw err; });
