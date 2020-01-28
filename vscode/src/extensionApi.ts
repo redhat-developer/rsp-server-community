@@ -50,7 +50,17 @@ export class ExtensionAPI implements RSPController {
     }
 
     private getFilename(serverType: string): string {
-        return "frog2.svg";
+	if( serverType.toLowerCase().indexOf("karaf") != -1) {
+		return "karaf.png";
+	}
+	if( serverType.toLowerCase().indexOf("tomcat") != -1) {
+		return "tomcat.svg";
+	}
+	if( serverType.toLowerCase().indexOf("felix") != -1 ) {
+		return "felix.png";
+	}
+
+        return "apache.png";
     }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {

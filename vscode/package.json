@@ -1,8 +1,8 @@
 {
   "name": "vscode-extras-server-connector",
-  "displayName": "Vscode Server Connector Extras",
-  "description": "Connects vscode with servers which are not included with Red Hat's rsp-server",
-  "version": "0.21.2",
+  "displayName": "FOSS Server Connectors",
+  "description": "Connects vscode with open source servers and runtimes.",
+  "version": "0.22.3",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
   "author": "Red Hat",
@@ -26,7 +26,7 @@
     "runtimes",
     "adapters"
   ],
-  "icon": "images/frog1.png",
+  "icon": "images/apache.png",
   "main": "./out/src/extension",
   "scripts": {
     "package": "node ./build/package.js",
