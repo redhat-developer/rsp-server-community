@@ -19,7 +19,7 @@
 					"name": "Apache Karaf 4.2.7",
 					"fullVersion": "4.2.7",
 					"downloadUrl": "http://archive.apache.org/dist/karaf/4.2.7/apache-karaf-4.2.7.zip",
-					"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
 					"installationMethod": "archive",
 					"size": "22699925"
 				}
