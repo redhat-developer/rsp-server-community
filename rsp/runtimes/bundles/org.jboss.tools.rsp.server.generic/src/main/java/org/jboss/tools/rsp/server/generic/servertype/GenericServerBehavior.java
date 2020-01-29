@@ -260,7 +260,9 @@ public class GenericServerBehavior extends AbstractServerDelegate {
 			}
 			return;
 		}
-		
+		if("noOpPoller".equals(pollerId)) {
+			return;
+		}
 	}
 
 	@Override

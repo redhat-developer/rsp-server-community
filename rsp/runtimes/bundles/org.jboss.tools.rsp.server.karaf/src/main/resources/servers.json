@@ -68,8 +68,7 @@
 							"vmArgs": "-Xms128M -Xmx512M -XX:+UnlockDiagnosticVMOptions -Dcom.sun.management.jmxremote -Djava.endorsed.dirs=${java.home}/lib/endorsed:${java.home}/jre/lib/endorsed:${server.home.dir}/lib/endorsed -Djava.ext.dirs=${java.home}/lib/ext:${java.home}/jre/lib/ext:${server.home.dir}/lib/ext -Dkaraf.instances=${server.home.dir}/instances -Dkaraf.home=${server.home.dir} -Dkaraf.base=${server.home.dir} -Dkaraf.data=${server.home.dir}/data -Dkaraf.etc=${server.home.dir}/etc -Dkaraf.log=${server.home.dir}/data/log -Dkaraf.restart.jvm.supported=true -Djava.io.tmpdir=${server.home.dir}/data/tmp -Djava.util.logging.config.file=${server.home.dir}/etc/java.util.logging.properties -Dkaraf.startLocalConsole=false -Dkaraf.startRemoteShell=true",
 							"classpath": "lib/boot/"
 						},
-						"poller": "automaticSuccess",
-						"onProcessTerminated": "setServerStateStopped"
+						"poller": "noOpPoller"
 					}
 				}
 			}
