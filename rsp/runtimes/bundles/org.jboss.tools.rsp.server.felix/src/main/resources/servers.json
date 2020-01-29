@@ -43,7 +43,7 @@
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "bundles/",
+						"deployPath": "bundle/",
 						"approvedSuffixes": "jar",
 						"supportsExploded": "false"
 					},
@@ -108,7 +108,7 @@
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "bundles/",
+						"deployPath": "bundle/",
 						"approvedSuffixes": "jar",
 						"supportsExploded": "false"
 					},
@@ -173,7 +173,7 @@
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "bundles/",
+						"deployPath": "bundle/",
 						"approvedSuffixes": "jar",
 						"supportsExploded": "false"
 					},
@@ -238,7 +238,7 @@
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "bundles/",
+						"deployPath": "bundle/",
 						"approvedSuffixes": "jar",
 						"supportsExploded": "false"
 					},
