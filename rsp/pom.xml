@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.example.rsp.server.extras</groupId>
+	<groupId>org.jboss.tools.rsp.server.extras</groupId>
 	<artifactId>parent</artifactId>
 	<version>0.22.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -37,6 +37,7 @@
 		<module>targetplatform</module>
 		<module>runtimes</module>
 		<module>distribution</module>
+		<module>site</module>
 	</modules>
 
 	<build>
@@ -78,7 +79,7 @@
 					<pomDependencies>consider</pomDependencies>
 					<target>
 						<artifact>
-							<groupId>org.example.rsp.server.extras</groupId>
+							<groupId>org.jboss.tools.rsp.server.extras</groupId>
 							<artifactId>rsp-extras-target</artifactId>
 							<version>${project.version}</version>
 						</artifact>

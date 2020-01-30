@@ -89,6 +89,7 @@
 			<unit id="org.jboss.tools.rsp.runtime.core" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.secure" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.server" version="0.0.0"/>
+			<unit id="org.jboss.tools.rsp.server.generic" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.server.redhat.download" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.server.spi" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.stacks.core" version="0.0.0"/>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<description>
+	To install these features, point Eclipse at this site.
+	</description>
+
+   <bundle id="org.jboss.tools.rsp.server.tomcat"/>
+   <bundle id="org.jboss.tools.rsp.server.karaf"/>
+   <bundle id="org.jboss.tools.rsp.server.felix"/>
+</site>
+

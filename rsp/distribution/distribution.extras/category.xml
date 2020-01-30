@@ -18,7 +18,6 @@
    <bundle id="org.jboss.tools.rsp.launching"/>
    <bundle id="org.jboss.tools.rsp.launching.java"/>
    <bundle id="org.jboss.tools.rsp.foundation.core"/>
-   <bundle id="org.jboss.tools.rsp.stacks.core"/>
    <bundle id="org.jboss.tools.rsp.runtime.core"/>
    <bundle id="org.jboss.tools.rsp.server.spi"/>
    <bundle id="org.jboss.tools.rsp.server"/>
