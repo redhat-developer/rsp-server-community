@@ -1,7 +1,7 @@
 {
-  "name": "vscode-extras-server-connector",
-  "displayName": "FOSS Server Connectors",
-  "description": "Connects vscode with open source servers and runtimes.",
+  "name": "vscode-apache-server-connector",
+  "displayName": "Apache Server Connectors",
+  "description": "Connects vscode with open source Apache servers and runtimes.",
   "version": "0.22.3",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
@@ -9,9 +9,9 @@
   "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/robstryker/rsp-server-extras.git"
+    "url": "https://github.com/robstryker/rsp-server-apache.git"
   },
-  "bugs": "https://github.com/robstryker/rsp-server-extras.git",
+  "bugs": "https://github.com/robstryker/rsp-server-apache.git",
   "engines": {
     "vscode": "^1.30.0"
   },
