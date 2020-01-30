@@ -3,14 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jboss.tools.rsp.server.extras</groupId>
+    <groupId>org.jboss.tools.rsp.server.apache</groupId>
     <artifactId>bundles</artifactId>
     <version>0.22.3-SNAPSHOT</version>
   </parent>
   <groupId>org.jboss.tools.rsp.runtimes.bundles</groupId>
   <artifactId>org.jboss.tools.rsp.server.karaf</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <name>Runtime Server Protocol : Server Karaf Implementation</name>
+  <name>Runtime Server Protocol : Apache Karaf Implementation</name>
 
 	  <build>
 		<pluginManagement>

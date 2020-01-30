@@ -5,11 +5,11 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jboss.tools.rsp.server.extras</groupId>
+    <groupId>org.jboss.tools.rsp.server.apache</groupId>
     <artifactId>runtimes</artifactId>
     <version>0.22.3-SNAPSHOT</version>
   </parent>
-  <groupId>org.jboss.tools.rsp.server.extras</groupId>
+  <groupId>org.jboss.tools.rsp.server.apache</groupId>
   <artifactId>bundles</artifactId>
   <packaging>pom</packaging>
 
