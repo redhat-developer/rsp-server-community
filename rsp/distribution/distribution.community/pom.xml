@@ -45,7 +45,7 @@
 							<goal>wget</goal>
 						</goals>
 						<configuration>
-<url>http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.main.distribution/${felix.version}/org.apache.felix.main.distribution-${felix.version}.zip</url>
+<url>https://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.main.distribution/${felix.version}/org.apache.felix.main.distribution-${felix.version}.zip</url>
 							<sha1>cb347362c0aa19f0e5324556bda1453ea36552c3</sha1>
 							<unpack>true</unpack>
 						</configuration>
