@@ -20,7 +20,12 @@ pipeline {
 				stash includes: '**', name: 'source'
 			}
 		}
-		stage ('Java 8 runtime') {    
+		stage('Install requirements') {
+			def nodeHome = tool 'nodejs-8.11.1'
+			env.PATH="${env.PATH}:${nodeHome}/bin"
+			sh "npm install -g typescript vsce"
+		}
+		stage ('Build community server with Java 8 runtime') {    
 			agent { label 'rhel7' }
 			stages {
 				stage('Build Java 8 & unit tests') {
@@ -42,6 +47,33 @@ pipeline {
 						sh 'mvn -B -P sonar sonar:sonar -Dsonar.login=${SONAR_TOKEN}'
 					}
 				}
+			}
+		}
+		stage("Build extension") {
+			dir("vscode") {
+				sh "npm install"
+				sh "npm run build"
+			}
+		}
+
+		withEnv(['JUNIT_REPORT_PATH=report.xml', 'CODE_TESTS_WORKSPACE=c:/unknown']) {
+			stage('Test') {
+				wrap([$class: 'Xvnc']) {
+					dir("vscode") {
+						sh "npm test --silent"
+						junit 'report.xml'
+					}
+				}
+	                }
+	        }
+
+		stage('Package') {
+			try {
+				def packageJson = readJSON file: 'package.json'
+				sh "vsce package -o adapters-${packageJson.version}-${env.BUILD_NUMBER}.vsix"
+			}
+			finally {
+				archiveArtifacts artifacts: '*.vsix'
 			}
 		}
 	}
