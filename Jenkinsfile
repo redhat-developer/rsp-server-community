@@ -26,10 +26,12 @@ pipeline {
 				stage('Build Java 8 & unit tests') {
 					steps {
 						unstash 'source'
-						sh 'mvn clean install -fae -B'
-						archiveArtifacts 'distribution/distribution*/target/org.jboss.tools.rsp.distribution*.zip,api/docs/org.jboss.tools.rsp.schema/target/*.jar,site/target/repository/**'
-						stash includes: 'distribution/distribution*/target/org.jboss.tools.rsp.distribution*.zip,api/docs/org.jboss.tools.rsp.schema/target/*.jar', name: 'zips'
-						stash includes: 'site/target/repository/**', name: 'site'
+						dir("rsp") {
+							sh 'mvn clean install -fae -B'
+						}
+						archiveArtifacts 'rsp/distribution/distribution*/target/org.jboss.tools.rsp.distribution*.zip,rsp/site/target/repository/**'
+						stash includes: 'rsp/distribution/distribution*/target/org.jboss.tools.rsp.distribution*.zip', name: 'zips'
+						stash includes: 'rsp/site/target/repository/**', name: 'site'
 					}
 				}
 				stage('SonarCloud Report') {
