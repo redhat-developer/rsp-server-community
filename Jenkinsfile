@@ -21,9 +21,11 @@ pipeline {
 			}
 		}
 		stage('Install requirements') {
-			def nodeHome = tool 'nodejs-8.11.1'
-			env.PATH="${env.PATH}:${nodeHome}/bin"
-			sh "npm install -g typescript vsce"
+			steps {
+				def nodeHome = tool 'nodejs-8.11.1'
+				env.PATH="${env.PATH}:${nodeHome}/bin"
+				sh "npm install -g typescript vsce"
+			}
 		}
 		stage ('Build community server with Java 8 runtime') {    
 			agent { label 'rhel7' }
