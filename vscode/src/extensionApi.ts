@@ -60,7 +60,7 @@ export class ExtensionAPI implements RSPController {
 		return "felix.png";
 	}
 
-        return "apache.png";
+        return "community.png";
     }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {

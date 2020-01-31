@@ -6,8 +6,8 @@
 /**
  * RSP Provider ID - it is equal to publisher.name (see package.json)
  */
-export const RSP_PROVIDER_ID = 'redhat.vscode-extras-server-connector';
+export const RSP_PROVIDER_ID = 'redhat.vscode-community-server-connector';
 /**
  * RSP Provider Name - it will be displayed in the tree node
  */
-export const RSP_PROVIDER_NAME = 'RSP Server (Extras)';
+export const RSP_PROVIDER_NAME = 'Community Server Connector';

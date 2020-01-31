@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jboss.tools.rsp.server.apache</groupId>
+	<groupId>org.jboss.tools.rsp.server.community</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.22.3-SNAPSHOT</version>
+	<version>0.22.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Runtime Server Protocol: Apache</name>
-	<description>A runtime-server protocol distribution for Apache servers and runtimes</description>
+	<name>Runtime Server Protocol: Community</name>
+	<description>A runtime-server protocol distribution for servers and runtimes maintained by the community.</description>
 	<licenses>
 		<license>
 			<name>Eclipse Public License 2.0</name>
@@ -79,8 +79,8 @@
 					<pomDependencies>consider</pomDependencies>
 					<target>
 						<artifact>
-							<groupId>org.jboss.tools.rsp.server.apache</groupId>
-							<artifactId>rsp-apache-target</artifactId>
+							<groupId>org.jboss.tools.rsp.server.community</groupId>
+							<artifactId>rsp-community-target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>

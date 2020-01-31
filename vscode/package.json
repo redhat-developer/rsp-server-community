@@ -1,7 +1,7 @@
 {
-  "name": "vscode-apache-server-connector",
-  "displayName": "Apache Server Connectors",
-  "description": "Connects vscode with open source Apache servers and runtimes.",
+  "name": "vscode-community-server-connector",
+  "displayName": "Community Server Connectors",
+  "description": "Connects vscode with open source community-driven servers and runtimes.",
   "version": "0.22.3",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
@@ -9,9 +9,9 @@
   "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/robstryker/rsp-server-apache.git"
+    "url": "https://github.com/robstryker/rsp-server-community.git"
   },
-  "bugs": "https://github.com/robstryker/rsp-server-apache.git",
+  "bugs": "https://github.com/robstryker/rsp-server-community.git",
   "engines": {
     "vscode": "^1.30.0"
   },
@@ -26,7 +26,7 @@
     "runtimes",
     "adapters"
   ],
-  "icon": "images/apache.png",
+  "icon": "images/community.png",
   "main": "./out/src/extension",
   "scripts": {
     "package": "node ./build/package.js",

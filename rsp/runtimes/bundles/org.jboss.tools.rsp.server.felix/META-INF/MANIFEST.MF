@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.jboss.tools.rsp.server.felix
 Bundle-SymbolicName: org.jboss.tools.rsp.server.felix
 Automatic-Module-Name: org.jboss.tools.rsp.server.felix
-Bundle-Version: 0.22.3.qualifier
+Bundle-Version: 0.22.4.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.json,

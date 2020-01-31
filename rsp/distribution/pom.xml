@@ -5,13 +5,13 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jboss.tools.rsp.server.apache</groupId>
+    <groupId>org.jboss.tools.rsp.server.community</groupId>
     <artifactId>parent</artifactId>
-    <version>0.22.3-SNAPSHOT</version>
+    <version>0.22.4-SNAPSHOT</version>
   </parent>
-  <groupId>org.jboss.tools.rsp.server.apache</groupId>
+  <groupId>org.jboss.tools.rsp.server.community</groupId>
   <artifactId>distribution</artifactId>
-  <name>Runtime Server Protocol : Apache Distribution Parent</name>
+  <name>Runtime Server Protocol : Community Distribution Parent</name>
   <packaging>pom</packaging>
 
   <properties>
@@ -19,6 +19,6 @@
   </properties>
 
   <modules>
-    <module>distribution.apache</module>
+    <module>distribution.community</module>
   </modules>
 </project>

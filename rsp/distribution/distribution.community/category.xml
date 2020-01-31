@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <description>
-      Runtime Server Protocol : Distribution Repository
+      Runtime Server Protocol : Community Distribution Repository
    </description>
    <bundle id="ch.qos.logback.classic"/>
    <bundle id="ch.qos.logback.core"/>
