@@ -13,7 +13,7 @@
   },
   "bugs": "https://github.com/robstryker/rsp-server-community.git",
   "engines": {
-    "vscode": "^1.30.0"
+    "vscode": "^1.34.0"
   },
   "activationEvents": [
     "onView:servers"
@@ -63,7 +63,7 @@
     "tslint": "^5.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.5.2",
-    "vscode-test": "^1.2.0"
+    "vscode-test": "^1.2.3"
   },
   "dependencies": {
     "expand-home-dir": "0.0.3",

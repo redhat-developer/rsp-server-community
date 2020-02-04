@@ -23,6 +23,8 @@ suite('Server Tests', () => {
         _destroy: undefined,
         _read: undefined,
         addListener: undefined,
+        readableObjectMode: undefined,
+        destroyed: undefined,
         destroy: undefined,
         emit: undefined,
         eventNames: undefined,
@@ -55,7 +57,7 @@ suite('Server Tests', () => {
 
     const child: cp.ChildProcess = {
         addListener: undefined,
-        channel: 1,
+        channel: undefined,
         connected: false,
         disconnect: () => {},
         emit: undefined,
