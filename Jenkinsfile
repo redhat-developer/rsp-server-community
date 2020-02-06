@@ -78,7 +78,7 @@ pipeline {
 					dir("vscode") {
 						try {
 							def packageJson = readJSON file: 'package.json'
-							sh "vsce package -o adapters-${packageJson.version}-${env.BUILD_NUMBER}.vsix"
+							sh "vsce package -o adapters-community-${packageJson.version}-${env.BUILD_NUMBER}.vsix"
 						}
 						finally {
 							archiveArtifacts artifacts: '*.vsix'
