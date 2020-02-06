@@ -17,7 +17,6 @@ pipeline {
 			steps {
 				deleteDir()
 				git url: "https://github.com/${params.FORK}/rsp-server-community", branch: params.BRANCH
-				// stash includes: '**', name: 'source'
 			}
 		}
 		stage('Install requirements') {
@@ -62,12 +61,12 @@ pipeline {
 		stage('Test') {
 			steps {
 				withEnv(['JUNIT_REPORT_PATH=report.xml', 'CODE_TESTS_WORKSPACE=c:/unknown']) {
-				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-					dir("vscode") {
-						sh "npm test --silent"
-						junit 'report.xml'
-					}
-        			}
+    				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+    					dir("vscode") {
+    						sh "npm test --silent"
+    						junit 'report.xml'
+    					}
+            		}
 				}
 			}
 		}
@@ -99,6 +98,10 @@ pipeline {
 
 				sh "ls *"
 				def packageJson = readJSON file: 'vscode/package.json'
+				
+				// If releasing push files into stable directory
+				def upload_dir = params.RELEASE ? 'stable' : 'snapshots'
+				sh "echo 'Pushing bits into ${upload_dir}'"
 
 				// Make an empty directory 				
 				sh "echo Creating empty directory"
@@ -110,18 +113,18 @@ pipeline {
 
 				// Ensure proper folders are created
 				echo "Creating empty remote dirs for given version output"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/p2/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/vscode-extension/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/vscode-extension/${packageJson.version}/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
 
 				// Ensure proper folders are created *AND* emptied
 				echo "Ensuring some remote dirs are empty"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
-				sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/vscode-extension/${packageJson.version}/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
+				sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
 
 
 				// Begin Copying Files Over
@@ -133,25 +136,25 @@ pipeline {
 
 				sh "echo Uploading site"
 				for (i = 0; i < siteRepositoryFilesToPush.length; i++) {
-					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${siteRepositoryFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/p2/"
+					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${siteRepositoryFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/"
 				}
 
 				sh "echo Uploading site/plugins"
 				for (i = 0; i < sitePluginFilesToPush.length; i++) {
-					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${sitePluginFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
+					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${sitePluginFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
 				}
 
 				sh "echo time to upload distro"
 				// Upload distributions / zips
 				def filesToPush = findFiles(glob: '**/*.zip')
 				for (i = 0; i < filesToPush.length; i++) {
-					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${filesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/distributions/${distroVersion}/"
+					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${filesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/"
 				}
 
 				// Upload VSIX file
 				def vsixToPush = findFiles(glob: '**/*.vsix')
 				for (i = 0; i < vsixToPush.length; i++) {
-					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${vsixToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/snapshots/rsp-server-community/vscode-extension/${packageJson.version}/"
+					sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${vsixToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
 				}
 			}
 		}
