@@ -15,13 +15,13 @@
 			},
 			"downloads": {
 				"downloadProviderId": "karaf42.download",
-				"karaf-4.2.7": {
-					"name": "Apache Karaf 4.2.7",
-					"fullVersion": "4.2.7",
-					"downloadUrl": "http://archive.apache.org/dist/karaf/4.2.7/apache-karaf-4.2.7.zip",
+				"karaf-4.2.8": {
+					"name": "Apache Karaf 4.2.8",
+					"fullVersion": "4.2.8",
+					"downloadUrl": "http://archive.apache.org/dist/karaf/4.2.8/apache-karaf-4.2.8.zip",
 					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
 					"installationMethod": "archive",
-					"size": "22699925"
+					"size": "23162505"
 				}
 			},
 			"type": {
