@@ -44,7 +44,7 @@
 				"behavior": {
 					"publish": {
 						"deployPath": "deploy/",
-						"approvedSuffixes": "jar",
+						"approvedSuffixes": "jar,kar,xml",
 						"supportsExploded": "false"
 					},
 					"startup": {
