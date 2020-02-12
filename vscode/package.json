@@ -16,7 +16,8 @@
     "vscode": "^1.34.0"
   },
   "activationEvents": [
-    "onView:servers"
+    "onView:servers",
+    "onView:serversAB"
   ],
   "categories": [
     "Other"
