@@ -16,3 +16,15 @@ This VSCode Extension provides a Remote Server Protocol based server connector, 
 
 This extension depends on VSCode RSP UI Extension which is going to be installed automatically along with VSCode Community Server Connector Extension. RSP UI in conjuction with Community Server Connector Extension supports a number of commands for interacting with supported server adapters; these are accessible via the command menu (`Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows and Linux) and may be bound to keys in the normal way.
 
+
+### Available Commands
+   This extension provides no additional commands other than those available in [rsp-ui](https://github.com/redhat-developer/vscode-rsp-ui#available-commands)
+
+## Extension Settings
+   This extension provides no additional settings other than those available in [rsp-ui](https://github.com/redhat-developer/vscode-rsp-ui#extension-settings)
+
+### Supported Servers
+   * Apache Tomcat [ 5.5 | 6.0 | 7.0 | 8.0 | 8.5 ]
+   * Apache Karaf [ 4.8 ] 
+   * Apache Felix [3.2 | 4.6 | 5.6 | 6.0 ]
+
