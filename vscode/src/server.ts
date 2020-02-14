@@ -59,10 +59,10 @@ export function start(stdoutCallback: (data: string) => void,
     .then(async serverPort => {
         port = serverPort;
         const serverLocation = getServerLocation(process);
-        startServer(serverLocation, serverPort, javaHome, stdoutCallback, stderrCallback, api);
         if (await isWorkspaceLocked()) {
             return Promise.reject('Workspace is locked. Please verify workspace is not in use');
         }
+        startServer(serverLocation, serverPort, javaHome, stdoutCallback, stderrCallback, api);
       // return  new Promise(resolve=>{
       //  setTimeout(resolve, 5000)
       // });
