@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jboss.tools.rsp.server.community</groupId>
     <artifactId>parent</artifactId>
-    <version>0.22.4-SNAPSHOT</version>
+    <version>0.22.5.Final</version>
   </parent>
   <artifactId>runtimes</artifactId>
   <groupId>org.jboss.tools.rsp.server.community</groupId>

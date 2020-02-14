@@ -22,7 +22,7 @@ let cpProcess: cp.ChildProcess;
 let javaHome: string;
 let port: number;
 
-const rspid: string = "redhat-server-connector-community";
+const rspid: string = "redhat-community-server-connector";
 export function start(stdoutCallback: (data: string) => void,
                       stderrCallback: (data: string) => void,
                       api: ExtensionAPI ): Promise<ServerInfo> {
