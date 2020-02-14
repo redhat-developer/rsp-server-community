@@ -44,7 +44,9 @@ pipeline {
 				expression { params.SONAR }
 			}
 			steps {
-				sh 'mvn -B -P sonar sonar:sonar -Dsonar.login=${SONAR_TOKEN}'
+				dir( "rsp" ) {
+					sh 'mvn -B -P sonar sonar:sonar -Dsonar.login=${SONAR_TOKEN}'
+				}
 			}
 		}
 		stage("Build extension") {
