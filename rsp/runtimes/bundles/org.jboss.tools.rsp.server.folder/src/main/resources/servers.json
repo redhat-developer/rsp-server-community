@@ -1,0 +1,42 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.folder.1": {
+			"type": {
+				"name": "Folder Deployment",
+				"description": "A server adapter capable of only deploying to a selected folder.",
+				"launchModes": "run",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a deployment folder.",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+					},
+					"static": {
+						"server.home.validation": {
+							"type": "string",
+							"value": "isFolder"
+						}
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "",
+						"approvedSuffixes": "jar,",
+						"supportsExploded": "true"
+					},
+					"startup": {
+						"launchType": "noOp"
+					},
+					"shutdown": {
+						"launchType": "noOp"
+					}
+				}
+			}
+		}
+	}
+}
