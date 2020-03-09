@@ -1,10 +1,23 @@
+/*******************************************************************************
+ * Copyright (c) 2020 Red Hat, Inc. Distributed under license by Red Hat, Inc.
+ * All rights reserved. This program is made available under the terms of the
+ * Eclipse Public License v2.0 which accompanies this distribution, and is
+ * available at http://www.eclipse.org/legal/epl-v20.html
+ * 
+ * Contributors: Red Hat, Inc.
+ ******************************************************************************/
 package org.jboss.tools.rsp.server.tomcat.impl;
 
 import java.io.InputStream;
 
+import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
 import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
+import org.jboss.tools.rsp.server.spi.servertype.IServer;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,22 +57,20 @@ public class Activator extends GenericServerActivator {
 	}
 
 	public static IServerBehaviorFromJSONProvider getDelegateProviderImpl() {
-//		return new IServerBehaviorFromJSONProvider() {
-//
-//			@Override
-//			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
-//				return new IServerBehaviorProvider() {
-//					@Override
-//					public IServerDelegate createServerDelegate(String typeId, IServer server) {
-//						if (ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
-//							return new TomcatServerDelegate(server);
-//						}
-//						return null;
-//					}
-//				};
-//			}
-//		};
-		return null;
+		return new IServerBehaviorFromJSONProvider() {
+			@Override
+			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
+				return new IServerBehaviorProvider() {
+					@Override
+					public IServerDelegate createServerDelegate(String typeId, IServer server) {
+						if (ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
+							return new TomcatServerDelegate(server, behaviorMemento);
+						}
+						return null;
+					}
+				};
+			}
+		};
 	}
 
 }

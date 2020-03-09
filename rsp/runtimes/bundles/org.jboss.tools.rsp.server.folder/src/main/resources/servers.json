@@ -16,7 +16,7 @@
 					},
 					"optional": {
 					},
-					"static": {
+					"staticDefaults": {
 						"server.home.validation": {
 							"type": "string",
 							"value": "isFolder"

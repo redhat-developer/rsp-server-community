@@ -37,8 +37,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
@@ -125,8 +128,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
@@ -213,8 +219,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
@@ -301,8 +310,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
@@ -389,8 +401,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
@@ -477,8 +492,11 @@
 							"secret": "false"
 						}
 					},
-					"optional": {
-						
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
 					}
 				},
 				"behavior": {
