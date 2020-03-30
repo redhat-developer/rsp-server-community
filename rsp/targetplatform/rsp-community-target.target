@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
-<target includeMode="feature" name="rsp-apache-target-0.22.6-SNAPSHOT">
+<target includeMode="feature" name="rsp-apache-target-0.22.7.Final">
 	<locations>
 		<!-- To get around NEXUS validation rules, CHANGE THE VERSION AT THE TOP OF THIS FILE -->
 
