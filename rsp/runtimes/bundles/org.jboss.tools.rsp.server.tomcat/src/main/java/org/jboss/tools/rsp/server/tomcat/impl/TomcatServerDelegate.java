@@ -31,11 +31,14 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 			String progArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_PROGRAM_ARGS);
 			String vmArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_VM_ARGS);
 			if(progArgs != null && !progArgs.isEmpty()) {
-				server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_PROGRAM_ARGS, progArgs);
+				progArgs = "";
 			}
 			if(vmArgs != null && !vmArgs.isEmpty()) {
-				server.setAttribute(GenericServerType.JAVA_LAUNCH_OVERRIDE_VM_ARGS, vmArgs);
+				vmArgs = "";
 			}
+			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_BOOLEAN, false);
+			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_PROGRAM_ARGS, progArgs);
+			server.setAttribute(GenericServerType.JAVA_LAUNCH_OVERRIDE_VM_ARGS, vmArgs);
 		} catch(CoreException ce) {
 			ce.printStackTrace();
 		}
