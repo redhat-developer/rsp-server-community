@@ -59,6 +59,9 @@ export class ExtensionAPI implements RSPController {
 	if( serverType.toLowerCase().indexOf("felix") != -1 ) {
 		return "felix.png";
 	}
+	if( serverType.toLowerCase().indexOf("jetty") != -1 ) {
+		return "jetty.png";
+	}
 
         return "community.png";
     }

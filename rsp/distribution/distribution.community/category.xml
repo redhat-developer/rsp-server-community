@@ -25,4 +25,5 @@
    <bundle id="org.jboss.tools.rsp.server.tomcat"/>
    <bundle id="org.jboss.tools.rsp.server.felix"/>
    <bundle id="org.jboss.tools.rsp.server.karaf"/>
+   <bundle id="org.jboss.tools.rsp.server.jetty"/>
 </site>

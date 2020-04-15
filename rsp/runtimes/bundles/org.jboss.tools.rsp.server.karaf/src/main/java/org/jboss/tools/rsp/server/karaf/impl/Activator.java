@@ -6,11 +6,11 @@ import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerBehaviorProvider;
-import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
 import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
+import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.karaf.servertype.impl.KarafServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
-import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class Activator extends GenericServerActivator {
 			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
 				return new GenericServerBehaviorProvider(behaviorMemento) {
 					@Override
-					public IServerDelegate createServerDelegate(String typeId, IServer server) {
+					public GenericServerBehavior createServerDelegate(String typeId, IServer server) {
 						return new KarafServerDelegate(server, behaviorMemento);
 					}
 				};
