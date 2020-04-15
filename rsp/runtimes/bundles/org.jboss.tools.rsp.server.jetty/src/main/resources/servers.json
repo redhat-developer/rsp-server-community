@@ -1,0 +1,96 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.jetty.9x": {
+			"discoveries": {
+				"jetty.9.x": {
+					"discoveryType": "jarManifest",
+					"name": "Jetty 9.x",
+					"nameFile": "start.jar",
+					"nameKey": "Bundle-SymbolicName",
+					"nameRequiredPrefix": "org.eclipse.jetty.start",
+					"versionFile": "start.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "9."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "jetty9.x",
+				"jetty-9.0.27": {
+					"name": "Jetty 9.4.28",
+					"fullVersion": "9.4.28",
+					"downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.28.v20200408/jetty-distribution-9.4.28.v20200408.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "19911533"
+				}
+			},
+			"type": {
+				"name": "Jetty 9.x",
+				"description": "A server adapter capable of discovering and controlling a Jetty 9.x runtime instance.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						"jetty.base.dir": {
+							"type": "string",
+							"description": "A relative path from the server root to the basedir to be used.",
+							"defaultValue": "demo-base",
+							"secret": "false"
+						}
+					},
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "${jetty.base.dir}/webapps/",
+						"approvedSuffixes": "war,",
+						"supportsExploded": "true"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "${jetty.base.dir}",
+							"mainType": "org.eclipse.jetty.start.Main",
+							"programArgs": "",
+							"vmArgs": "",
+							"classpath": "start.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${jetty.host}:${jetty.port}"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "terminateProcess",
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${jetty.host}:${jetty.port}"
+						}
+					},
+					"actions": {
+						"showInBrowser": {
+							"baseUrl": "http://${jetty.host}:${jetty.port}",
+							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
+						},
+						"editServerConfiguration": {
+							"paths": "conf/server.xml,conf/web.xml"
+						}
+					}
+				}
+			}
+		}
+	}
+}
