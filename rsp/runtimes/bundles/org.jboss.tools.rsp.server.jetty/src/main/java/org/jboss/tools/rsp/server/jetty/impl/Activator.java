@@ -13,11 +13,11 @@ import java.io.InputStream;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.ServerCoreActivator;
 import org.jboss.tools.rsp.server.generic.GenericServerActivator;
-import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
 import org.jboss.tools.rsp.server.generic.IServerBehaviorFromJSONProvider;
-import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
+import org.jboss.tools.rsp.server.generic.IServerBehaviorProvider;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.IJettyServerAttributes;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +62,7 @@ public class Activator extends GenericServerActivator {
 			public IServerBehaviorProvider loadBehaviorFromJSON(String serverTypeId, JSONMemento behaviorMemento) {
 				return new IServerBehaviorProvider() {
 					@Override
-					public GenericServerBehavior createServerDelegate(String typeId, IServer server) {
+					public IServerDelegate createServerDelegate(String typeId, IServer server) {
 						if (IJettyServerAttributes.JETTY_9X_SERVER_TYPE_ID.equals(typeId)) {
 							return new JettyServerDelegate(server, behaviorMemento);
 						}
