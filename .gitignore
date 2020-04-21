@@ -1,2 +1,4 @@
 vscode/.vscode-test/
 vscode/coverage
+.project
+.settings/
