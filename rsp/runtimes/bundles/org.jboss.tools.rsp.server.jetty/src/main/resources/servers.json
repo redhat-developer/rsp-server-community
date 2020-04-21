@@ -86,7 +86,7 @@
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
-							"paths": "conf/server.xml,conf/web.xml"
+							"paths": "${jetty.base.dir}/etc/,${jetty.base.dir}/start.d/"
 						}
 					}
 				}
