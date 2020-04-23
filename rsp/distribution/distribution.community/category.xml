@@ -26,4 +26,5 @@
    <bundle id="org.jboss.tools.rsp.server.felix"/>
    <bundle id="org.jboss.tools.rsp.server.karaf"/>
    <bundle id="org.jboss.tools.rsp.server.jetty"/>
+   <bundle id="org.jboss.tools.rsp.server.glassfish"/>
 </site>

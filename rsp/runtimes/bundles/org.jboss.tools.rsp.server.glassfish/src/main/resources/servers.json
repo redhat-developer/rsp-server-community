@@ -1,0 +1,116 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.glassfish.5x": {
+			"discoveries": {
+				"glassfish.5.x": {
+					"discoveryType": "jarManifest",
+					"name": "Glassfish 5.x",
+					"nameFile": "glassfish/modules/glassfish.jar",
+					"nameKey": "Bundle-SymbolicName",
+					"nameRequiredPrefix": "org.glassfish.main.core.glassfish",
+					"versionFile": "glassfish/modules/glassfish.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "5."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "glassfish5.x",
+				"glassfish-5.0.1": {
+					"name": "Glassfish 5.0.1",
+					"fullVersion": "5.0.1",
+					"downloadUrl": "https://download.oracle.com/glassfish/5.0.1/release/glassfish-5.0.1.zip",
+					"licenseUrl": "https://oss.oracle.com/licenses/CDDL+GPL-1.1",
+					"installationMethod": "archive",
+					"size": "117592534"
+				}
+			},
+			"type": {
+				"name": "Glassfish 5.x",
+				"description": "A server adapter capable of discovering and controlling a Glassfish 5.x runtime instance.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						"glassfish.domain": {
+							"type": "string",
+							"description": "The name of the glassfish domain to be used",
+							"defaultValue": "domain1",
+							"secret": "false"
+						},
+						"glassfish.host": {
+							"type": "string",
+							"description": "The host glassfish will run on",
+							"defaultValue": "localhost",
+							"secret": "false"
+						},
+						"glassfish.port": {
+							"type": "string",
+							"description": "The port glassfish will run on.",
+							"defaultValue": "8080",
+							"secret": "false"
+						}
+					},
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "glassfish/domains/${glassfish.domain}/autodeploy/",
+						"approvedSuffixes": "war,",
+						"supportsExploded": "true"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "glassfish/bin",
+							"mainType": "com.sun.enterprise.admin.cli.AdminMain",
+							"programArgs": "start-domain --verbose",
+							"vmArgs": "",
+							"classpath": "glassfish/modules/admin-cli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${glassfish.host}:${glassfish.port}"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "glassfish/bin",
+							"mainType": "com.sun.enterprise.admin.cli.AdminMain",
+							"programArgs": "stop-domain",
+							"vmArgs": "",
+							"classpath": "glassfish/modules/admin-cli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${glassfish.host}:${glassfish.port}"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"actions": {
+						"showInBrowser": {
+							"baseUrl": "http://${glassfish.host}:${glassfish.port}",
+							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
+						},
+						"editServerConfiguration": {
+							"paths": "glassfish/domains/${glassfish.domain}/config/"
+						}
+					}
+				}
+			}
+		}
+	}
+}

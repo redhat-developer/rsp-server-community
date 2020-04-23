@@ -18,6 +18,7 @@
     <module>org.jboss.tools.rsp.server.felix</module>
     <module>org.jboss.tools.rsp.server.karaf</module>
     <module>org.jboss.tools.rsp.server.jetty</module>
+    <module>org.jboss.tools.rsp.server.glassfish</module>
     <module>org.jboss.tools.rsp.server.folder</module>
   </modules>
 </project>
