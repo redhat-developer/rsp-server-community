@@ -28,4 +28,5 @@ This extension depends on VSCode RSP UI Extension which is going to be installed
    * Apache Karaf [ 4.8 ] 
    * Apache Felix [ 3.2 | 4.6 | 5.6 | 6.0 ]
    * Jetty [ 9.x ]
+   * Glassfish [ 5.x ]
 
