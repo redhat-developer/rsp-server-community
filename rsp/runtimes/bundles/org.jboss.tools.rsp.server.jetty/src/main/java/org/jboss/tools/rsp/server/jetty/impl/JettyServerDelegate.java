@@ -16,6 +16,7 @@ import java.util.Properties;
 
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableState;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.DefaultExternalVariableResolver;
@@ -23,6 +24,7 @@ import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerType;
 import org.jboss.tools.rsp.server.generic.servertype.variables.ServerStringVariableManager.IExternalVariableResolver;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.IJettyServerAttributes;
+import org.jboss.tools.rsp.server.jetty.servertype.impl.JettyContextRootSupport;
 import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
@@ -125,4 +127,9 @@ public class JettyServerDelegate extends GenericServerBehavior implements IServe
 			
 		}
 	}
+	
+	public String[] getDeploymentUrls(String strat, String baseUrl, String deployableOutputName, DeployableState ds) {
+		return new JettyContextRootSupport().getDeploymentUrls(strat, baseUrl, deployableOutputName, ds); 
+	}
+
 }

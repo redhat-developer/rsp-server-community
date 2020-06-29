@@ -9,6 +9,7 @@
 package org.jboss.tools.rsp.server.tomcat.impl;
 
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableState;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
@@ -17,6 +18,7 @@ import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerWorkingCopy;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.TomcatContextRootSupport;
 
 public class TomcatServerDelegate extends GenericServerBehavior implements IServerDelegate {
 
@@ -43,4 +45,10 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 			ce.printStackTrace();
 		}
 	}
+	
+	@Override
+	public String[] getDeploymentUrls(String strat, String baseUrl, String deployableOutputName, DeployableState ds) {
+		return new TomcatContextRootSupport().getDeploymentUrls(strat, baseUrl, deployableOutputName, ds); 
+	}
+
 }
