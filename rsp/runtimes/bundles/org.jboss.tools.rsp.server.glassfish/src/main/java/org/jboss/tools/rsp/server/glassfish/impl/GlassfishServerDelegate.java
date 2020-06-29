@@ -9,6 +9,7 @@
 package org.jboss.tools.rsp.server.glassfish.impl;
 
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableState;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
@@ -43,4 +44,10 @@ public class GlassfishServerDelegate extends GenericServerBehavior implements IS
 			ce.printStackTrace();
 		}
 	}
+	
+	@Override
+	public String[] getDeploymentUrls(String strat, String baseUrl, String deployableOutputName, DeployableState ds) {
+		return new GlassfishContextRootSupport().getDeploymentUrls(strat, baseUrl, deployableOutputName, ds); 
+	}
+
 }
