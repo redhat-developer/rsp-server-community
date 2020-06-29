@@ -63,7 +63,7 @@ public class Activator extends GenericServerActivator {
 				return new IServerBehaviorProvider() {
 					@Override
 					public IServerDelegate createServerDelegate(String typeId, IServer server) {
-						if (ITomcatServerAttributes.TOMCAT_90_SERVER_TYPE_ID.equals(typeId)) {
+						if (typeId != null && typeId.startsWith(ITomcatServerAttributes.TOMCAT_SERVER_TYPE_PREFIX)) {
 							return new TomcatServerDelegate(server, behaviorMemento);
 						}
 						return null;
