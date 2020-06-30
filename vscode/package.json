@@ -2,7 +2,7 @@
   "name": "vscode-community-server-connector",
   "displayName": "Community Server Connectors",
   "description": "Connects vscode with open source community-driven servers and runtimes.",
-  "version": "0.22.10",
+  "version": "0.22.11",
   "license": "SEE LICENSE IN LICENSE",
   "publisher": "redhat",
   "author": "Red Hat",
