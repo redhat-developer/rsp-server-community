@@ -18,10 +18,11 @@ def prepareRemoteFolders(def emptyDir, def upload_dir, def distroVersion, def pa
 }
 
 pipeline {
-	agent { label 'rhel7' }
+	agent { label 'rhel8' }
 	
 	options {
-		timeout(time: 25, unit: 'MINUTES')
+		timeout(time: 30, unit: 'MINUTES')
+		timestamps()
 	}
 
 	tools {
@@ -39,7 +40,7 @@ pipeline {
 		stage('Install requirements') {
 			steps {
 				script {
-					def nodeHome = tool 'nodejs-8.11.1'
+					def nodeHome = tool 'nodejs-12.13.1'
 					env.PATH="${env.PATH}:${nodeHome}/bin"
 				}
 				sh "npm install -g typescript vsce"
