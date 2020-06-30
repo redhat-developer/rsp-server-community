@@ -42,6 +42,8 @@ suite('Server Tests', () => {
         rawListeners: undefined,
         read: undefined,
         readable: false,
+        readableEncoding: undefined,
+        readableEnded: undefined,
         readableHighWaterMark: undefined,
         readableLength: undefined,
         removeAllListeners: undefined,
@@ -83,7 +85,11 @@ suite('Server Tests', () => {
         stdin: undefined,
         stdio: undefined,
         stdout: readable,
-        unref: undefined
+        unref: undefined,
+        exitCode: undefined,
+        signalCode: undefined,
+        spawnargs: undefined,
+        spawnfile: undefined
     };
 
     setup(() => {
