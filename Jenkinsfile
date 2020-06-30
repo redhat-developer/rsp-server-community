@@ -21,7 +21,7 @@ pipeline {
 	agent { label 'rhel7' }
 	
 	options {
-		timeout(time: 90, unit: 'MINUTES')
+		timeout(time: 25, unit: 'MINUTES')
 	}
 
 	tools {
