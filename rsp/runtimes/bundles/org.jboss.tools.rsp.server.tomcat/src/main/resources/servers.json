@@ -41,6 +41,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -61,7 +65,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -76,12 +80,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
@@ -132,6 +136,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -152,7 +160,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -167,12 +175,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
@@ -223,6 +231,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -243,7 +255,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -258,12 +270,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
@@ -314,6 +326,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -334,7 +350,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -349,12 +365,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
@@ -405,6 +421,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -425,7 +445,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -440,12 +460,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
@@ -496,6 +516,10 @@
 						"args.override.boolean": {
 							"type": "boolean",
 							"value": "false"
+						},
+						"server.http.port": {
+							"type": "int",
+							"value": "8080"
 						}
 					}
 				},
@@ -516,7 +540,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -531,12 +555,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:8080"
+							"url": "http://localhost:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:8080",
+							"baseUrl": "http://localhost:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
