@@ -56,10 +56,10 @@ public class FelixServerDelegate extends GenericServerBehavior {
 			CommandLineDetails det = getStartLauncher().getLaunchCommand("run");
 			String progArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_PROGRAM_ARGS);
 			String vmArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_VM_ARGS);
-			if(progArgs != null && !progArgs.isEmpty()) {
+			if(progArgs == null || progArgs.isEmpty()) {
 				progArgs = "";
 			}
-			if(vmArgs != null && !vmArgs.isEmpty()) {
+			if(vmArgs == null || vmArgs.isEmpty()) {
 				vmArgs = "";
 			}
 			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_BOOLEAN, false);
