@@ -44,7 +44,6 @@ suite('Server Tests', () => {
         readable: false,
         readableEncoding: undefined,
         readableEnded: undefined,
-	readableFlowing: undefined,
         readableHighWaterMark: undefined,
         readableLength: undefined,
         removeAllListeners: undefined,
