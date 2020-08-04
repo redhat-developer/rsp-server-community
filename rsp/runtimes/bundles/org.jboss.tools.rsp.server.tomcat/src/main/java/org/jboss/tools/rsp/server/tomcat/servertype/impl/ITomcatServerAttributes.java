@@ -8,9 +8,9 @@
  ******************************************************************************/
 package org.jboss.tools.rsp.server.tomcat.servertype.impl;
 
-import org.jboss.tools.rsp.api.DefaultServerAttributes;
+import org.jboss.tools.rsp.server.generic.servertype.GenericServerAttributes;
 
-public interface ITomcatServerAttributes extends DefaultServerAttributes {
+public interface ITomcatServerAttributes extends GenericServerAttributes {
 	public static final String TOMCAT_SERVER_TYPE_PREFIX = "org.jboss.ide.eclipse.as.server.tomcat.";
 	public static final String TOMCAT_90_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.tomcat.90";
 	
@@ -18,7 +18,7 @@ public interface ITomcatServerAttributes extends DefaultServerAttributes {
 	/*
 	 * Required attributes
 	 */
-	public static final String SERVER_HOME = DefaultServerAttributes.SERVER_HOME_DIR;
+	public static final String SERVER_HOME = GenericServerAttributes.SERVER_HOME_DIR;
 	
 	/*
 	 * Optional attributes
@@ -27,4 +27,6 @@ public interface ITomcatServerAttributes extends DefaultServerAttributes {
 	public static final String TOMCAT_SERVER_HOST_DEFAULT = "localhost";
 	public static final String TOMCAT_SERVER_PORT = "tomcat.server.port";
 	public static final int TOMCAT_SERVER_PORT_DEFAULT = 8080;
+	
+	
 }
