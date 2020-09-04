@@ -51,7 +51,7 @@
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.6.5",
     "decache": "^4.5.1",
-    "decompress": "^4.2.0",
+    "decompress": "^4.2.1",
     "download": "^7.1.0",
     "glob": "^7.1.4",
     "istanbul": "^0.4.5",
