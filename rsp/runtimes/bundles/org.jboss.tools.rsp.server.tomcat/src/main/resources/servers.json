@@ -45,12 +45,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
@@ -140,12 +144,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
@@ -235,12 +243,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
@@ -330,12 +342,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
@@ -425,12 +441,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
@@ -520,12 +540,16 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "8080"
+						},
+						"server.deploy.dir": {
+							"type": "string",
+							"value": "webapps/"
 						}
 					}
 				},
 				"behavior": {
 					"publish": {
-						"deployPath": "webapps/",
+						"deployPath": "${server.deploy.dir}",
 						"approvedSuffixes": "war,",
 						"supportsExploded": "true"
 					},
