@@ -46,7 +46,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.35",
     "@types/sinon": "^7.0.13",
-    "@types/vscode": "^1.42.0",
+    "@types/vscode": "^1.30.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.7.1",
