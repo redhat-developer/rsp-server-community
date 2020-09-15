@@ -11,7 +11,6 @@ package org.jboss.tools.rsp.server.felix.impl;
 import org.jboss.tools.rsp.server.LauncherSingleton;
 import org.jboss.tools.rsp.server.ServerManagementServerLauncher;
 import org.jboss.tools.rsp.server.generic.GenericServerExtensionModel;
-import org.jboss.tools.rsp.server.spi.model.IServerManagementModel;
 
 public class FelixServerMain extends ServerManagementServerLauncher {
 

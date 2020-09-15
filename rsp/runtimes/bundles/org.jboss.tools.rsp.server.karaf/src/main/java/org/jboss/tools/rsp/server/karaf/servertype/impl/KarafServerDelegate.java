@@ -11,6 +11,7 @@ package org.jboss.tools.rsp.server.karaf.servertype.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.api.dao.ListServerActionResponse;
 import org.jboss.tools.rsp.api.dao.ServerActionRequest;
@@ -36,10 +37,14 @@ public class KarafServerDelegate extends GenericServerBehavior {
 		ListServerActionResponse ret = new ListServerActionResponse();
 		ret.setStatus(StatusConverter.convert(Status.OK_STATUS));
 		List<ServerActionWorkflow> allActions = new ArrayList<>();
-		ServerActionWorkflow wfWipeAndRestart = KarafWipeCacheRestartAction.getInitialWorkflow(this);
-		ServerActionWorkflow wfOpenShell = KarafOpenShellAction.getInitialWorkflow(this);
-		allActions.add(wfWipeAndRestart);
-		allActions.add(wfOpenShell);
+		
+		if( ServerManagementAPIConstants.STATE_STARTED == getServerState().getState()) {
+			ServerActionWorkflow wfWipeAndRestart = KarafWipeCacheRestartAction.getInitialWorkflow(this);
+			ServerActionWorkflow wfOpenShell = KarafOpenShellAction.getInitialWorkflow(this);
+			allActions.add(wfWipeAndRestart);
+			allActions.add(wfOpenShell);
+		}
+		
 		ret.setWorkflows(allActions);
 		return ret;
 	}
