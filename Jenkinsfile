@@ -163,6 +163,11 @@ pipeline {
 						sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${vsixToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
 					}
 
+					sh "echo org.jboss.tools.rsp.community.distribution.latest.version=${distroVersion} > LATEST"
+					sh "echo org.jboss.tools.rsp.community.distribution.latest.url=https://download.jboss.org/jbosstools/adapters/${upload_dir}/rsp-server-community/distributions/${distroVersion}/org.jboss.tools.rsp.server.community.distribution-${distroVersion}.zip >> LATEST"
+					sh "rsync -Pzrlt --rsh=ssh --protocol=28 LATEST ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/"
+
+
 					// publish to market place
 					if (params.publishToMarketPlace) {
 						stage('Publish to Marketplace') {
