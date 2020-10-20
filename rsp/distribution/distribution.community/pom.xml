@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jboss.tools.rsp.server.community</groupId>
 		<artifactId>distribution</artifactId>
-		<version>0.23.5.Final</version>
+		<version>0.23.8.Final</version>
 	</parent>
 	<groupId>org.jboss.tools.rsp.server.community.distribution</groupId>
 	<artifactId>org.jboss.tools.rsp.server.community.distribution</artifactId>
