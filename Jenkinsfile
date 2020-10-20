@@ -34,7 +34,7 @@ pipeline {
 		stage('Checkout SCM') {
 			steps {
 				deleteDir()
-				git url: "https://github.com/${params.FORK}/rsp-server-community", branch: params.BRANCH
+				git url: "https://github.com/${params.FORK}/rsp-server-community.git", branch: params.BRANCH
 			}
 		}
 		stage('Install requirements') {
