@@ -1,0 +1,46 @@
+name: RSP CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        java: ["1.8"]
+        node: [12]
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Java ${{ matrix.java }}
+      uses: actions/setup-java@v1
+      with:
+        java-version: ${{ matrix.java }}
+        java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+        architecture: x64
+    - name: Build RSP part using Maven
+      working-directory: rsp
+      run: mvn -f clean install -U -fae -e -B
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Install prerequisities
+      working-directory: vscode
+    - run: |
+        npm install -g typescript vsce
+    - name: Build VSCode part using NPM
+    - run: |
+        npm install
+        npm build
+    - name: Run VSCode tests
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: npm run test
