@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         java: ["1.8"]
         node: [12]
       fail-fast: false
@@ -32,7 +32,7 @@ jobs:
     - name: Build RSP part using Maven
       working-directory: rsp
       run: mvn clean install -U -fae -e -B
-    - name: Install prerequisities
+    - name: Install NPM prerequisities
       working-directory: vscode
       run: |
         npm install -g typescript vsce
@@ -41,7 +41,7 @@ jobs:
       run: |
         npm install
         npm run build
-    - name: Run VSCode tests
+    - name: Run NPM tests
       uses: GabrielBB/xvfb-action@v1.4
       with:
         working-directory: vscode
