@@ -30,17 +30,17 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - name: Build RSP part using Maven
-      run: mvn clean install -U -fae -e -B
       working-directory: rsp
+      run: mvn clean install -U -fae -e -B
     - name: Install prerequisities
+      working-directory: vscode
       run: |
         npm install -g typescript vsce
-      working-directory: vscode
     - name: Build VSCode part using NPM
+      working-directory: vscode
       run: |
         npm install
-        npm build
-      working-directory: vscode
+        npm run build
     - name: Run VSCode tests
       uses: GabrielBB/xvfb-action@v1.0
       with:
