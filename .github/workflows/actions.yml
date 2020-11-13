@@ -44,5 +44,5 @@ jobs:
     - name: Run VSCode tests
       uses: GabrielBB/xvfb-action@v1.0
       with:
-        run: npm run test
         working-directory: vscode
+        run: npm run test
