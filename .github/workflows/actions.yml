@@ -1,4 +1,4 @@
-name: RSP CI
+name: RSP Community CI
 
 on:
   push:
@@ -25,13 +25,13 @@ jobs:
         java-version: ${{ matrix.java }}
         java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: x64
-    - name: Build RSP part using Maven
-      run: mvn -f clean install -U -fae -e -B
-      working-directory: rsp
-    - name: Setup node
+    - name: Setup node ${{ matrix.node }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
+    - name: Build RSP part using Maven
+      run: mvn clean install -U -fae -e -B
+      working-directory: rsp
     - name: Install prerequisities
       working-directory: vscode
       run: |
