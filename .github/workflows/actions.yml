@@ -26,18 +26,18 @@ jobs:
         java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: x64
     - name: Build RSP part using Maven
-      working-directory: rsp
       run: mvn -f clean install -U -fae -e -B
+      working-directory: rsp
     - name: Setup node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
     - name: Install prerequisities
       working-directory: vscode
-    - run: |
+      run: |
         npm install -g typescript vsce
     - name: Build VSCode part using NPM
-    - run: |
+      run: |
         npm install
         npm build
     - name: Run VSCode tests
