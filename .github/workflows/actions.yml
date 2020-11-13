@@ -33,14 +33,16 @@ jobs:
       run: mvn clean install -U -fae -e -B
       working-directory: rsp
     - name: Install prerequisities
-      working-directory: vscode
       run: |
         npm install -g typescript vsce
+      working-directory: vscode
     - name: Build VSCode part using NPM
       run: |
         npm install
         npm build
+      working-directory: vscode
     - name: Run VSCode tests
       uses: GabrielBB/xvfb-action@v1.0
       with:
         run: npm run test
+        working-directory: vscode
