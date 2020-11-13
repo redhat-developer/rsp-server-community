@@ -42,7 +42,7 @@ jobs:
         npm install
         npm run build
     - name: Run VSCode tests
-      uses: GabrielBB/xvfb-action@v1.0
+      uses: GabrielBB/xvfb-action@v1.4
       with:
         working-directory: vscode
         run: npm run test
