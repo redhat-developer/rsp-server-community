@@ -15,6 +15,14 @@
 			},
 			"downloads": {
 				"downloadProviderId": "tomcat9.0.x",
+				"tomcat-9.0.41": {
+					"name": "Apache Tomcat 9.0.41",
+					"fullVersion": "9.0.41",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.41/bin/apache-tomcat-9.0.41.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "11983597"
+				},
 				"tomcat-9.0.27": {
 					"name": "Apache Tomcat 9.0.30",
 					"fullVersion": "9.0.30",
