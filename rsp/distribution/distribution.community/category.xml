@@ -28,4 +28,5 @@
    <bundle id="org.jboss.tools.rsp.server.jetty"/>
    <bundle id="org.jboss.tools.rsp.server.glassfish"/>
    <bundle id="org.jboss.tools.rsp.server.payara"/>
+   <bundle id="org.jboss.tools.rsp.server.liberty"/>
 </site>
