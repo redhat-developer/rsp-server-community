@@ -1,0 +1,116 @@
+{
+	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.payara.5x": {
+			"discoveries": {
+				"payara.5.x": {
+					"discoveryType": "jarManifest",
+					"name": "Payara 5.x",
+					"nameFile": "glassfish/modules/glassfish.jar",
+					"nameKey": "Bundle-SymbolicName",
+					"nameRequiredPrefix": "fish.payara.server.internal.core.glassfish",
+					"versionFile": "glassfish/modules/glassfish.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "5."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "payara5.x",
+				"payara-5.2020.7": {
+					"name": "Payara 5.2020.7",
+					"fullVersion": "5.2020.7",
+					"downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/5.2020.7/payara-5.2020.7.zip",
+					"licenseUrl": "https://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+					"installationMethod": "archive",
+					"size": "117592534"
+				}
+			},
+			"type": {
+				"name": "Payara 5.x",
+				"description": "A server adapter capable of discovering and controlling a Payara 5.x runtime instance.",
+				"launchModes": "run,debug",
+				"attributes": {
+					"required": {
+						"server.home.dir": {
+							"type": "string",
+							"description": "A filesystem path pointing to a server installation's root directory",
+							"defaultValue": "",
+							"secret": "false"
+						}
+					},
+					"optional": {
+						"payara.domain": {
+							"type": "string",
+							"description": "The name of the payara domain to be used",
+							"defaultValue": "domain1",
+							"secret": "false"
+						},
+						"payara.host": {
+							"type": "string",
+							"description": "The host payara will run on",
+							"defaultValue": "localhost",
+							"secret": "false"
+						},
+						"payara.port": {
+							"type": "string",
+							"description": "The port payara will run on.",
+							"defaultValue": "8080",
+							"secret": "false"
+						}
+					},
+					"staticDefaults": {
+						"args.override.boolean": {
+							"type": "boolean",
+							"value": "false"
+						}
+					}
+				},
+				"behavior": {
+					"publish": {
+						"deployPath": "glassfish/domains/${payara.domain}/autodeploy/",
+						"approvedSuffixes": "war,",
+						"supportsExploded": "true"
+					},
+					"startup": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "glassfish/bin",
+							"mainType": "com.sun.enterprise.admin.cli.AdminMain",
+							"programArgs": "start-domain --verbose",
+							"vmArgs": "",
+							"classpath": "glassfish/modules/admin-cli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${payara.host}:${payara.port}"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"shutdown": {
+						"launchType": "java-launch",
+						"launchProperties": {
+							"workingDirectory": "glassfish/bin",
+							"mainType": "com.sun.enterprise.admin.cli.AdminMain",
+							"programArgs": "stop-domain",
+							"vmArgs": "",
+							"classpath": "glassfish/modules/admin-cli.jar"
+						},
+						"poller": "webPoller",
+						"pollerProperties": {
+							"url": "http://${payara.host}:${payara.port}"
+						},
+						"onProcessTerminated": "setServerStateStopped"
+					},
+					"actions": {
+						"showInBrowser": {
+							"baseUrl": "http://${payara.host}:${payara.port}",
+							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
+						},
+						"editServerConfiguration": {
+							"paths": "glassfish/domains/${payara.domain}/config/"
+						}
+					}
+				}
+			}
+		}
+	}
+}
