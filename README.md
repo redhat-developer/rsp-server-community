@@ -8,7 +8,7 @@
 
 ## Summary
 
-This repository is a home for an RSP server, and the associated VSCode Extension, which can start, stop, and otherwise control Community runtimes and servers like Apache Felix, Karaf, Tomcat, Glassfish, and Jetty. 
+This repository is a home for an RSP server, and the associated VSCode Extension, which can start, stop, and otherwise control Community runtimes and servers like Apache Felix, Karaf, Tomcat, Glassfish, Jetty and Websphere Liberty. 
 
 The protocol is based on LSP4J. In short, the base protocol is the same as LSP, but the specification of the messages is different. 
 
