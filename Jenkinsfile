@@ -27,7 +27,7 @@ pipeline {
 
 	tools {
 		maven 'maven3-latest'
-		jdk 'openjdk-1.8'
+		jdk 'openjdk-11'
 	}
 	
 	stages {
@@ -46,7 +46,7 @@ pipeline {
 				sh "npm install -g typescript vsce"
 			}
 		}
-		stage ('Build community server with Java 8 runtime') {
+		stage ('Build community server with Java 11 runtime') {
 			steps {
 				dir("rsp") {
 					sh 'mvn clean install -fae -B'
