@@ -63,7 +63,7 @@ public class Activator extends GenericServerActivator {
 				return new IServerBehaviorProvider() {
 					@Override
 					public IServerDelegate createServerDelegate(String typeId, IServer server) {
-						if (IJettyServerAttributes.JETTY_9X_SERVER_TYPE_ID.equals(typeId)) {
+						if (typeId != null && typeId.startsWith(IJettyServerAttributes.JETTY_SERVER_TYPE_ID_PREFIX)) {
 							return new JettyServerDelegate(server, behaviorMemento);
 						}
 						return null;

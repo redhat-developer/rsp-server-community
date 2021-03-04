@@ -11,7 +11,10 @@ package org.jboss.tools.rsp.server.jetty.servertype.impl;
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 
 public interface IJettyServerAttributes extends DefaultServerAttributes {
+	public static final String JETTY_SERVER_TYPE_ID_PREFIX = "org.jboss.ide.eclipse.as.server.jetty.";
 	public static final String JETTY_9X_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.jetty.9x";
+	public static final String JETTY_10X_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.jetty.10x";
+	public static final String JETTY_11X_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.jetty.11x";
 	
 
 	/*

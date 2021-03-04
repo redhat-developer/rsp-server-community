@@ -1,6 +1,67 @@
 {
 	"serverTypes": {
+		"org.jboss.ide.eclipse.as.server.jetty.11x": {
+			"template": "jetty.template",
+			"discoveries": {
+				"jetty.11.x": {
+					"discoveryType": "jarManifest",
+					"name": "Jetty 11.x",
+					"nameFile": "start.jar",
+					"nameKey": "Bundle-SymbolicName",
+					"nameRequiredPrefix": "org.eclipse.jetty.start",
+					"versionFile": "start.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "11."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "jetty11.x",
+				"jetty-11.0.1": {
+					"name": "Jetty 11.0.1",
+					"fullVersion": "11.0.1",
+					"downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/11.0.1/jetty-home-11.0.1.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "13625053"
+				}
+			},
+			"type": {
+				"name": "Jetty 11.x",
+				"description": "A server adapter capable of discovering and controlling a Jetty 11.x runtime instance."
+			}
+		},
+		"org.jboss.ide.eclipse.as.server.jetty.10x": {
+			"template": "jetty.template",
+			"discoveries": {
+				"jetty.10.x": {
+					"discoveryType": "jarManifest",
+					"name": "Jetty 10.x",
+					"nameFile": "start.jar",
+					"nameKey": "Bundle-SymbolicName",
+					"nameRequiredPrefix": "org.eclipse.jetty.start",
+					"versionFile": "start.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "10."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "jetty10.x",
+				"jetty-10.0.1": {
+					"name": "Jetty 10.0.1",
+					"fullVersion": "10.0.1",
+					"downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/10.0.1/jetty-home-10.0.1.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "9912273"
+				}
+			},
+			"type": {
+				"name": "Jetty 10.x",
+				"description": "A server adapter capable of discovering and controlling a Jetty 10.x runtime instance."
+			}
+		},
 		"org.jboss.ide.eclipse.as.server.jetty.9x": {
+			"template": "jetty.template",
 			"discoveries": {
 				"jetty.9.x": {
 					"discoveryType": "jarManifest",
@@ -34,7 +95,13 @@
 			},
 			"type": {
 				"name": "Jetty 9.x",
-				"description": "A server adapter capable of discovering and controlling a Jetty 9.x runtime instance.",
+				"description": "A server adapter capable of discovering and controlling a Jetty 9.x runtime instance."
+			}
+		}
+	},
+	"templates": {
+		"jetty.template": {
+			"type": {
 				"launchModes": "run,debug",
 				"attributes": {
 					"required": {
