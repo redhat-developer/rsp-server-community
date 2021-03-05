@@ -17,13 +17,18 @@ import java.util.Properties;
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.api.dao.DeployableState;
+import org.jboss.tools.rsp.api.dao.ListServerActionResponse;
+import org.jboss.tools.rsp.api.dao.ServerActionRequest;
+import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.DefaultExternalVariableResolver;
+import org.jboss.tools.rsp.server.generic.servertype.GenericServerActionSupport;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerType;
 import org.jboss.tools.rsp.server.generic.servertype.variables.ServerStringVariableManager.IExternalVariableResolver;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.IJettyServerAttributes;
+import org.jboss.tools.rsp.server.jetty.servertype.impl.InitializeJettyActionHandler;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.JettyContextRootSupport;
 import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
@@ -123,8 +128,11 @@ public class JettyServerDelegate extends GenericServerBehavior implements IServe
 					DefaultServerAttributes.SERVER_HOME_DIR, (String)null);
 			String basedirVal = getGenericServerBehavior().getServer().getAttribute(
 					IJettyServerAttributes.JETTY_BASEDIR, (String)null);
-			return new File(homeDir).toPath().resolve(basedirVal).toFile();
-			
+			File ret = new File(homeDir).toPath().resolve(basedirVal).toFile();
+			if( !ret.exists()) {
+				ret.mkdirs();
+			}
+			return ret;
 		}
 	}
 	
@@ -132,4 +140,26 @@ public class JettyServerDelegate extends GenericServerBehavior implements IServe
 		return new JettyContextRootSupport().getDeploymentUrls(strat, baseUrl, deployableOutputName, ds); 
 	}
 
+	@Override
+	protected GenericServerActionSupport getServerActionSupport() {
+		final GenericServerActionSupport sup = super.getServerActionSupport();
+		if( getServer().getServerType().getId().equals(IJettyServerAttributes.JETTY_9X_SERVER_TYPE_ID)) {
+			return sup;
+		}
+		GenericServerActionSupport wrapper = new GenericServerActionSupport(this, null) {
+			public ListServerActionResponse listServerActions() {
+				ListServerActionResponse resp = sup.listServerActions();
+				resp.getWorkflows().add(InitializeJettyActionHandler.getInitialWorkflow(
+						JettyServerDelegate.this));
+				return resp;
+			}
+			public WorkflowResponse executeServerAction(ServerActionRequest req) {
+				if( InitializeJettyActionHandler.ACTION_ID.equals(req.getActionId() )) {
+					return new InitializeJettyActionHandler(JettyServerDelegate.this).handle(req);
+				}
+				return sup.executeServerAction(req);
+			}
+		};
+		return wrapper;
+	}
 }
