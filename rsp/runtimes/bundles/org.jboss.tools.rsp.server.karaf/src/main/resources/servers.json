@@ -1,6 +1,7 @@
 {
 	"serverTypes": {
 		"org.jboss.ide.eclipse.as.server.karaf.42": {
+			"template": "karaf.template",
 			"discoveries": {
 				"apache.karaf.42": {
 					"discoveryType": "jarManifest",
@@ -26,7 +27,43 @@
 			},
 			"type": {
 				"name": "Apache Karaf 4.2",
-				"description": "A server adapter capable of discovering and controlling an Apache Karaf 4.2 Container.",
+				"description": "A server adapter capable of discovering and controlling an Apache Karaf 4.2 Container."
+			}
+		},
+		"org.jboss.ide.eclipse.as.server.karaf.43": {
+			"template": "karaf.template",
+			"discoveries": {
+				"apache.karaf.43": {
+					"discoveryType": "jarManifest",
+					"name": "Apache Karaf 4.3",
+					"nameFilePattern": "lib/boot/org.apache.karaf.main-*.jar",
+					"nameKey": "Bundle-Name",
+					"nameRequiredPrefix": "Apache Karaf",
+					"versionFilePattern": "lib/boot/org.apache.karaf.main-*.jar",
+					"versionKey": "Bundle-Version",
+					"versionRequiredPrefix": "4.3."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "karaf43.download",
+				"karaf-4.3.0": {
+					"name": "Apache Karaf 4.3.0",
+					"fullVersion": "4.3.0",
+					"downloadUrl": "https://downloads.apache.org/karaf/4.3.0/apache-karaf-4.3.0.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "29673836"
+				}
+			},
+			"type": {
+				"name": "Apache Karaf 4.3",
+				"description": "A server adapter capable of discovering and controlling an Apache Karaf 4.3 Container."
+			}
+		}
+	},
+	"templates": {
+		"karaf.template": {
+			"type": {
 				"launchModes": "run,debug",
 				"attributes": {
 					"required": {
