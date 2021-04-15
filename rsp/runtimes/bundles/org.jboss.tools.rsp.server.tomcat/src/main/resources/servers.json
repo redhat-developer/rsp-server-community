@@ -97,126 +97,126 @@
 				"name": "Tomcat 8.5",
 				"description": "A server adapter capable of discovering and controlling a Tomcat 8.0 runtime instance."
 			}
-		}
-	},
-	"org.jboss.ide.eclipse.as.server.tomcat.80": {
-		"template": "tomcat.template",
-		"discoveries": {
-			"tomcat.8.0": {
-				"discoveryType": "jarManifest",
-				"name": "Tomcat 8.0.x",
-				"nameFile": "lib/catalina.jar",
-				"nameKey": "Implementation-Title",
-				"nameRequiredPrefix": "Apache Tomcat",
-				"versionFile": "lib/catalina.jar",
-				"versionKey": "Implementation-Version",
-				"versionRequiredPrefix": "8.0."
+		},
+		"org.jboss.ide.eclipse.as.server.tomcat.80": {
+			"template": "tomcat.template",
+			"discoveries": {
+				"tomcat.8.0": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 8.0.x",
+					"nameFile": "lib/catalina.jar",
+					"nameKey": "Implementation-Title",
+					"nameRequiredPrefix": "Apache Tomcat",
+					"versionFile": "lib/catalina.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "8.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat8.0.x",
+				"tomcat-8.0.53": {
+					"name": "Apache Tomcat 8.0.53",
+					"fullVersion": "8.0.53",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "10039844"
+				}
+			},
+			"type": {
+				"name": "Tomcat 8.0",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 8.0 runtime instance."
 			}
 		},
-		"downloads": {
-			"downloadProviderId": "tomcat8.0.x",
-			"tomcat-8.0.53": {
-				"name": "Apache Tomcat 8.0.53",
-				"fullVersion": "8.0.53",
-				"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip",
-				"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-				"installationMethod": "archive",
-				"size": "10039844"
+		"org.jboss.ide.eclipse.as.server.tomcat.70": {
+			"template": "tomcat.template",
+			"discoveries": {
+				"tomcat.7.0": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 7.0.x",
+					"nameFile": "lib/catalina.jar",
+					"nameKey": "Implementation-Title",
+					"nameRequiredPrefix": "Apache Tomcat",
+					"versionFile": "lib/catalina.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "7.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat7.0.x",
+				"tomcat-7.0.99": {
+					"name": "Apache Tomcat 7.0.99",
+					"fullVersion": "7.0.99",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.99/bin/apache-tomcat-7.0.99.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "10188725"
+				}
+			},
+			"type": {
+				"name": "Tomcat 7.0",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 7.0 runtime instance."
 			}
 		},
-		"type": {
-			"name": "Tomcat 8.0",
-			"description": "A server adapter capable of discovering and controlling a Tomcat 8.0 runtime instance."
-		}
-	},
-	"org.jboss.ide.eclipse.as.server.tomcat.70": {
-		"template": "tomcat.template",
-		"discoveries": {
-			"tomcat.7.0": {
-				"discoveryType": "jarManifest",
-				"name": "Tomcat 7.0.x",
-				"nameFile": "lib/catalina.jar",
-				"nameKey": "Implementation-Title",
-				"nameRequiredPrefix": "Apache Tomcat",
-				"versionFile": "lib/catalina.jar",
-				"versionKey": "Implementation-Version",
-				"versionRequiredPrefix": "7.0."
+		"org.jboss.ide.eclipse.as.server.tomcat.60": {
+			"template": "tomcat.template",
+			"discoveries": {
+				"tomcat.6.0": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 6.0.x",
+					"nameFile": "lib/catalina.jar",
+					"nameKey": "Implementation-Title",
+					"nameRequiredPrefix": "Apache Tomcat",
+					"versionFile": "lib/catalina.jar",
+					"versionKey": "Implementation-Version",
+					"versionRequiredPrefix": "6.0."
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat6.0.x",
+				"tomcat-6.0.53": {
+					"name": "Apache Tomcat 6.0.53",
+					"fullVersion": "6.0.53",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "7513479"
+				}
+			},
+			"type": {
+				"name": "Tomcat 6.0",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 6.0 runtime instance."
 			}
 		},
-		"downloads": {
-			"downloadProviderId": "tomcat7.0.x",
-			"tomcat-7.0.99": {
-				"name": "Apache Tomcat 7.0.99",
-				"fullVersion": "7.0.99",
-				"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.99/bin/apache-tomcat-7.0.99.zip",
-				"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-				"installationMethod": "archive",
-				"size": "10188725"
+		"org.jboss.ide.eclipse.as.server.tomcat.55": {
+			"template": "tomcat.template",
+			"discoveries": {
+				"tomcat.5.5": {
+					"discoveryType": "jarManifest",
+					"name": "Tomcat 5.5.x",
+					"nameFile": "server/lib/catalina.jar",
+					"nameKey": "Created-By",
+					"nameRequiredPrefix": "1.4.2_19-b04",
+					"versionFile": "server/lib/tomcat-coyote.jar",
+					"versionKey": "Created-By",
+					"versionRequiredPrefix": "1.4.2_19-b04"
+				}
+			},
+			"downloads": {
+				"downloadProviderId": "tomcat5.5.x",
+				"tomcat-5.5.36": {
+					"name": "Apache Tomcat 5.5.36",
+					"fullVersion": "5.5.36",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-5/v5.5.36/bin/apache-tomcat-5.5.36.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "10540286"
+				}
+			},
+			"type": {
+				"name": "Tomcat 5.5",
+				"description": "A server adapter capable of discovering and controlling a Tomcat 5.5 runtime instance."
 			}
-		},
-		"type": {
-			"name": "Tomcat 7.0",
-			"description": "A server adapter capable of discovering and controlling a Tomcat 7.0 runtime instance."
-		}
-	},
-	"org.jboss.ide.eclipse.as.server.tomcat.60": {
-		"template": "tomcat.template",
-		"discoveries": {
-			"tomcat.6.0": {
-				"discoveryType": "jarManifest",
-				"name": "Tomcat 6.0.x",
-				"nameFile": "lib/catalina.jar",
-				"nameKey": "Implementation-Title",
-				"nameRequiredPrefix": "Apache Tomcat",
-				"versionFile": "lib/catalina.jar",
-				"versionKey": "Implementation-Version",
-				"versionRequiredPrefix": "6.0."
-			}
-		},
-		"downloads": {
-			"downloadProviderId": "tomcat6.0.x",
-			"tomcat-6.0.53": {
-				"name": "Apache Tomcat 6.0.53",
-				"fullVersion": "6.0.53",
-				"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53.zip",
-				"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-				"installationMethod": "archive",
-				"size": "7513479"
-			}
-		},
-		"type": {
-			"name": "Tomcat 6.0",
-			"description": "A server adapter capable of discovering and controlling a Tomcat 6.0 runtime instance."
-		}
-	},
-	"org.jboss.ide.eclipse.as.server.tomcat.55": {
-		"template": "tomcat.template",
-		"discoveries": {
-			"tomcat.5.5": {
-				"discoveryType": "jarManifest",
-				"name": "Tomcat 5.5.x",
-				"nameFile": "server/lib/catalina.jar",
-				"nameKey": "Created-By",
-				"nameRequiredPrefix": "1.4.2_19-b04",
-				"versionFile": "server/lib/tomcat-coyote.jar",
-				"versionKey": "Created-By",
-				"versionRequiredPrefix": "1.4.2_19-b04"
-			}
-		},
-		"downloads": {
-			"downloadProviderId": "tomcat5.5.x",
-			"tomcat-5.5.36": {
-				"name": "Apache Tomcat 5.5.36",
-				"fullVersion": "5.5.36",
-				"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-5/v5.5.36/bin/apache-tomcat-5.5.36.zip",
-				"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-				"installationMethod": "archive",
-				"size": "10540286"
-			}
-		},
-		"type": {
-			"name": "Tomcat 5.5",
-			"description": "A server adapter capable of discovering and controlling a Tomcat 5.5 runtime instance."
 		}
 	},
 	"templates": {
