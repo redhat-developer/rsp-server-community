@@ -19,11 +19,20 @@
 				"tomcat-10.0.2": {
 					"name": "Apache Tomcat 10.0.2",
 					"fullVersion": "10.0.2",
-					"downloadUrl": "https://downloads.apache.org/tomcat/tomcat-10/v10.0.2/bin/apache-tomcat-10.0.2.zip",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.2/bin/apache-tomcat-10.0.2.zip",
 					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
 					"installationMethod": "archive",
 					"size": "11897156"
+				},
+				"tomcat-10.0.8": {
+					"name": "Apache Tomcat 10.0.8",
+					"fullVersion": "10.0.8",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "12395383"
 				}
+
 			},
 			"type": {
 				"name": "Tomcat 10.x",
