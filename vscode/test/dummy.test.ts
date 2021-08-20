@@ -13,9 +13,9 @@ suite('Dummy Suite', () => {
 
     test('dummy test', () => {
         // when
-	//const defaultIcon: Uri = ServerIcon.get(null);
+        //const defaultIcon: Uri = ServerIcon.get(null);
         // then
-	//expect(defaultIcon).to.be.null;
+        //expect(defaultIcon).to.be.null;
     });
 
 });

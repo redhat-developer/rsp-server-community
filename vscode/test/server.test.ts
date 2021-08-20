@@ -16,7 +16,7 @@ chai.use(sinonChai);
 suite('Server Tests', () => {
     let sandbox: sinon.SinonSandbox;
 
-    const stdCallback: (data: string) => void = data => {};
+    const stdCallback: (data: string) => void = (data) => { return; };
 
     setup(() => {
         sandbox = sinon.createSandbox();

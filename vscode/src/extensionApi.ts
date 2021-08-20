@@ -22,7 +22,7 @@ export class ExtensionAPI implements RSPController {
         this.emitter = new EventEmitter();
     }
 
-    public async startRSP(stdoutCallback: (data: string) => void, stderrCallback: (data: string) => void ): Promise<ServerInfo>  {
+    public async startRSP(stdoutCallback: (data: string) => void, stderrCallback: (data: string) => void): Promise<ServerInfo>  {
         this.updateRSPStateChanged(ServerState.STARTING);
         return await server.start(stdoutCallback, stderrCallback, this).then(serverInfo => {
             this.host = serverInfo.host;
@@ -50,29 +50,29 @@ export class ExtensionAPI implements RSPController {
     }
 
     private getFilename(serverType: string): string {
-	if( serverType.toLowerCase().indexOf("karaf") != -1) {
-		return "karaf.png";
-	}
-	if( serverType.toLowerCase().indexOf("tomcat") != -1) {
-		return "tomcat.svg";
-	}
-	if( serverType.toLowerCase().indexOf("felix") != -1 ) {
-		return "felix.png";
-	}
-	if( serverType.toLowerCase().indexOf("jetty") != -1 ) {
-		return "jetty.png";
-	}
-	if( serverType.toLowerCase().indexOf("glassfish") != -1 ) {
-		return "glassfish.png";
-	}
-	if( serverType.toLowerCase().indexOf("payara") != -1 ) {
-		return "payara.png";
-	}
-	if( serverType.toLowerCase().indexOf("liberty") != -1 ) {
-		return "websphere.png";
-	}
+        if(serverType.toLowerCase().indexOf('karaf') != -1) {
+            return 'karaf.png';
+        }
+        if(serverType.toLowerCase().indexOf('tomcat') != -1) {
+            return 'tomcat.svg';
+        }
+        if(serverType.toLowerCase().indexOf('felix') != -1) {
+            return 'felix.png';
+        }
+        if(serverType.toLowerCase().indexOf('jetty') != -1) {
+            return 'jetty.png';
+        }
+        if(serverType.toLowerCase().indexOf('glassfish') != -1) {
+            return 'glassfish.png';
+        }
+        if(serverType.toLowerCase().indexOf('payara') != -1) {
+            return 'payara.png';
+        }
+        if(serverType.toLowerCase().indexOf('liberty') != -1) {
+            return 'websphere.png';
+        }
 
-        return "community.png";
+        return 'community.png';
     }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {

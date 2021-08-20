@@ -59,7 +59,7 @@ function checkJavaRuntime(): Promise<string> {
             return resolve(javaHome);
         }
         // No settings, let's try to detect as last resort.
-        findJavaHome((err: any, home: string | PromiseLike<string>) => {
+        findJavaHome((err: Error, home: string | PromiseLike<string>) => {
             if (err) {
                 rejectWithDownloadUrl(reject, 'Java runtime could not be located');
             } else {
@@ -113,10 +113,7 @@ export function parseMajorVersion(content: string): number {
 
 const newLocal = 'https://developers.redhat.com/products/openjdk/download/?sc_cid=701f2000000RWTnAAO';
 function rejectWithDownloadUrl(reject: {
-    (reason?: any): void;
-    (reason?: any): void;
-    (reason?: any): void;
-    (reason?: any): void;
+    (reason?: unknown): void;
     (arg0: {
         message: string;
         label: string;
