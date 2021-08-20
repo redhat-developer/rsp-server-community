@@ -1,8 +1,6 @@
 const fs = require('fs-extra');
-const download = require('download');
 const decompress = require('decompress');
 
-const RSP_SERVER_JAR_PREFIX = 'org.example.rsp.server.extras.distribution-';
 const RSP_DIR_TO_SEARCH = __dirname + `/../../rsp/distribution/distribution.community/target/`
 
 const RSP_FOUND_DISTRO_NAME = findZip(RSP_DIR_TO_SEARCH);

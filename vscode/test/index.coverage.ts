@@ -5,7 +5,7 @@
 
 'use strict';
 
-declare var global: any;
+declare let global: any;
 
 /* tslint:disable no-require-imports */
 
@@ -81,7 +81,7 @@ function run(testsRoot: string, clb: any): any {
             mocha.run()
                 .on('fail', () => failureCount++)
                 .on('end', () => clb(undefined, failureCount)
-            );
+                );
         } catch (error) {
             return clb(error);
         }
@@ -101,7 +101,7 @@ interface ITestRunnerOptions {
 
 class CoverageRunner {
 
-    private coverageVar: string = `$$cov_${new Date().getTime()}$$`;
+    private coverageVar = `$$cov_${new Date().getTime()}$$`;
     private transformer: any = undefined;
     private matchFn: any = undefined;
     private instrumenter: any = undefined;

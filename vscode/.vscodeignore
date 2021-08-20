@@ -16,3 +16,4 @@ test/**
 .travis.yml
 Jenkinsfile
 CONTRIBUTING.md
+.eslintrc.json
