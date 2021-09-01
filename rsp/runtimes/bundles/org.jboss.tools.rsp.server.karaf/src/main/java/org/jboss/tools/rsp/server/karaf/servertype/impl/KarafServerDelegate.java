@@ -8,9 +8,15 @@
  ******************************************************************************/
 package org.jboss.tools.rsp.server.karaf.servertype.impl;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
+import org.jboss.tools.rsp.api.DefaultServerAttributes;
 import org.jboss.tools.rsp.api.ServerManagementAPIConstants;
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
 import org.jboss.tools.rsp.api.dao.ListServerActionResponse;
@@ -20,8 +26,10 @@ import org.jboss.tools.rsp.api.dao.WorkflowResponse;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
+import org.jboss.tools.rsp.server.generic.servertype.DefaultExternalVariableResolver;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerType;
+import org.jboss.tools.rsp.server.generic.servertype.variables.ServerStringVariableManager.IExternalVariableResolver;
 import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerWorkingCopy;
@@ -77,6 +85,41 @@ public class KarafServerDelegate extends GenericServerBehavior {
 			server.setAttribute(GenericServerType.JAVA_LAUNCH_OVERRIDE_VM_ARGS, vmArgs);
 		} catch(CoreException ce) {
 			ce.printStackTrace();
+		}
+	}
+	
+
+	@Override
+	protected IExternalVariableResolver getExternalVariableResolver() {
+		return new KarafExternalVariableResolver(this);
+	}
+	
+	protected class KarafExternalVariableResolver extends DefaultExternalVariableResolver {
+
+		public KarafExternalVariableResolver(GenericServerBehavior genericServerBehavior) {
+			super(genericServerBehavior);
+		}
+		@Override
+		public String getNonServerKeyValue(String key) {
+			String superRet = super.getNonServerKeyValue(key);
+			if( superRet != null ) 
+				return superRet;
+			
+			if( "karaf.MajorMinorMicro".equals(key)) {
+				String serverHome = getServer().getAttribute("server.home.dir", (String)null);
+				if( serverHome != null ) {
+					File lib = new File(serverHome, "lib");
+					File endorsed = new File(lib, "endorsed");
+					File[] list = endorsed.listFiles();
+					for( int i = 0; i < list.length; i++ ) {
+						if( list[i].getName().startsWith("org.apache.karaf.specs.locator-")) {
+							String ret = list[i].getName().substring("org.apache.karaf.specs.locator-".length());
+							return ret.substring(0, ret.length()-4);
+						}
+					}
+				}
+			}
+			return null;
 		}
 	}
 
