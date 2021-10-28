@@ -117,7 +117,7 @@
 							"classpath.version.9": "lib/boot/;lib/jdk9plus",
 							"classpath.version.1": "lib/boot/"
 						},
-						"poller": "noOpPoller"
+						"poller": "delayedSuccess"
 					}
 				}
 			}
