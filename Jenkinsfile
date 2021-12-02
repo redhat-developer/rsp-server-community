@@ -40,7 +40,7 @@ pipeline {
 		stage('Install requirements') {
 			steps {
 				script {
-					def nodeHome = tool 'nodejs-12.13.1'
+					def nodeHome = tool 'nodejs-15.14.0'
 					env.PATH="${env.PATH}:${nodeHome}/bin"
 				}
 				sh "npm install -g typescript vsce"
