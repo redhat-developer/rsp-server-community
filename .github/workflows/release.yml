@@ -1,0 +1,65 @@
+name: Generate plugin archive for new release
+on: [workflow_dispatch]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+        java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+        architecture: x64
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+    - name: Build RSP part using Maven
+      working-directory: rsp
+      run: mvn clean install -U -fae -e -B
+    - name: Install NPM prerequisities
+      working-directory: vscode
+      run: |
+        npm install -g typescript vsce
+    - name: Build VSCode part using NPM
+      working-directory: vscode
+      run: |
+        npm install
+        npm run build
+    - name: Run NPM tests
+      uses: GabrielBB/xvfb-action@v1.4
+      with:
+        working-directory: vscode
+        run: npm run test
+    - name: Get current package version
+      id: package_version
+      uses: martinbeentjes/npm-get-version-action@v1.1.0
+      with:
+        path: 'vscode'
+    - name: Create a Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      with:
+        tag_name : ${{ steps.package_version.outputs.current-version}}
+        release_name: ${{ steps.package_version.outputs.current-version}}
+        body: Release ${{ steps.package_version.outputs.current-version}}
+    - name: Create vsix
+      id: create_vsix
+      uses: HaaLeo/publish-vscode-extension@v0
+      with:
+        pat: 'no_necessary_as_we_do_not_publish_on_marketplace'
+        dryRun: true
+        packagePath: 'vscode'
+    - name: Attach vsix to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.create_vsix.outputs.vsixPath}}
+        asset_name: ${{ steps.create_vsix.outputs.vsixPath}}
+        asset_content_type: application/vsix
