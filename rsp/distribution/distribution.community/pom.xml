@@ -15,7 +15,8 @@
 	<packaging>eclipse-repository</packaging>
 
 	<properties>
-        <felix.version>6.0.3</felix.version>
+        <felix.version>7.0.3</felix.version>
+	<felix.hash>f4d53ba31cc5457afbfef00935dde810d4e6b420</felix.hash>
         <felix.folder>felix-framework-${felix.version}</felix.folder>
         <rsp-distribution.folder>rsp-distribution</rsp-distribution.folder>
 	</properties>
@@ -46,7 +47,7 @@
 						</goals>
 						<configuration>
 <url>https://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.main.distribution/${felix.version}/org.apache.felix.main.distribution-${felix.version}.zip</url>
-							<sha1>cb347362c0aa19f0e5324556bda1453ea36552c3</sha1>
+							<sha1>${felix.hash}</sha1>
 							<unpack>true</unpack>
 						</configuration>
 					</execution>

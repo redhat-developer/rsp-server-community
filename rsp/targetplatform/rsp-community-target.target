@@ -7,18 +7,21 @@
 		<!-- dont forget to increment these files when moving up a version: build.xml, *.target -->
 
 		<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-			<repository location="http://download.jboss.org/jbosstools/updates/requirements/orbit/R20180905201904/"/>
+			<repository location="http://download.jboss.org/jbosstools/updates/requirements/orbit/R20210825222808/" />
 
-			<unit id="org.junit" version="4.12.0.v201504281640"/>
-			<unit id="com.google.gson" version="2.8.2.v20180104-1110"/>
+			<unit id="org.junit" version="4.12.0.v201504281640" />
+			<unit id="com.google.gson" version="2.8.7.v20210624-1215" />
 
-			<unit id="org.apache.commons.compress" version="1.6.0.v201310281400"/>
-			<unit id="org.tukaani.xz" version="1.8.0.v20180207-1613"/>
+			<unit id="org.apache.commons.compress" version="1.6.0.v201310281400" />
+			<unit id="org.tukaani.xz" version="1.9.0.v20210624-1259" />
 
 			<!-- Docker Tooling deps -->
-			<unit id="org.assertj" version="1.7.1.v20170413-2026"/>
-			<unit id="org.json" version="1.0.0.v201011060100"/>
-			<unit id="org.mockito" version="1.9.5.v201605172210"/>
+			<unit id="org.assertj" version="3.20.2.v20210706-1104" />
+			<unit id="org.json" version="1.0.0.v201011060100" />
+			<unit id="org.mockito" version="2.23.0.v20200310-1642" />
+			<unit id="net.bytebuddy.byte-buddy" version="1.9.0.v20181107-1410"/>
+			<unit id="net.bytebuddy.byte-buddy-agent" version="1.9.0.v20181106-1534"/>
+			<unit id="org.objenesis" version="2.6.0.v20180420-1519"/>
 		</location>
 
 
@@ -41,8 +44,6 @@
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 			<repository location="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/jbosstools-locus/1.8.0/jbosstools-locus-1.8.0-updatesite.zip-unzip"/>
 			<!-- Test dependencies -->
-			<unit id="org.jboss.tools.locus.mockito" version="1.9.5.v20131024-0922"/>
-			<unit id="org.assertj.core" version="2.1.0"/>
 			<unit id="org.apache.felix.log" version="1.2.0"/>
 			<unit id="org.everit.osgi.bundles.org.apache.xmlcommons.full" version="1.4.1.20150918"/>
 		</location>
