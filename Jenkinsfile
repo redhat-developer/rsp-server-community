@@ -3,18 +3,18 @@
 def prepareRemoteFolders(def emptyDir, def upload_dir, def distroVersion, def packageJson) {
 	// Ensure proper folders are created
 	echo "Creating empty remote dirs for given version output"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/'"
+	sh "sftp -C ${UPLOAD_LOCATION}/snapshots/vscode-middleware-tools/ <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/'"
 
 	// Ensure proper folders are created *AND* emptied
 	echo "Ensuring some remote dirs are empty"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
-	sh "rsync -Pzrlt --rsh=ssh --protocol=28 --delete ${emptyDir}/ ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/ <<< \$'rm *'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/ <<< \$'rm *'"
 }
 
 pipeline {
@@ -140,32 +140,32 @@ pipeline {
 					sh "echo Uploading site"
 					def siteRepositoryFilesToPush = findFiles(glob: 'rsp/site/target/repository/*')
 					for (i = 0; i < siteRepositoryFilesToPush.length; i++) {
-						sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${siteRepositoryFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/"
+						sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/ <<< \$'put -p ${siteRepositoryFilesToPush[i].path}'"
 					}
 
 					sh "echo Uploading site/plugins"
 					def sitePluginFilesToPush = findFiles(glob: 'rsp/site/target/repository/plugins/*')
 					for (i = 0; i < sitePluginFilesToPush.length; i++) {
-						sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${sitePluginFilesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/"
+						sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/ <<< \$'put -p ${sitePluginFilesToPush[i].path}'"
 					}
 
 					// Upload distributions / zips
 					sh "echo Uploading distro files"
 					def filesToPush = findFiles(glob: '**/*.zip')
 					for (i = 0; i < filesToPush.length; i++) {
-						sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${filesToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/"
+						sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/ <<< \$'put -p ${filesToPush[i].path}'"
 					}
 
 					// Upload VSIX file
 					sh "echo Uploading vsix"
 					def vsixToPush = findFiles(glob: '**/*.vsix')
 					for (i = 0; i < vsixToPush.length; i++) {
-						sh "rsync -Pzrlt --rsh=ssh --protocol=28 ${vsixToPush[i].path} ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/"
+						sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/ <<< \$'put -p ${vsixToPush[i].path}'"
 					}
 
 					sh "echo org.jboss.tools.rsp.community.distribution.latest.version=${distroVersion} > LATEST"
 					sh "echo org.jboss.tools.rsp.community.distribution.latest.url=https://download.jboss.org/jbosstools/adapters/${upload_dir}/rsp-server-community/distributions/${distroVersion}/org.jboss.tools.rsp.server.community.distribution-${distroVersion}.zip >> LATEST"
-					sh "rsync -Pzrlt --rsh=ssh --protocol=28 LATEST ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/"
+					sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/ <<< \$'put -p LATEST'"
 
 
 					// publish to market place
