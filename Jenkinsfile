@@ -3,13 +3,13 @@
 def prepareRemoteFolders(def emptyDir, def upload_dir, def distroVersion, def packageJson) {
 	// Ensure proper folders are created
 	echo "Creating empty remote dirs for given version output"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/'"
-	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/${distroVersion}/p2/plugins/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/'"
+	sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir} <<< \$'mkdir ${UPLOAD_PATH}/${upload_dir}/rsp-server-community/vscode-extension/${packageJson.version}/'"
 
 	// Ensure proper folders are created *AND* emptied
 	echo "Ensuring some remote dirs are empty"
