@@ -18,6 +18,7 @@ import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
 import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerWorkingCopy;
+import org.jboss.tools.rsp.server.tomcat.servertype.impl.ITomcatServerAttributes;
 import org.jboss.tools.rsp.server.tomcat.servertype.impl.TomcatContextRootSupport;
 
 public class TomcatServerDelegate extends GenericServerBehavior implements IServerDelegate {
@@ -41,6 +42,12 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_BOOLEAN, false);
 			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_PROGRAM_ARGS, progArgs);
 			server.setAttribute(GenericServerType.JAVA_LAUNCH_OVERRIDE_VM_ARGS, vmArgs);
+			
+			String baseDir = server.getAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, (String)null); 
+			if( baseDir == null || baseDir.length() == 0) {
+				String currentHome = server.getAttribute(ITomcatServerAttributes.SERVER_HOME, (String)null);
+				server.setAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, currentHome);
+			}
 		} catch(CoreException ce) {
 			ce.printStackTrace();
 		}
