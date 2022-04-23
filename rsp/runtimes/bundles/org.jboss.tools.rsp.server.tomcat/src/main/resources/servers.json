@@ -260,7 +260,7 @@
 						},
 						"server.deploy.dir": {
 							"type": "string",
-							"value": "webapps/"
+							"value": "${server.base.dir}/webapps/"
 						}
 					}
 				},
