@@ -38,7 +38,7 @@ function checkJavaRuntime(): Promise<string> {
         let source: string;
         let javaHome: string | undefined = readJavaConfig();
         if (javaHome) {
-            source = 'The java.home variable defined in VS Code settings';
+            source = 'The rsp-ui.rsp.java.home variable defined in VS Code settings';
         } else {
             javaHome = process.env.JDK_HOME;
             if (javaHome) {
@@ -71,7 +71,11 @@ function checkJavaRuntime(): Promise<string> {
 
 function readJavaConfig(): string {
     const config = workspace.getConfiguration();
-    return config.get<string>('java.home', '');
+    const ret = config.get<string>('rsp-ui.rsp.java.home', '');
+    if(ret === '') {
+        // Backwards compatibility
+        return config.get<string>('java.home', '');
+    }
 }
 
 function checkJavaVersion(javaHome: string): Promise<number> {
