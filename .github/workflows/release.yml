@@ -15,7 +15,7 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v1
       with:
-        node-version: 15
+        node-version: 16
     - name: Build RSP part using Maven
       working-directory: rsp
       run: mvn clean install -U -fae -e -B
