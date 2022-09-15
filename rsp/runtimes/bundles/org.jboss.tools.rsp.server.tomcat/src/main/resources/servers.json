@@ -258,6 +258,10 @@
 							"type": "int",
 							"value": "8080"
 						},
+						"server.http.host": {
+							"type": "string",
+							"value": "localhost"
+						},
 						"server.deploy.dir": {
 							"type": "string",
 							"value": "${server.base.dir}/webapps/"
@@ -281,7 +285,7 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:${server.http.port}"
+							"url": "http://${server.http.host}:${server.http.port}"
 						},
 						"onProcessTerminated": "setServerStateStopped"
 					},
@@ -296,12 +300,12 @@
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
-							"url": "http://localhost:${server.http.port}"
+							"url": "http://${server.http.host}:${server.http.port}"
 						}
 					},
 					"actions": {
 						"showInBrowser": {
-							"baseUrl": "http://localhost:${server.http.port}",
+							"baseUrl": "http://${server.http.host}:${server.http.port}",
 							"deploymentStrategy": "appendDeploymentNameRemoveSuffix"
 						},
 						"editServerConfiguration": {
