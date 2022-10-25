@@ -46,3 +46,19 @@ jobs:
       with:
         working-directory: vscode
         run: npm run test
+    - name: Run NPM ui-tests
+      if: runner.os == 'Linux'
+      uses: GabrielBB/xvfb-action@v1.4
+      with:
+        working-directory: vscode
+        run: npm run ui-test
+    - name: Archiving test artifacts
+      if: runner.os == 'Linux'
+      uses: actions/upload-artifact@v2
+      with: 
+        name: my-artifact
+        path: |
+          vscode/test-resources/screenshots/*.png
+          vscode/test-resources/*.log
+          vscode/test-resources/test-report.xml
+        retention-days: 2

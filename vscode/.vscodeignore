@@ -17,3 +17,4 @@ test/**
 Jenkinsfile
 CONTRIBUTING.md
 .eslintrc.json
+test-resources

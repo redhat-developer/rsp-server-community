@@ -53,6 +53,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "test": "npm run compile && node ./out/test/test-runner.js",
+    "ui-test": "npm run compile && extest setup-and-run out/test/ui-test/allTestsSuite.js -c max",
     "update-deps": "node_modules/.bin/ncu --upgrade --loglevel verbose --packageFile package.json && npm update",
     "coverage:upload": "codecov -f coverage/coverage-final.json",
     "build": "npm run compile && npm run package",
@@ -80,11 +81,12 @@
     "glob": "^7.1.4",
     "istanbul": "^0.4.5",
     "mocha": "^9.1.0",
-    "mocha-jenkins-reporter": "^0.4.1",
+    "mocha-jenkins-reporter": "^0.4.7",
     "remap-istanbul": "^0.13.0",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
     "typescript": "^4.0.3",
+    "vscode-extension-tester": "^5.0.0",
     "vscode-test": "^1.2.3"
   },
   "dependencies": {
