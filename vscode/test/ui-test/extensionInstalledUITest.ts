@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { ActivityBar, ExtensionsViewItem, ExtensionsViewSection, SideBarView, ViewControl } from 'vscode-extension-tester';
+import { AdaptersConstants } from './common/constants/adaptersConstants';
 
 /**
  * @author Oleksii Korniienko <olkornii@redhat.com>
@@ -20,9 +21,9 @@ export function extensionInstalledUITest(): void {
 
     it('RSP server community extension is installed', async function () {
       this.timeout(20000);
-      const item = (await section.findItem(`@installed Community Server Connectors`)) as ExtensionsViewItem;
+      const item = (await section.findItem(`@installed ` + AdaptersConstants.RSP_EXTENSTION_NAME)) as ExtensionsViewItem;
       expect(item).not.undefined;
-      expect(await item.getTitle()).to.equal("Community Server Connectors");
+      expect(await item.getTitle()).to.equal(AdaptersConstants.RSP_EXTENSTION_NAME);
     });
 
     afterEach(async function () {
