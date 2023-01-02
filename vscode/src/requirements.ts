@@ -123,6 +123,7 @@ function rejectWithDownloadUrl(reject: {
         label: string;
         openUrl: Uri;
         replaceClose: boolean;
+        btns: { label: string; openUrl: Uri; }[];
     }): void;
 }, message: string): void {
     let jdkUrl = newLocal;
@@ -133,6 +134,12 @@ function rejectWithDownloadUrl(reject: {
         message: message,
         label: 'Get the Java Development Kit',
         openUrl: Uri.parse(jdkUrl),
-        replaceClose: false
+        replaceClose: false,
+        btns: [
+            {
+                label: 'Get the Java Development Kit',
+                openUrl: Uri.parse(jdkUrl),
+            }
+        ]
     });
 }
