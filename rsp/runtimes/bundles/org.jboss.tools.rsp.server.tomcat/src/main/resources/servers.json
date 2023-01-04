@@ -11,7 +11,7 @@
 					"nameRequiredPrefix": "Apache Tomcat",
 					"versionFile": "lib/catalina.jar",
 					"versionKey": "Implementation-Version",
-					"versionRequiredPrefix": "10.0."
+					"versionRequiredPrefix": "10."
 				}
 			},
 			"downloads": {
@@ -31,6 +31,22 @@
 					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
 					"installationMethod": "archive",
 					"size": "12395383"
+				},
+				"tomcat-10.0.27": {
+					"name": "Apache Tomcat 10.0.27",
+					"fullVersion": "10.0.27",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "12525287"
+				},
+				"tomcat-10.1.4": {
+					"name": "Apache Tomcat 10.1.4",
+					"fullVersion": "10.1.4",
+					"downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.4/bin/apache-tomcat-10.1.4.zip",
+					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+					"installationMethod": "archive",
+					"size": "12670763"
 				}
 
 			},
