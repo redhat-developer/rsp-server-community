@@ -69,7 +69,7 @@ suite('Extension API', () => {
                 await extensionApi.startRSP(stdCallback, stdCallback);
                 expect.fail();
             } catch (err) {
-                expect(err).equals('RSP Error - Community Server Connector failed to start - Error: Error');
+                expect(err).equals('RSP Error - Community Server Connector failed to start - Error');
             }
         });
 
