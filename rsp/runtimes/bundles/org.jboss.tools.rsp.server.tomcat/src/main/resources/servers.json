@@ -263,6 +263,12 @@
 							"description": "A filesystem path pointing to a server configuration.  Value used for CATALINA_BASE",
 							"defaultValue": "",
 							"secret": "false"
+						},
+						"vm.install.path": {
+							"type": "string",
+							"description": "A filesystem path pointing to a root directory of a java virtual machine to be used when launching this server.",
+							"defaultValue": "",
+							"secret": "false"
 						}
 					},
 					"staticDefaults": {
