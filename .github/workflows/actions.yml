@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        java: ["1.8", "11"]
+        java: ["11"]
         node: [16]
       fail-fast: false
 
