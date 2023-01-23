@@ -81,7 +81,7 @@
 		</location>
 
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-			<repository location="https://download.jboss.org/jbosstools/vscode/stable/rsp-server/p2/0.25.6.Final/"/>
+			<repository location="https://download.jboss.org/jbosstools/vscode/stable/rsp-server/p2/0.25.7.Final/"/>
 			<unit id="org.jboss.tools.rsp.api" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.foundation.core" version="0.0.0"/>
 			<unit id="org.jboss.tools.rsp.launching" version="0.0.0"/>
