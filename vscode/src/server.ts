@@ -39,7 +39,7 @@ export function start(stdoutCallback: (data: string) => void,
                         } else {
                             vscode.window.showInformationMessage(
                                 `To configure Java for Server Connector Extension add "rsp-ui.rsp.java.home" property to your settings file
-                        (ex. "rsp-ui.rsp.java.home": "/usr/local/java/jdk1.8.0_45").`);
+                        (ex. "rsp-ui.rsp.java.home": "/usr/local/java/jdk-11.0.13").`);
                             vscode.commands.executeCommand(
                                 'workbench.action.openSettingsJson'
                             );
