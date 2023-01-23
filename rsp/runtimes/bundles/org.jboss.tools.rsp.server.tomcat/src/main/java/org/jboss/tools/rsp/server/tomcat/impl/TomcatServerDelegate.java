@@ -8,11 +8,19 @@
  ******************************************************************************/
 package org.jboss.tools.rsp.server.tomcat.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.jboss.tools.rsp.api.dao.CommandLineDetails;
+import org.jboss.tools.rsp.api.dao.DeployableReference;
 import org.jboss.tools.rsp.api.dao.DeployableState;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.launching.memento.JSONMemento;
+import org.jboss.tools.rsp.server.generic.IPublishControllerWithOptions;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
+import org.jboss.tools.rsp.server.generic.servertype.GenericServerSuffixPublishController;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerType;
 import org.jboss.tools.rsp.server.spi.launchers.AbstractJavaLauncher;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
@@ -58,4 +66,52 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 		return new TomcatContextRootSupport().getDeploymentUrls(strat, baseUrl, deployableOutputName, ds); 
 	}
 
+	// If tomcat is stopped nad user removes blah.war, We need to delete the exploded folder as well
+
+	protected IPublishControllerWithOptions createPublishController() {
+		JSONMemento publishMemento = this.getBehaviorMemento().getChild("publish");
+		String deployPath = publishMemento.getString("deployPath");
+		String approvedSuffixes = publishMemento.getString("approvedSuffixes");
+		String[] suffixes = approvedSuffixes == null ? null : approvedSuffixes.split(",", -1);
+		String supportsExploded = publishMemento.getString("supportsExploded");
+		boolean exploded = (supportsExploded == null ? false : Boolean.parseBoolean(supportsExploded));
+		return new TomcatServerSuffixPublishController(
+				getServer(), this, 
+				suffixes, deployPath, exploded);
+	}
+	
+	private static class TomcatServerSuffixPublishController extends GenericServerSuffixPublishController {
+		public TomcatServerSuffixPublishController(IServer server, IServerDelegate delegate, String[] approvedSuffixes,
+				String deploymentPath, boolean supportsExploded) {
+			super(server, delegate, approvedSuffixes, deploymentPath, supportsExploded);
+		}
+
+
+		protected int removeModule(DeployableReference reference, 
+				int publishRequestType, int modulePublishState) throws CoreException {
+			int runState = getServer().getDelegate().getServerState().getState();
+			if( runState == IServerDelegate.STATE_STOPPED) {
+				// clean up exploded folder from zipped deployment
+				Path destPath = getDestinationPath(reference);
+				if( destPath.toFile().isFile()) {
+					// we are deleting a zip. Need to also delete the exploded folder
+					String fname = destPath.getFileName().toString();
+					if( fname.contains(".")) {
+						int lastDot = fname.lastIndexOf(".");
+						String prefix = lastDot == -1 ? fname : fname.substring(0, lastDot);
+						Path explodedDirPossible = new File(destPath.getParent().toFile(), prefix).toPath();
+						if( explodedDirPossible.toFile().exists()) {
+							try {
+								super.completeDelete(explodedDirPossible);
+							} catch(IOException ioe) {
+								// ignore
+							}
+						}
+					}
+				}
+			}
+			return super.removeModule(reference, publishRequestType, modulePublishState);
+		}
+	}
+	
 }
