@@ -29,13 +29,13 @@ jobs:
         npm install
         npm run build
     - name: Run NPM tests
-      uses: GabrielBB/xvfb-action@v1.4
+      uses: GabrielBB/xvfb-action@f040be23a619e5ec34116f24098ad3626ceab681 #v1.4
       with:
         working-directory: vscode
         run: npm run test
     - name: Get current package version
       id: package_version
-      uses: martinbeentjes/npm-get-version-action@v1.1.0
+      uses: martinbeentjes/npm-get-version-action@95bc31c6dd3145896c110e382f840bb1e750d09c #v1.1.0
       with:
         path: 'vscode'
     - name: Create a Release
@@ -49,7 +49,7 @@ jobs:
         body: Release ${{ steps.package_version.outputs.current-version}}
     - name: Create vsix
       id: create_vsix
-      uses: HaaLeo/publish-vscode-extension@v0
+      uses: HaaLeo/publish-vscode-extension@aae4c55fd9e724685834ff0a9488ad57c8f3ecf1 #v0
       with:
         pat: 'no_necessary_as_we_do_not_publish_on_marketplace'
         dryRun: true
