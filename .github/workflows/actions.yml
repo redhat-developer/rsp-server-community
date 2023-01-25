@@ -42,13 +42,13 @@ jobs:
         npm install
         npm run build
     - name: Run NPM tests
-      uses: GabrielBB/xvfb-action@v1.4
+      uses: GabrielBB/xvfb-action@f040be23a619e5ec34116f24098ad3626ceab681 #v1.4
       with:
         working-directory: vscode
         run: npm run test
     - name: Run NPM ui-tests
       if: runner.os == 'Linux'
-      uses: GabrielBB/xvfb-action@v1.4
+      uses: GabrielBB/xvfb-action@f040be23a619e5ec34116f24098ad3626ceab681 #v1.4
       with:
         working-directory: vscode
         run: npm run ui-test
