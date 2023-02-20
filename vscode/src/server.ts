@@ -5,7 +5,6 @@
 
 'use strict';
 
-
 import * as cp from 'child_process';
 import { ExtensionAPI } from './extensionApi';
 import * as path from 'path';
@@ -17,13 +16,13 @@ import * as waitOn from 'wait-on';
 import * as tcpPort from 'tcp-port-used';
 import * as fs from 'fs-extra';
 import { homedir } from 'os';
+import { RSP_CONNECTION_DELAY, RSP_CONNECTION_POLL_INTERVAL, RSP_ID, RSP_MAX_PORT, RSP_MIN_PORT } from './constants';
 
 let cpProcess: cp.ChildProcess;
 let javaHome: string;
 let port: number;
 let spawned: boolean;
 
-const rspid = 'redhat-community-server-connector';
 export function start(stdoutCallback: (data: string) => void,
     stderrCallback: (data: string) => void,
     api: ExtensionAPI): Promise<ServerInfo> {
@@ -55,8 +54,8 @@ export function start(stdoutCallback: (data: string) => void,
         .then(requirements => {
             javaHome = requirements.java_home;
             const options: portfinder.PortFinderOptions = {
-                port: 9000,
-                stopPort: 9500
+                port: RSP_MIN_PORT,
+                stopPort: RSP_MAX_PORT
             };
             return portfinder.getPortPromise(options);
         })
@@ -66,7 +65,10 @@ export function start(stdoutCallback: (data: string) => void,
             const portInUse = await lockFilePortInUse(lockFile);
 
             if(lockFileExist && portInUse) {
-                port = +await getLockFilePort(lockFile);
+                const p = await getLockFilePort(lockFile);
+                if (p) {
+                    port = +p;
+                }
                 spawned = false;
             } else {
                 if(lockFileExist && !portInUse) {
@@ -79,8 +81,8 @@ export function start(stdoutCallback: (data: string) => void,
             }
             const opts = {
                 resources: [`tcp:localhost:${port}`],
-                delay: 1000, // initial delay in ms, default 0
-                interval: 333, // poll interval in ms, default 250ms
+                delay: RSP_CONNECTION_DELAY, // initial delay in ms, default 0
+                interval: RSP_CONNECTION_POLL_INTERVAL, // poll interval in ms, default 250ms
                 simultaneous: 1 // limit connection attempts to one per resource at a time
             };
             return waitOn(opts);
@@ -103,7 +105,7 @@ export function start(stdoutCallback: (data: string) => void,
 }
 
 async function getLockFile() {
-    const lockFile = path.resolve(homedir(), '.rsp', rspid, '.lock');
+    const lockFile = path.resolve(homedir(), '.rsp', RSP_ID, '.lock');
     return lockFile;
 }
 
@@ -114,13 +116,14 @@ async function lockFileExists(lockFile: string) {
     return false;
 }
 
-async function getLockFilePort(lockFile: string) {
+async function getLockFilePort(lockFile: string): Promise<string | null> {
     if (fs.existsSync(lockFile)) {
         const port = await fs.readFile(lockFile, 'utf8');
         return port;
     }
     return null;
 }
+
 
 async function lockFilePortInUse(lockFile: string) {
     if (fs.existsSync(lockFile)) {
@@ -132,7 +135,7 @@ async function lockFilePortInUse(lockFile: string) {
 }
 
 function getServerLocation(process: NodeJS.Process): string {
-    return  process.env.RSP_SERVER_LOCATION ?
+    return process.env.RSP_SERVER_LOCATION ?
         process.env.RSP_SERVER_LOCATION : path.resolve(__dirname, '..', '..', 'server');
 }
 
@@ -144,20 +147,24 @@ function startServer(
     // Debuggable version
     // const process = cp.spawn(java, [`-Xdebug`, `-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=y`, `-Drsp.server.port=${port}`, '-jar', felix], { cwd: location });
     // Production version
-    cpProcess = cp.spawn(java, [`-Drsp.server.port=${port}`, `-Dorg.jboss.tools.rsp.id=${rspid}`,  '-Dlogback.configurationFile=./conf/logback.xml', '-jar', felix], 
+    cpProcess = cp.spawn(java, [`-Drsp.server.port=${port}`, `-Dorg.jboss.tools.rsp.id=${RSP_ID}`, '-Dlogback.configurationFile=./conf/logback.xml', '-jar', felix], 
         { cwd: location, env: process.env });
-    cpProcess.stdout.on('data', stdoutCallback);
-    cpProcess.stderr.on('data', stderrCallback);
-    cpProcess.on('close', () => {
-        if (api != null) {
-            api.updateRSPStateChanged(ServerState.STOPPED);
-        }
-    });
-    cpProcess.on('exit', () => {
-        if (api != null) {
-            api.updateRSPStateChanged(ServerState.STOPPED);
-        }
-    });
+    if(cpProcess) {
+        if (cpProcess.stdout)
+            cpProcess.stdout.on('data', stdoutCallback);
+        if (cpProcess.stderr)
+            cpProcess.stderr.on('data', stderrCallback);
+        cpProcess.on('close', () => {
+            if (api != null) {
+                api.updateRSPStateChanged(ServerState.STOPPED);
+            }
+        });
+        cpProcess.on('exit', () => {
+            if (api != null) {
+                api.updateRSPStateChanged(ServerState.STOPPED);
+            }
+        });
+    }
 }
 
 export async function terminate(): Promise<void> {
