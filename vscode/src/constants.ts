@@ -20,11 +20,11 @@ export const RSP_ID = 'redhat-community-server-connector';
 /**
  * The minimum port for this rsp instance to avoid clobbering
  */
-export const RSP_MIN_PORT = 8500;
+export const RSP_MIN_PORT = 9000;
 /**
  * The maximum port for this rsp instance to avoid clobbering
  */
-export const RSP_MAX_PORT = 9000;
+export const RSP_MAX_PORT = 9499;
 /**
  * How long to wait before trying to connect
  */
