@@ -3,7 +3,7 @@
  *  Licensed under the EPL v2.0 License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { RSP_PROVIDER_NAME } from './constants';
+import { getServerTypeImageFileName, RSP_PROVIDER_NAME } from './constants';
 import { EventEmitter } from 'events';
 import * as path from 'path';
 import * as server from './server';
@@ -48,34 +48,9 @@ export class ExtensionAPI implements RSPController {
             return null;
         }
 
-        return Uri.file(path.join(__dirname, '..', '..', 'images', this.getFilename(serverType)));
+        return Uri.file(path.join(__dirname, '..', '..', 'images', getServerTypeImageFileName(serverType)));
     }
 
-    private getFilename(serverType: string): string {
-        if(serverType.toLowerCase().indexOf('karaf') != -1) {
-            return 'karaf.png';
-        }
-        if(serverType.toLowerCase().indexOf('tomcat') != -1) {
-            return 'tomcat.svg';
-        }
-        if(serverType.toLowerCase().indexOf('felix') != -1) {
-            return 'felix.png';
-        }
-        if(serverType.toLowerCase().indexOf('jetty') != -1) {
-            return 'jetty.png';
-        }
-        if(serverType.toLowerCase().indexOf('glassfish') != -1) {
-            return 'glassfish.png';
-        }
-        if(serverType.toLowerCase().indexOf('payara') != -1) {
-            return 'payara.png';
-        }
-        if(serverType.toLowerCase().indexOf('liberty') != -1) {
-            return 'websphere.png';
-        }
-
-        return 'community.png';
-    }
 
     public onRSPServerStateChanged(listener: (state: number) => void): void {
         this.emitter.on('rspServerStateChanged', listener);
