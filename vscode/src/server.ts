@@ -29,10 +29,13 @@ export function start(stdoutCallback: (data: string) => void,
     api: ExtensionAPI): Promise<ServerInfo> {
     return requirements.resolveRequirements()
         .catch(error => {
+            const msg = error && error.msg ? error.msg : "Unknown Error";
+            const buttonArray = error && error.btns ? error.btns : [];
+            const buttonLabels = buttonArray.map(btn => btn.label);
             // show error
-            vscode.window.showErrorMessage(error.message, ...error.btns.map(btn => btn.label))
+            vscode.window.showErrorMessage(msg, buttonLabels)
                 .then(selection => {
-                    const btnSelected = error.btns.find(btn => btn.label === selection);
+                    const btnSelected = buttonArray.find(btn => btn.label === selection);
                     if (btnSelected) {
                         if (btnSelected.openUrl) {
                             vscode.commands.executeCommand('vscode.open', btnSelected.openUrl);
