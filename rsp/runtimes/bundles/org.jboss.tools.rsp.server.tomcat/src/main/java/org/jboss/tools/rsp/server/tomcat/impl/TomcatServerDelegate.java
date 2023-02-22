@@ -38,6 +38,12 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 	public void setDependentDefaults(IServerWorkingCopy server) {
 		// Do nothing
 		try {
+			String baseDir = server.getAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, (String)null); 
+			if( baseDir == null || baseDir.length() == 0) {
+				String currentHome = server.getAttribute(ITomcatServerAttributes.SERVER_HOME, (String)null);
+				server.setAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, currentHome);
+			}
+
 			CommandLineDetails det = getStartLauncher().getLaunchCommand("run");
 			String progArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_PROGRAM_ARGS);
 			String vmArgs = det.getProperties().get(AbstractJavaLauncher.PROPERTY_VM_ARGS);
@@ -50,12 +56,6 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_BOOLEAN, false);
 			server.setAttribute(GenericServerType.LAUNCH_OVERRIDE_PROGRAM_ARGS, progArgs);
 			server.setAttribute(GenericServerType.JAVA_LAUNCH_OVERRIDE_VM_ARGS, vmArgs);
-			
-			String baseDir = server.getAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, (String)null); 
-			if( baseDir == null || baseDir.length() == 0) {
-				String currentHome = server.getAttribute(ITomcatServerAttributes.SERVER_HOME, (String)null);
-				server.setAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, currentHome);
-			}
 		} catch(CoreException ce) {
 			ce.printStackTrace();
 		}
