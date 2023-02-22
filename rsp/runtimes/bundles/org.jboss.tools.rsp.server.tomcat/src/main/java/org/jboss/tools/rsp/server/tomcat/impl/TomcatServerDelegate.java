@@ -39,7 +39,7 @@ public class TomcatServerDelegate extends GenericServerBehavior implements IServ
 		// Do nothing
 		try {
 			String baseDir = server.getAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, (String)null); 
-			if( baseDir == null || baseDir.length() == 0) {
+			if( baseDir == null || baseDir.trim().length() == 0) {
 				String currentHome = server.getAttribute(ITomcatServerAttributes.SERVER_HOME, (String)null);
 				server.setAttribute(ITomcatServerAttributes.SERVER_BASE_DIR, currentHome);
 			}
