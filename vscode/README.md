@@ -1,9 +1,11 @@
 # Runtime Server Protocol - Community Extension
 
-[![License](https://img.shields.io/badge/license-EPLv2.0-brightgreen.svg)](https://github.com/redhat-developer/rsp-server-community/blob/master/README.md)
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/redhat.vscode-community-server-connector.svg)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-community-server-connector)
-[![Gitter](https://badges.gitter.im/redhat-developer/server-connector.svg)](https://gitter.im/redhat-developer/rsp-server-connector?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/redhat.vscode-community-server-connector?style=for-the-badge&label=VS%20Marketplace&logo=visual-studio-code&color=blue)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-community-server-connector)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/redhat.vscode-community-server-connector?style=for-the-badge&color=purple)](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-community-server-connector)
+[![Gitter](https://img.shields.io/gitter/room/redhat-developer/server-connector?style=for-the-badge&logo=gitter)](https://gitter.im/redhat-developer/server-connector)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/redhat-developer/rsp-server-community/actions.yml?style=for-the-badge&logo=github)](https://github.com/redhat-developer/rsp-server-community/actions)
+[![License](https://img.shields.io/badge/license-EPLv2.0-brightgreen.png?style=for-the-badge)](https://github.com/redhat-developer/rsp-server-community/blob/master/vscode/LICENSE)
 
 ## Summary
 
