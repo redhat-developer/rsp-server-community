@@ -5,7 +5,7 @@ if [ $apiStatus -ne 0 ]; then
    exit 1
 fi
 
-
+cd rsp
 oldver=`cat pom.xml  | grep "version" | head -n 2 | tail -n 1 | cut -f 2 -d ">" | cut -f 1 -d "<" | sed 's/\.Final//g' | awk '{$1=$1};1'`
 
 newLastSegment=`echo $oldver | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
@@ -21,10 +21,17 @@ mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$newver.Fin
 tpFile=`ls -1 targetplatform | grep target`
 cat targetplatform/$tpFile | sed "s/-target-$oldver/-target-$newver/g" > targetplatform/$tpFile.bak
 mv targetplatform/$tpFile.bak targetplatform/$tpFile
+echo "Please go update the TP to depend on newest rsp-server if required"
+read -p "Press enter to continue"
+
+
 
 mvn clean install -DskipTests
 echo "Did it succeed?"
 read -p "Press enter to continue"
+
+cd ../vscode/
+
 
 echo "Committing and pushing to main"
 git commit -a -m "Upversion to $newver for release" --signoff
