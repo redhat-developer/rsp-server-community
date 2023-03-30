@@ -32,6 +32,26 @@ read -p "Press enter to continue"
 
 cd ../vscode/
 
+oldvervsc=`cat package.json  | grep "\"version\":" | cut -f 2 -d ":" | sed 's/"//g' | sed 's/,//g' | awk '{$1=$1};1'`
+
+newLastSegmentvsc=`echo $oldvervsc | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
+newverPrefixvsc=`echo $oldvervsc | cut -f 1,2 -d "."`
+newvervsc=$newverPrefixvsc.$newLastSegmentvsc
+
+echo "Old version is $oldvervsc"
+echo "New version is $newvervsc"
+echo "Updating package.json with new version"
+cat package.json | sed "s/  \"version\": \"$oldver\",/  \"version\": \"$newver\",/g" > package2
+mv package2 package.json
+echo "Running npm install"
+npm install
+
+npm run build
+echo "Did it succeed?"
+read -p "Press enter to continue"
+
+echo "Running vsce package"
+vsce package
 
 echo "Committing and pushing to main"
 git commit -a -m "Upversion to $newver for release" --signoff
@@ -45,15 +65,11 @@ read -p "Press enter to continue"
 echo "Go kick another jenkins job with a release flag."
 read -p "Press enter to continue"
 
-echo "Time to deploy to nexus, ready?"
-read -p "Press enter to continue"
-mvn clean deploy
-
 
 echo "Are you absolutely sure you want to tag?"
 read -p "Press enter to continue"
 
-newVerUnderscore=`echo $newver | sed 's/\./_/g'`
+newVerUnderscore=`echo $newvervsc | sed 's/\./_/g'`
 git tag v$newVerUnderscore
 git push origin v$newVerUnderscore
 
