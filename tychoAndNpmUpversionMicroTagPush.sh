@@ -98,7 +98,7 @@ oldVerVscFinal=$oldvervsc.Final
 vscTagName=v$oldVerVscUnderscore.Final
 
 echo "Committing and pushing to $curBranch"
-git commit -a -m "Move extension to $vscTagName final" --signoff
+git commit -a -m "Move extension to $vscTagName for release" --signoff
 
 if [ "$debug" -eq 0 ]; then
 	git push origin $curBranch
