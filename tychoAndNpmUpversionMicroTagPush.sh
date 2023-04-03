@@ -35,15 +35,15 @@ oldverRspHasSnapshot=`cat pom.xml  | grep "version" | head -n 2 | tail -n 1 | cu
 
 
 if [ "$oldverRspHasSnapshot" -eq 0 ]; then
-	newLastSegmentRsp=`echo $oldver | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
-	newverPrefixRsp=`echo $oldver | cut -f 1,2 -d "."`
-	newverRsp=$newverPrefix.$newLastSegment
+	newLastSegmentRsp=`echo $oldverRspRaw | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
+	newverPrefixRsp=`echo $oldverRspRaw | cut -f 1,2 -d "."`
+	newverRsp=$newverPrefixRsp.$newLastSegmentRsp
 else 
 	newverRsp=$oldverRsp
 fi
 newverRspFinal=$newverRsp.Final
 
-echo "Old version (RSP) is $oldverRsp
+echo "Old version (RSP) is $oldverRsp"
 echo "New version (RSP) is $newverRsp"
 echo "Updating pom.xml with new version"
 mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$newverRspFinal
@@ -93,14 +93,24 @@ echo "Go kick another jenkins job with a release flag."
 read -p "Press enter to continue"
 
 
-echo "Are you absolutely sure you want to tag?"
-read -p "Press enter to continue"
-
 oldVerVscUnderscore=`echo $oldvervsc | sed 's/\./_/g'`
 oldVerVscFinal=$oldvervsc.Final
 vscTagName=v$oldVerVscUnderscore.Final
+
+echo "Committing and pushing to $curBranch"
+git commit -a -m "Move extension to $vscTagName final" --signoff
+
+if [ "$debug" -eq 0 ]; then
+	git push origin $curBranch
+else 
+	echo git push origin $curBranch
+fi
+
+
+echo "Are you absolutely sure you want to tag?"
+read -p "Press enter to continue"
+
 git tag $vscTagName
-git push origin $vscTagName
 if [ "$debug" -eq 0 ]; then
 	git push origin $vscTagName
 else 
@@ -108,7 +118,7 @@ else
 fi
 
 
-echo "Making a release on github for $oldVerFinal"
+echo "Making a release on github for $oldVerVscFinal"
 commitMsgsClean=`git log --color --pretty=format:'%s' --abbrev-commit | head -n $commits | awk '{ print " * " $0;}' | awk '{printf "%s\\\\n", $0}' | sed 's/"/\\"/g'`
 createReleasePayload="{\"tag_name\":\"$vscTagName\",\"target_commitish\":\"$curBranch\",\"name\":\"$oldVerVscFinal\",\"body\":\"Release of $oldVerVscFinal:\n\n"$commitMsgsClean"\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
 
@@ -194,5 +204,14 @@ newVscVer=`cat package.json  | grep "\"version\":" | cut -f 2 -d ":" | sed 's/"/
 newVscLastSegment=`echo $newVscVer | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
 newVscPrefix=`echo $newVscVer | cut -f 1,2 -d "."`
 newVsc=$newVscPrefix.$newVscLastSegment
-echo "New version is $newver"
+echo "New version is $newVsc"
+
+echo "Committing and pushing to $curBranch"
+git commit -a -m "Upversion to $newVsc - Development Begins" --signoff
+
+if [ "$debug" -eq 0 ]; then
+	git push origin $curBranch
+else 
+	echo git push origin $curBranch
+fi
 
