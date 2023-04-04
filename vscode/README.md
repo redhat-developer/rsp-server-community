@@ -9,7 +9,7 @@
 
 ## Summary
 
-This VSCode Extension provides a Remote Server Protocol based server connector, which can start, stop, publish to, and otherwise control Community runtimes and servers like Apache Felix, Karaf, and Tomcat.
+This VSCode Extension provides a Runtime Server Protocol based server connector, which can start, stop, publish to, and otherwise control Community runtimes and servers like Apache Felix, Karaf, and Tomcat.
 
 
 ## Commands and features
