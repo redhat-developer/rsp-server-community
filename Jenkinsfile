@@ -43,7 +43,8 @@ pipeline {
 					def nodeHome = tool 'nodejs-lts'
 					env.PATH="${env.PATH}:${nodeHome}/bin"
 				}
-				sh "npm install -g typescript vsce"
+				sh "npm install -g typescript || true"
+				sh "npm install -g vsce || true"
 			}
 		}
 		stage ('Build community server with Java 11 runtime') {
