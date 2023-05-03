@@ -86,7 +86,7 @@
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
     "typescript": "^4.0.3",
-    "vscode-extension-tester": "^5.0.0",
+    "vscode-extension-tester": "^5.5.2",
     "vscode-test": "^1.2.3"
   },
   "dependencies": {
