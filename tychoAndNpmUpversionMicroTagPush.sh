@@ -43,8 +43,8 @@ else
 fi
 newverRspFinal=$newverRsp.Final
 
-echo "Old version (RSP) is $oldverRsp"
-echo "New version (RSP) is $newverRsp"
+echo "Old version (RSP) is $oldverRspRaw"
+echo "New version (RSP) is $newverRspFinal"
 echo "Updating pom.xml with new version"
 mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$newverRspFinal
 
