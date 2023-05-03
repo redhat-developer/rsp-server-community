@@ -188,7 +188,7 @@ nextVerRsp=$nextVerPrefixRsp.$nextLastSegmentRsp
 echo "Current version (RSP) is $newverRsp"
 echo "Next version (RSP) is $nextVerRsp"
 echo "Updating pom.xml with new version"
-mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$nextVerRsp-SNAPSHOT
+mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$nextVerRsp-SNAPSHOT
 
 # Handle target platform
 tpFile=`ls -1 targetplatform | grep target`
@@ -207,6 +207,11 @@ newVscLastSegment=`echo $newVscVer | cut -f 3 -d "." | awk '{ print $0 + 1;}' | 
 newVscPrefix=`echo $newVscVer | cut -f 1,2 -d "."`
 newVsc=$newVscPrefix.$newVscLastSegment
 echo "New version is $newVsc"
+
+echo "Updating package.json with new version"
+cat package.json | sed "s/\"version\": \"$newVscVer\",/\"version\": \"$newVsc\",/g" > package2
+mv package2 package.json
+
 
 echo "Committing and pushing to $curBranch"
 git commit -a -m "Upversion to $newVsc - Development Begins" --signoff
