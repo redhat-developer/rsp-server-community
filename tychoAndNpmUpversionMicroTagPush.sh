@@ -89,9 +89,6 @@ read -p "Press enter to continue"
 echo "Go kick a Jenkins Job please. Come back when its DONE and green."
 read -p "Press enter to continue"
 
-echo "Go kick another jenkins job with a release flag."
-read -p "Press enter to continue"
-
 
 oldVerVscUnderscore=`echo $oldvervsc | sed 's/\./_/g'`
 oldVerVscFinal=$oldvervsc.Final
@@ -105,6 +102,11 @@ if [ "$debug" -eq 0 ]; then
 else 
 	echo git push origin $curBranch
 fi
+
+
+echo "Go kick another jenkins job with a release flag."
+read -p "Press enter to continue"
+
 
 
 echo "Are you absolutely sure you want to tag?"
