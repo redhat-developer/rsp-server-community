@@ -46,7 +46,7 @@ newverRspFinal=$newverRsp.Final
 echo "Old version (RSP) is $oldverRspRaw"
 echo "New version (RSP) is $newverRspFinal"
 echo "Updating pom.xml with new version"
-mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$newverRspFinal
+mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newverRspFinal
 
 # Handle target platform
 tpFile=`ls -1 targetplatform | grep target`
