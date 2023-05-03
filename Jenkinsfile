@@ -45,6 +45,7 @@ pipeline {
 				}
 				sh "npm install -g typescript || true"
 				sh "npm install -g vsce || true"
+				sh "npm install -g ovsx || true"
 			}
 		}
 		stage ('Build community server with Java 11 runtime') {
@@ -167,6 +168,22 @@ pipeline {
 					sh "echo org.jboss.tools.rsp.community.distribution.latest.version=${distroVersion} > LATEST"
 					sh "echo org.jboss.tools.rsp.community.distribution.latest.url=https://download.jboss.org/jbosstools/adapters/${upload_dir}/rsp-server-community/distributions/${distroVersion}/org.jboss.tools.rsp.server.community.distribution-${distroVersion}.zip >> LATEST"
 					sh "sftp -C ${UPLOAD_USER_AT_HOST}:${UPLOAD_PATH}/${upload_dir}/rsp-server-community/distributions/ <<< \$'put -p LATEST'"
+
+
+                                        // publish to ovsx
+                                        if (params.publishToOVSX) {
+                                                stage('Publish to OVSX') {
+                                                        timeout(time:5, unit:'DAYS') {
+                                                                input message:'Approve publishing to OVSX?'
+                                                        }
+                                                        sh "echo 'Publishing to OVSX'"
+							withCredentials([[$class: 'StringBinding', credentialsId: 'open-vsx-access-token', variable: 'OVSX_TOKEN']]) {
+                                                                def vsix = findFiles(glob: '**/*.vsix')
+                                                                sh "echo Publishing ${vsix[0].path}"
+                                                                sh 'ovsx publish -p ${TOKEN} --packagePath' + " ${vsix[0].path}"
+                                                        }
+                                                }
+                                        }
 
 
 					// publish to market place
