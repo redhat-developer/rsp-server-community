@@ -180,7 +180,7 @@ pipeline {
 							withCredentials([[$class: 'StringBinding', credentialsId: 'open-vsx-access-token', variable: 'OVSX_TOKEN']]) {
                                                                 def vsix = findFiles(glob: '**/*.vsix')
                                                                 sh "echo Publishing ${vsix[0].path}"
-                                                                sh 'ovsx publish -p ${TOKEN} --packagePath' + " ${vsix[0].path}"
+                                                                sh 'ovsx publish -p ${OVSX_TOKEN} --packagePath' + " ${vsix[0].path}"
                                                         }
                                                 }
                                         }
