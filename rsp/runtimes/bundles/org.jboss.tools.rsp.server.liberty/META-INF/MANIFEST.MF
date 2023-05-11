@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.jboss.tools.rsp.server.liberty
 Bundle-SymbolicName: org.jboss.tools.rsp.server.liberty
 Automatic-Module-Name: org.jboss.tools.rsp.server.liberty
-Bundle-Version: 0.26.10.qualifier
+Bundle-Version: 0.26.10.Final
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: com.google.gson;version="2.8.2",
  org.eclipse.lsp4j.jsonrpc,
