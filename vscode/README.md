@@ -25,6 +25,14 @@ This extension depends on VSCode RSP UI Extension which is going to be installed
 ## Extension Settings
    This extension provides no additional settings other than those available in [rsp-ui](https://github.com/redhat-developer/vscode-rsp-ui#extension-settings)
 
+## Server Parameters
+   To change Server Parameters, right-click on the server you want to edit and select `Edit Server`
+
+### Additional Server Parameters
+   This extension supports the server parameters available in [rsp-ui](https://github.com/redhat-developer/vscode-rsp-ui#server-parameters). This extension also support the following server parameters. 
+
+   * `"server.classpath.additions"` - a list of semicolon-separated paths to add to the launch classpath (Java-based servers only)
+
 ### Supported Servers
    * Apache Tomcat [ 5.5 | 6.0 | 7.0 | 8.0 | 8.5 | 9.0 ]
    * Apache Karaf [ 4.8 ] 
