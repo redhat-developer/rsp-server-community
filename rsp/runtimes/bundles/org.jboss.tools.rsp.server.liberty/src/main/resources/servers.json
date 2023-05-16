@@ -45,6 +45,10 @@
 						"server.http.port": {
 							"type": "int",
 							"value": "9080"
+						},
+						"server.classpath.additions": {
+							"type": "string",
+							"value": ""
 						}
 					}
 				},
@@ -61,7 +65,7 @@
 							"mainType": "com.ibm.ws.kernel.boot.cmdline.EnvCheck",
 							"programArgs": "${server.liberty.id}",
 							"vmArgs": "-javaagent:${server.home.dir}/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -Djdk.attach.allowAttachSelf=true",
-							"classpath": "bin/tools/ws-server.jar;lib/com.ibm.ws.kernel.boot_1.0.48.jar"
+							"classpath": "bin/tools/ws-server.jar;lib/com.ibm.ws.kernel.boot_1.0.48.jar;${server.classpath.additions}"
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
@@ -76,7 +80,7 @@
 							"mainType": "com.ibm.ws.kernel.boot.cmdline.EnvCheck",
 							"programArgs": "${server.liberty.id} --stop",
 							"vmArgs": "-javaagent:${server.home.dir}/bin/tools/ws-javaagent.jar -Djava.awt.headless=true -Djdk.attach.allowAttachSelf=true",
-							"classpath": "bin/tools/ws-server.jar;lib/com.ibm.ws.kernel.boot_1.0.48.jar"
+							"classpath": "bin/tools/ws-server.jar;lib/com.ibm.ws.kernel.boot_1.0.48.jar;${server.classpath.additions}"
 						},
 						"poller": "webPoller",
 						"pollerProperties": {

@@ -284,6 +284,10 @@
 							"type": "string",
 							"value": "localhost"
 						},
+						"server.classpath.additions": {
+							"type": "string",
+							"value": ""
+						},
 						"server.deploy.dir": {
 							"type": "string",
 							"value": "${server.base.dir}/webapps/"
@@ -303,7 +307,7 @@
 							"mainType": "org.apache.catalina.startup.Bootstrap",
 							"programArgs": "start",
 							"vmArgs": "-Djava.util.logging.config.file=\"${server.base.dir}/conf/logging.properties\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcatalina.base=\"${server.base.dir}\" -Dcatalina.home=\"${server.home.dir}\" -Djava.io.tmpdir=\"${server.base.dir}/temp\"",
-							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar"
+							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar;${server.classpath.additions}"
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
@@ -318,7 +322,7 @@
 							"mainType": "org.apache.catalina.startup.Bootstrap",
 							"programArgs": "stop",
 							"vmArgs": "-Djava.util.logging.config.file=\"${server.base.dir}/conf/logging.properties\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcatalina.base=\"${server.base.dir}\" -Dcatalina.home=\"${server.home.dir}\" -Djava.io.tmpdir=\"${server.base.dir}/temp\"",
-							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar"
+							"classpath": "bin/bootstrap.jar;bin/tomcat-juli.jar;${server.classpath.additions}"
 						},
 						"poller": "webPoller",
 						"pollerProperties": {
