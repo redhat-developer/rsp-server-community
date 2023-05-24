@@ -31,6 +31,30 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "2755118"
+        },
+        "felix-7.0.5": {
+          "name": "Apache Felix 7.0.5",
+          "fullVersion": "7.0.5",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.5.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2760367"
+        },
+        "felix-7.0.4": {
+          "name": "Apache Felix 7.0.4",
+          "fullVersion": "7.0.4",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.4.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2758085"
+        },
+        "felix-7.0.3": {
+          "name": "Apache Felix 7.0.3",
+          "fullVersion": "7.0.3",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.3.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2756205"
         }
       },
       "type": {
@@ -61,6 +85,38 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "2575666"
+        },
+        "felix-6.0.4": {
+          "name": "Apache Felix 6.0.4",
+          "fullVersion": "6.0.4",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.4.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2720148"
+        },
+        "felix-6.0.2": {
+          "name": "Apache Felix 6.0.2",
+          "fullVersion": "6.0.2",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.2.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2575644"
+        },
+        "felix-6.0.1": {
+          "name": "Apache Felix 6.0.1",
+          "fullVersion": "6.0.1",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2575455"
+        },
+        "felix-6.0.0": {
+          "name": "Apache Felix 6.0.0",
+          "fullVersion": "6.0.0",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.0.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2576340"
         }
       },
       "type": {
