@@ -47,6 +47,62 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "12670763"
+        },
+        "tomcat-10.1.2": {
+          "name": "Apache Tomcat 10.1.2",
+          "fullVersion": "10.1.2",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.2/bin/apache-tomcat-10.1.2.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12663926"
+        },
+        "tomcat-10.1.1": {
+          "name": "Apache Tomcat 10.1.1",
+          "fullVersion": "10.1.1",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.1/bin/apache-tomcat-10.1.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12451802"
+        },
+        "tomcat-10.1.0": {
+          "name": "Apache Tomcat 10.1.0",
+          "fullVersion": "10.1.0",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.0/bin/apache-tomcat-10.1.0.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12408523"
+        },
+        "tomcat-10.0.6": {
+          "name": "Apache Tomcat 10.0.6",
+          "fullVersion": "10.0.6",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.6/bin/apache-tomcat-10.0.6.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12367163"
+        },
+        "tomcat-10.0.5": {
+          "name": "Apache Tomcat 10.0.5",
+          "fullVersion": "10.0.5",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12357844"
+        },
+        "tomcat-10.0.4": {
+          "name": "Apache Tomcat 10.0.4",
+          "fullVersion": "10.0.4",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.4/bin/apache-tomcat-10.0.4.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12356103"
+        },
+        "tomcat-10.0.0": {
+          "name": "Apache Tomcat 10.0.0",
+          "fullVersion": "10.0.0",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.0/bin/apache-tomcat-10.0.0.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "11833123"
         }
       },
       "type": {
@@ -240,6 +296,36 @@
       "type": {
         "name": "Tomcat 5.5",
         "description": "A server adapter capable of discovering and controlling a Tomcat 5.5 runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.tomcat.110": {
+      "template": "tomcat.template",
+      "discoveries": {
+        "tomcat.11.x": {
+          "discoveryType": "jarManifest",
+          "name": "Tomcat 11.x",
+          "nameFile": "lib/catalina.jar",
+          "nameKey": "Implementation-Title",
+          "nameRequiredPrefix": "Apache Tomcat",
+          "versionFile": "lib/catalina.jar",
+          "versionKey": "Implementation-Version",
+          "versionRequiredPrefix": "11."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "tomcat11.0.x",
+        "tomcat-11.0.0-M6": {
+          "name": "Apache Tomcat 11.0.0-M6",
+          "fullVersion": "11.0.0-M6",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-11/v11.0.0-M6/bin/apache-tomcat-11.0.0-M6.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12574082"
+        }
+      },
+      "type": {
+        "name": "Tomcat 11.x",
+        "description": "A server adapter capable of discovering and controlling a Tomcat 11.x runtime instance."
       }
     }
   },
