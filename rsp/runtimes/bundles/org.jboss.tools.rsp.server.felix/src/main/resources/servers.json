@@ -1,210 +1,208 @@
 {
-	"serverTypes": {
-		"org.jboss.ide.eclipse.as.server.felix.70": {
-			"template": "felix.template",
-			"discoveries": {
-				"apache.felix.7x": {
-					"discoveryType": "jarManifest",
-					"name": "Apache Felix 7.x",
-					"nameFile": "bin/felix.jar",
-					"nameKey": "Bundle-Name",
-					"nameRequiredPrefix": "Apache Felix",
-					"versionFile": "bin/felix.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "7.0."
-				}
-			},
-			"downloads": {
-				"downloadProviderId": "felix7x.download",
-				"felix-7.0.0": {
-					"name": "Apache Felix 7.0.0",
-					"fullVersion": "7.0.0",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.0.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "2752693"
-				},
-				"felix-7.0.1": {
-					"name": "Apache Felix 7.0.1",
-					"fullVersion": "7.0.1",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.1.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "2755118"
-				}
-
-			},
-			"type": {
-				"name": "Apache Felix 7.x",
-				"description": "A server adapter capable of discovering and controlling an Apache Felix 7.x OSGi Container."
-			}
-		},
-		"org.jboss.ide.eclipse.as.server.felix.60": {
-			"template": "felix.template",
-			"discoveries": {
-				"apache.felix.6x": {
-					"discoveryType": "jarManifest",
-					"name": "Apache Felix 6.x",
-					"nameFile": "bin/felix.jar",
-					"nameKey": "Bundle-Name",
-					"nameRequiredPrefix": "Apache Felix",
-					"versionFile": "bin/felix.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "6.0."
-				}
-			},
-			"downloads": {
-				"downloadProviderId": "felix6x.download",
-				"felix-6.0.3": {
-					"name": "Apache Felix 6.0.3",
-					"fullVersion": "6.0.3",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.3.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "2575666"
-				}
-			},
-			"type": {
-				"name": "Apache Felix 6.x",
-				"description": "A server adapter capable of discovering and controlling an Apache Felix 6.x OSGi Container."
-			}
-		},
-		"org.jboss.ide.eclipse.as.server.felix.56": {
-			"template": "felix.template",
-			"discoveries": {
-				"apache.felix.5.6": {
-					"discoveryType": "jarManifest",
-					"name": "Apache Felix 5.6",
-					"nameFile": "bin/felix.jar",
-					"nameKey": "Bundle-Name",
-					"nameRequiredPrefix": "Apache Felix",
-					"versionFile": "bin/felix.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "5.6."
-				}
-			},
-			"downloads": {
-				"downloadProviderId": "felix56.download",
-				"felix-5.6.10": {
-					"name": "Apache Felix 5.6.10",
-					"fullVersion": "5.6.10",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-5.6.10.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "2430248"
-				}
-			},
-			"type": {
-				"name": "Apache Felix 5.6",
-				"description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
-			}
-		},
-		"org.jboss.ide.eclipse.as.server.felix.46": {
-			"template": "felix.template",
-			"discoveries": {
-				"apache.felix.4.6": {
-					"discoveryType": "jarManifest",
-					"name": "Apache Felix 4.6",
-					"nameFile": "bin/felix.jar",
-					"nameKey": "Bundle-Name",
-					"nameRequiredPrefix": "Apache Felix",
-					"versionFile": "bin/felix.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "4.6."
-				}
-			},
-			"downloads": {
-				"downloadProviderId": "felix46.download",
-				"felix-4.6.1": {
-					"name": "Apache Felix 4.6.1",
-					"fullVersion": "4.6.1",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-4.6.1.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "1325180"
-				}
-			},
-			"type": {
-				"name": "Apache Felix 4.6",
-				"description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
-			}
-		},
-		"org.jboss.ide.eclipse.as.server.felix.32": {
-			"template": "felix.template",
-			"discoveries": {
-				"apache.felix.3.2": {
-					"discoveryType": "jarManifest",
-					"name": "Apache Felix 3.2",
-					"nameFile": "bin/felix.jar",
-					"nameKey": "Bundle-Name",
-					"nameRequiredPrefix": "Apache Felix",
-					"versionFile": "bin/felix.jar",
-					"versionKey": "Bundle-Version",
-					"versionRequiredPrefix": "3.2."
-				}
-			},
-			"downloads": {
-				"downloadProviderId": "felix32.download",
-				"felix-3.2.2": {
-					"name": "Apache Felix 3.2.2",
-					"fullVersion": "3.2.2",
-					"downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-3.2.2.zip",
-					"licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-					"installationMethod": "archive",
-					"size": "1097741"
-				}
-			},
-			"type": {
-				"name": "Apache Felix 3.2",
-				"description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
-			}
-		}
-	},
-	"templates": {
-		"felix.template": {
-			"type": {
-				"launchModes": "run,debug",
-				"attributes": {
-					"required": {
-						"server.home.dir": {
-							"type": "string",
-							"description": "A filesystem path pointing to a server installation's root directory",
-							"defaultValue": "",
-							"secret": "false"
-						}
-					},
-					"optional": {
-					},
-					"staticDefaults": {
-						"server.classpath.additions": {
-							"type": "string",
-							"value": ""
-						}
-					}
-				},
-				"behavior": {
-					"publish": {
-						"deployPath": "bundle/",
-						"approvedSuffixes": "jar",
-						"supportsExploded": "false"
-					},
-					"startup": {
-						"launchType": "java-launch",
-						"launchProperties": {
-							"workingDirectory": "",
-							"mainType": "org.apache.felix.main.Main",
-							"programArgs": "",
-							"vmArgs": "",
-							"classpath": "bin/felix.jar;${server.classpath.additions}"
-						},
-						"poller": "automaticSuccess",
-						"onProcessTerminated": "setServerStateStopped"
-					},
-					"shutdown": {
-						"launchType": "terminateProcess"
-					}
-				}
-			}
-		}
-	}
+  "serverTypes": {
+    "org.jboss.ide.eclipse.as.server.felix.70": {
+      "template": "felix.template",
+      "discoveries": {
+        "apache.felix.7x": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Felix 7.x",
+          "nameFile": "bin/felix.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Felix",
+          "versionFile": "bin/felix.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "7.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "felix7x.download",
+        "felix-7.0.0": {
+          "name": "Apache Felix 7.0.0",
+          "fullVersion": "7.0.0",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.0.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2752693"
+        },
+        "felix-7.0.1": {
+          "name": "Apache Felix 7.0.1",
+          "fullVersion": "7.0.1",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-7.0.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2755118"
+        }
+      },
+      "type": {
+        "name": "Apache Felix 7.x",
+        "description": "A server adapter capable of discovering and controlling an Apache Felix 7.x OSGi Container."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.felix.60": {
+      "template": "felix.template",
+      "discoveries": {
+        "apache.felix.6x": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Felix 6.x",
+          "nameFile": "bin/felix.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Felix",
+          "versionFile": "bin/felix.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "6.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "felix6x.download",
+        "felix-6.0.3": {
+          "name": "Apache Felix 6.0.3",
+          "fullVersion": "6.0.3",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-6.0.3.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2575666"
+        }
+      },
+      "type": {
+        "name": "Apache Felix 6.x",
+        "description": "A server adapter capable of discovering and controlling an Apache Felix 6.x OSGi Container."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.felix.56": {
+      "template": "felix.template",
+      "discoveries": {
+        "apache.felix.5.6": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Felix 5.6",
+          "nameFile": "bin/felix.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Felix",
+          "versionFile": "bin/felix.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "5.6."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "felix56.download",
+        "felix-5.6.10": {
+          "name": "Apache Felix 5.6.10",
+          "fullVersion": "5.6.10",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-5.6.10.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "2430248"
+        }
+      },
+      "type": {
+        "name": "Apache Felix 5.6",
+        "description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.felix.46": {
+      "template": "felix.template",
+      "discoveries": {
+        "apache.felix.4.6": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Felix 4.6",
+          "nameFile": "bin/felix.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Felix",
+          "versionFile": "bin/felix.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "4.6."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "felix46.download",
+        "felix-4.6.1": {
+          "name": "Apache Felix 4.6.1",
+          "fullVersion": "4.6.1",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-4.6.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "1325180"
+        }
+      },
+      "type": {
+        "name": "Apache Felix 4.6",
+        "description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.felix.32": {
+      "template": "felix.template",
+      "discoveries": {
+        "apache.felix.3.2": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Felix 3.2",
+          "nameFile": "bin/felix.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Felix",
+          "versionFile": "bin/felix.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "3.2."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "felix32.download",
+        "felix-3.2.2": {
+          "name": "Apache Felix 3.2.2",
+          "fullVersion": "3.2.2",
+          "downloadUrl": "https://archive.apache.org/dist/felix/org.apache.felix.main.distribution-3.2.2.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "1097741"
+        }
+      },
+      "type": {
+        "name": "Apache Felix 3.2",
+        "description": "A server adapter capable of discovering and controlling an Apache Felix 5.6 OSGi Container."
+      }
+    }
+  },
+  "templates": {
+    "felix.template": {
+      "type": {
+        "launchModes": "run,debug",
+        "attributes": {
+          "required": {
+            "server.home.dir": {
+              "type": "string",
+              "description": "A filesystem path pointing to a server installation\u0027s root directory",
+              "defaultValue": "",
+              "secret": "false"
+            }
+          },
+          "optional": {},
+          "staticDefaults": {
+            "server.classpath.additions": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        },
+        "behavior": {
+          "publish": {
+            "deployPath": "bundle/",
+            "approvedSuffixes": "jar",
+            "supportsExploded": "false"
+          },
+          "startup": {
+            "launchType": "java-launch",
+            "launchProperties": {
+              "workingDirectory": "",
+              "mainType": "org.apache.felix.main.Main",
+              "programArgs": "",
+              "vmArgs": "",
+              "classpath": "bin/felix.jar;${server.classpath.additions}"
+            },
+            "poller": "automaticSuccess",
+            "onProcessTerminated": "setServerStateStopped"
+          },
+          "shutdown": {
+            "launchType": "terminateProcess"
+          }
+        }
+      }
+    }
+  }
 }
