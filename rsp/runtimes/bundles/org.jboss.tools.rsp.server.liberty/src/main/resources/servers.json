@@ -23,11 +23,279 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.1/lafiles/en.html",
           "installationMethod": "archive",
           "size": "128513616"
+        },
+        "liberty21.0.0.2": {
+          "name": "WebSphere Liberty 21.0.0.2",
+          "fullVersion": "21.0.0.2",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.2/wlp-javaee8-21.0.0.2.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.2/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "128595755"
+        },
+        "liberty21.0.0.3": {
+          "name": "WebSphere Liberty 21.0.0.3",
+          "fullVersion": "21.0.0.3",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.3/wlp-javaee8-21.0.0.3.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.3/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "130615384"
+        },
+        "liberty21.0.0.4": {
+          "name": "WebSphere Liberty 21.0.0.4",
+          "fullVersion": "21.0.0.4",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.4/wlp-javaee8-21.0.0.4.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.4/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "130741817"
+        },
+        "liberty21.0.0.5": {
+          "name": "WebSphere Liberty 21.0.0.5",
+          "fullVersion": "21.0.0.5",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.5/wlp-javaee8-21.0.0.5.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.5/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "130901828"
+        },
+        "liberty21.0.0.6": {
+          "name": "WebSphere Liberty 21.0.0.6",
+          "fullVersion": "21.0.0.6",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.6/wlp-javaee8-21.0.0.6.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.6/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "130939923"
+        },
+        "liberty21.0.0.7": {
+          "name": "WebSphere Liberty 21.0.0.7",
+          "fullVersion": "21.0.0.7",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.7/wlp-javaee8-21.0.0.7.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.7/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "131057261"
+        },
+        "liberty21.0.0.8": {
+          "name": "WebSphere Liberty 21.0.0.8",
+          "fullVersion": "21.0.0.8",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.8/wlp-javaee8-21.0.0.8.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.8/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "131632413"
+        },
+        "liberty21.0.0.9": {
+          "name": "WebSphere Liberty 21.0.0.9",
+          "fullVersion": "21.0.0.9",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.9/wlp-javaee8-21.0.0.9.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.9/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132423072"
+        },
+        "liberty21.0.0.10": {
+          "name": "WebSphere Liberty 21.0.0.10",
+          "fullVersion": "21.0.0.10",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.10/wlp-javaee8-21.0.0.10.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.10/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132480730"
+        },
+        "liberty21.0.0.11": {
+          "name": "WebSphere Liberty 21.0.0.11",
+          "fullVersion": "21.0.0.11",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.11/wlp-javaee8-21.0.0.11.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.11/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132642940"
+        },
+        "liberty21.0.0.12": {
+          "name": "WebSphere Liberty 21.0.0.12",
+          "fullVersion": "21.0.0.12",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/21.0.0.12/wlp-javaee8-21.0.0.12.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/21.0.0.12/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134229529"
         }
       },
       "type": {
         "name": "WebSphere Liberty 21.0.x",
         "description": "A server adapter capable of discovering and controlling a WebSphere 21.x Liberty runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.liberty.22.0.0": {
+      "template": "liberty.template",
+      "discoveries": {
+        "payara.22.x": {
+          "discoveryType": "properties",
+          "name": "WebSphere Liberty 22.x",
+          "nameFile": "lib/versions/openliberty.properties",
+          "nameKey": "com.ibm.websphere.productId",
+          "nameRequiredPrefix": "io.openliberty",
+          "versionFile": "lib/versions/openliberty.properties",
+          "versionKey": "com.ibm.websphere.productVersion",
+          "versionRequiredPrefix": "22.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "liberty22.0.x",
+        "liberty22.0.0.1": {
+          "name": "WebSphere Liberty 22.0.0.1",
+          "fullVersion": "22.0.0.1",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.1/wlp-javaee8-22.0.0.1.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.1/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "136389603"
+        },
+        "liberty22.0.0.2": {
+          "name": "WebSphere Liberty 22.0.0.2",
+          "fullVersion": "22.0.0.2",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.2/wlp-javaee8-22.0.0.2.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.2/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "135637031"
+        },
+        "liberty22.0.0.3": {
+          "name": "WebSphere Liberty 22.0.0.3",
+          "fullVersion": "22.0.0.3",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.3/wlp-javaee8-22.0.0.3.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.3/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134356176"
+        },
+        "liberty22.0.0.4": {
+          "name": "WebSphere Liberty 22.0.0.4",
+          "fullVersion": "22.0.0.4",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.4/wlp-javaee8-22.0.0.4.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.4/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134520253"
+        },
+        "liberty22.0.0.5": {
+          "name": "WebSphere Liberty 22.0.0.5",
+          "fullVersion": "22.0.0.5",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.5/wlp-javaee8-22.0.0.5.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.5/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134538160"
+        },
+        "liberty22.0.0.6": {
+          "name": "WebSphere Liberty 22.0.0.6",
+          "fullVersion": "22.0.0.6",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.6/wlp-javaee8-22.0.0.6.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.6/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134490317"
+        },
+        "liberty22.0.0.7": {
+          "name": "WebSphere Liberty 22.0.0.7",
+          "fullVersion": "22.0.0.7",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.7/wlp-javaee8-22.0.0.7.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.7/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "134470645"
+        },
+        "liberty22.0.0.8": {
+          "name": "WebSphere Liberty 22.0.0.8",
+          "fullVersion": "22.0.0.8",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.8/wlp-javaee8-22.0.0.8.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.8/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "133290293"
+        },
+        "liberty22.0.0.9": {
+          "name": "WebSphere Liberty 22.0.0.9",
+          "fullVersion": "22.0.0.9",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.9/wlp-javaee8-22.0.0.9.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.9/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "133509033"
+        },
+        "liberty22.0.0.10": {
+          "name": "WebSphere Liberty 22.0.0.10",
+          "fullVersion": "22.0.0.10",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.10/wlp-javaee8-22.0.0.10.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.10/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "133423668"
+        },
+        "liberty22.0.0.11": {
+          "name": "WebSphere Liberty 22.0.0.11",
+          "fullVersion": "22.0.0.11",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.11/wlp-javaee8-22.0.0.11.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.11/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132237634"
+        },
+        "liberty22.0.0.12": {
+          "name": "WebSphere Liberty 22.0.0.12",
+          "fullVersion": "22.0.0.12",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.12/wlp-javaee8-22.0.0.12.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.12/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132346977"
+        },
+        "liberty22.0.0.13": {
+          "name": "WebSphere Liberty 22.0.0.13",
+          "fullVersion": "22.0.0.13",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/22.0.0.13/wlp-javaee8-22.0.0.13.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/22.0.0.13/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132367115"
+        }
+      },
+      "type": {
+        "name": "WebSphere Liberty 22.0.x",
+        "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 22.x runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.liberty.23.0.0": {
+      "template": "liberty.template",
+      "discoveries": {
+        "payara.23.x": {
+          "discoveryType": "properties",
+          "name": "WebSphere Liberty 23.x",
+          "nameFile": "lib/versions/openliberty.properties",
+          "nameKey": "com.ibm.websphere.productId",
+          "nameRequiredPrefix": "io.openliberty",
+          "versionFile": "lib/versions/openliberty.properties",
+          "versionKey": "com.ibm.websphere.productVersion",
+          "versionRequiredPrefix": "23.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "liberty23.0.x",
+        "liberty23.0.0.1": {
+          "name": "WebSphere Liberty 23.0.0.1",
+          "fullVersion": "23.0.0.1",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.1/wlp-javaee8-23.0.0.1.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.1/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132734688"
+        },
+        "liberty23.0.0.2": {
+          "name": "WebSphere Liberty 23.0.0.2",
+          "fullVersion": "23.0.0.2",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.2/wlp-javaee8-23.0.0.2.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.2/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "132870891"
+        },
+        "liberty23.0.0.3": {
+          "name": "WebSphere Liberty 23.0.0.3",
+          "fullVersion": "23.0.0.3",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.3/wlp-javaee8-23.0.0.3.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.3/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "133030111"
+        },
+        "liberty23.0.0.4": {
+          "name": "WebSphere Liberty 23.0.0.4",
+          "fullVersion": "23.0.0.4",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.4/wlp-javaee8-23.0.0.4.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.4/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "133061317"
+        }
+      },
+      "type": {
+        "name": "WebSphere Liberty 23.0.x",
+        "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 23.x runtime instance."
       }
     }
   },

@@ -33,9 +33,8 @@ public class LibertyVersions {
         List<String> toAddRaw = findVersionsToAdd(fullVersionsInDescriptor, mmtlm);
         List<String> toAdd = new ArrayList<String>(toAddRaw);
         toAdd.sort(getComparator());
-
         for( String singleAddition : toAdd ) {
-            //ensureVersionAdded(singleAddition, serversGson);
+            ensureVersionAdded(singleAddition, serversGson);
         }
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -231,7 +230,7 @@ public class LibertyVersions {
                         String quotedFolder = sub.substring(0,end - 1);
                         String[] segments = quotedFolder == null ? new String[0] : quotedFolder.split("\\.");
                         if( segments.length == 4 ) {
-                            String major = segments[1];
+                            String major = segments[0];
                             if( major.matches("-?\\d+") && Integer.parseInt(major) > 20) {
                                 collector.add(quotedFolder);
                             }
