@@ -29,9 +29,87 @@
         "name": "Payara 5.x",
         "description": "A server adapter capable of discovering and controlling a Payara 5.x runtime instance."
       }
+    },
+    "org.jboss.ide.eclipse.as.server.payara.6x": {
+      "template": "payara.template",
+      "discoveries": {
+        "payara.6.x": {
+          "discoveryType": "jarManifest",
+          "name": "Payara 6.x",
+          "nameFile": "glassfish/modules/glassfish.jar",
+          "nameKey": "Bundle-SymbolicName",
+          "nameRequiredPrefix": "fish.payara.server.internal.core.glassfish",
+          "versionFile": "glassfish/modules/glassfish.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "6."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "payara6.x",
+        "payara-6.2023.5": {
+          "name": "Payara 6.2023.5",
+          "fullVersion": "6.2023.5",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.5/payara-6.2023.5.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164748515"
+        },
+        "payara-6.2023.4": {
+          "name": "Payara 6.2023.4",
+          "fullVersion": "6.2023.4",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.4/payara-6.2023.4.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164579201"
+        },
+        "payara-6.2023.3": {
+          "name": "Payara 6.2023.3",
+          "fullVersion": "6.2023.3",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.3/payara-6.2023.3.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "163736180"
+        },
+        "payara-6.2023.2": {
+          "name": "Payara 6.2023.2",
+          "fullVersion": "6.2023.2",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.2/payara-6.2023.2.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "161854722"
+        },
+        "payara-6.2023.1": {
+          "name": "Payara 6.2023.1",
+          "fullVersion": "6.2023.1",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.1/payara-6.2023.1.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "161816729"
+        },
+        "payara-6.2022.2": {
+          "name": "Payara 6.2022.2",
+          "fullVersion": "6.2022.2",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2022.2/payara-6.2022.2.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "160756959"
+        },
+        "payara-6.2022.1": {
+          "name": "Payara 6.2022.1",
+          "fullVersion": "6.2022.1",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2022.1/payara-6.2022.1.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "158668242"
+        }
+      },
+      "type": {
+        "name": "Payara 6.x",
+        "description": "A server adapter capable of discovering and controlling a Payara 6.x runtime instance."
+      }
     }
-   },
-   "templates": {
+  },
+  "templates": {
     "payara.template": {
       "type": {
         "launchModes": "run,debug",
