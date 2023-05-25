@@ -115,10 +115,7 @@ public class KarafVersions {
         ArrayList<String> toAdd = new ArrayList<String>();
         String[] versions = findAllVersionsFromWebArchive();
         for( int i = 0; i < versions.length; i++ ) {
-            String[] split = versions[i].split("\\.");
-            if( Integer.parseInt(split[0])> 5 ) {
-                toAdd.add(versions[i]);
-            }
+            toAdd.add(versions[i]);
         }
         return toAdd;
     }

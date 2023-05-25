@@ -61,11 +61,129 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "32574164"
+        },
+        "karaf-4.3.9": {
+          "name": "Apache Karaf 4.3.9",
+          "fullVersion": "4.3.9",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.9/apache-karaf-4.3.9.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33937423"
+        },
+        "karaf-4.3.8": {
+          "name": "Apache Karaf 4.3.8",
+          "fullVersion": "4.3.8",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.8/apache-karaf-4.3.8.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33759472"
+        },
+        "karaf-4.3.7": {
+          "name": "Apache Karaf 4.3.7",
+          "fullVersion": "4.3.7",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.7/apache-karaf-4.3.7.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32796524"
+        },
+        "karaf-4.3.6": {
+          "name": "Apache Karaf 4.3.6",
+          "fullVersion": "4.3.6",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.6/apache-karaf-4.3.6.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32600758"
+        },
+        "karaf-4.3.5": {
+          "name": "Apache Karaf 4.3.5",
+          "fullVersion": "4.3.5",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.5/apache-karaf-4.3.5.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32599237"
+        },
+        "karaf-4.3.4": {
+          "name": "Apache Karaf 4.3.4",
+          "fullVersion": "4.3.4",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.4/apache-karaf-4.3.4.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32665231"
+        },
+        "karaf-4.3.3": {
+          "name": "Apache Karaf 4.3.3",
+          "fullVersion": "4.3.3",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.3/apache-karaf-4.3.3.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32748618"
+        },
+        "karaf-4.3.1": {
+          "name": "Apache Karaf 4.3.1",
+          "fullVersion": "4.3.1",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.3.1/apache-karaf-4.3.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32572810"
         }
       },
       "type": {
         "name": "Apache Karaf 4.3",
         "description": "A server adapter capable of discovering and controlling an Apache Karaf 4.3 Container."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.karaf.44": {
+      "template": "karaf.template",
+      "discoveries": {
+        "apache.karaf.44": {
+          "discoveryType": "jarManifest",
+          "name": "Apache Karaf 4.4",
+          "nameFile": "lib/boot/org.apache.karaf.main-*.jar",
+          "nameKey": "Bundle-Name",
+          "nameRequiredPrefix": "Apache Karaf",
+          "versionFile": "lib/boot/org.apache.karaf.main-*.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "4.4."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "karaf44.download",
+        "karaf-4.4.3": {
+          "name": "Apache Karaf 4.4.3",
+          "fullVersion": "4.4.3",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.3/apache-karaf-4.4.3.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "34088038"
+        },
+        "karaf-4.4.2": {
+          "name": "Apache Karaf 4.4.2",
+          "fullVersion": "4.4.2",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.2/apache-karaf-4.4.2.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33907632"
+        },
+        "karaf-4.4.1": {
+          "name": "Apache Karaf 4.4.1",
+          "fullVersion": "4.4.1",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.1/apache-karaf-4.4.1.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33247472"
+        },
+        "karaf-4.4.0": {
+          "name": "Apache Karaf 4.4.0",
+          "fullVersion": "4.4.0",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.0/apache-karaf-4.4.0.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "32891515"
+        }
+      },
+      "type": {
+        "name": "Apache Karaf 4.4",
+        "description": "A server adapter capable of discovering and controlling an Apache Karaf 4.4 container."
       }
     }
   },
