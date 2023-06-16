@@ -53,11 +53,49 @@
           "licenseUrl": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html",
           "installationMethod": "archive",
           "size": "118284616"
+        },
+        "glassfish-6.0.0": {
+          "name": "Glassfish 6.0.0",
+          "fullVersion": "6.0.0",
+          "downloadUrl": "https://download.eclipse.org/ee4j/glassfish/glassfish-6.0.0.zip",
+          "licenseUrl": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html",
+          "installationMethod": "archive",
+          "size": "115811110"
         }
       },
       "type": {
         "name": "Glassfish 6.x",
         "description": "A server adapter capable of discovering and controlling a Glassfish 6.x runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.glassfish.7x": {
+      "template": "glassfish.template",
+      "discoveries": {
+        "glassfish.7.x": {
+          "discoveryType": "jarManifest",
+          "name": "Glassfish 7.x",
+          "nameFile": "glassfish/modules/glassfish.jar",
+          "nameKey": "Bundle-SymbolicName",
+          "nameRequiredPrefix": "org.glassfish.main.core.glassfish",
+          "versionFile": "glassfish/modules/glassfish.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "7."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "glassfish7.x",
+        "glassfish-7.0.5": {
+          "name": "Glassfish 7.0.5",
+          "fullVersion": "7.0.5",
+          "downloadUrl": "https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.5.zip",
+          "licenseUrl": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html",
+          "installationMethod": "archive",
+          "size": "119592594"
+        }
+      },
+      "type": {
+        "name": "Glassfish 7.x",
+        "description": "A server adapter capable of discovering and controlling a Glassfish 7.x runtiem instance."
       }
     }
   },
