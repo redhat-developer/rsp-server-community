@@ -100,7 +100,7 @@
     }
   },
   "templates": {
-    "karaf.template": {
+    "glassfish.template": {
       "type": {
         "launchModes": "run,debug",
         "attributes": {
