@@ -63,7 +63,7 @@ public class Activator extends GenericServerActivator {
 				return new IServerBehaviorProvider() {
 					@Override
 					public IServerDelegate createServerDelegate(String typeId, IServer server) {
-						if (IGlassfishServerAttributes.GLASSFISH_5X_SERVER_TYPE_ID.equals(typeId) || IGlassfishServerAttributes.GLASSFISH_6X_SERVER_TYPE_ID.equals(typeId)) {
+						if (typeId.startsWith(IGlassfishServerAttributes.GLASSFISH_SERVER_TYPE_PREFIX)) {
 							return new GlassfishServerDelegate(server, behaviorMemento);
 						}
 						return null;
@@ -72,5 +72,4 @@ public class Activator extends GenericServerActivator {
 			}
 		};
 	}
-
 }
