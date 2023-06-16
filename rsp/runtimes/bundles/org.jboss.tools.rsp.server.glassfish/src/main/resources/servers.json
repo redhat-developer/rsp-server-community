@@ -154,7 +154,7 @@
             "launchProperties": {
               "workingDirectory": "glassfish/bin",
               "mainType": "com.sun.enterprise.admin.cli.AdminMain",
-              "programArgs": "start-domain --verbose",
+              "programArgs": "start-domain --verbose ${glassfish.domain}",
               "vmArgs": "",
               "classpath": "glassfish/modules/admin-cli.jar;${server.classpath.additions}"
             },
@@ -169,7 +169,7 @@
             "launchProperties": {
               "workingDirectory": "glassfish/bin",
               "mainType": "com.sun.enterprise.admin.cli.AdminMain",
-              "programArgs": "stop-domain",
+              "programArgs": "stop-domain ${glassfish.domain}",
               "vmArgs": "",
               "classpath": "glassfish/modules/admin-cli.jar;${server.classpath.additions}"
             },
