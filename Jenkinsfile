@@ -76,7 +76,6 @@ pipeline {
 		stage("Build extension") {
 			steps {
 				dir("vscode") {
-					sh 'rm package-lock.json'
 					sh "npm install"
 					sh "npm run build"
 				}
