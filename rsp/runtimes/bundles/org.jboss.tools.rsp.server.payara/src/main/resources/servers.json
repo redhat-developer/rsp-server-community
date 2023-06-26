@@ -101,6 +101,14 @@
           "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
           "installationMethod": "archive",
           "size": "158668242"
+        },
+        "payara-6.2023.6": {
+          "name": "Payara 6.2023.6",
+          "fullVersion": "6.2023.6",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2023.6/payara-6.2023.6.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164260541"
         }
       },
       "type": {
