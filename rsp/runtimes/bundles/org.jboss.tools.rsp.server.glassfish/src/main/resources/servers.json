@@ -91,6 +91,14 @@
           "licenseUrl": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html",
           "installationMethod": "archive",
           "size": "119592594"
+        },
+        "glassfish-7.0.6": {
+          "name": "Glassfish 7.0.6",
+          "fullVersion": "7.0.6",
+          "downloadUrl": "https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.6.zip",
+          "licenseUrl": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html",
+          "installationMethod": "archive",
+          "size": "120054672"
         }
       },
       "type": {
