@@ -315,6 +315,14 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.7/lafiles/en.html",
           "installationMethod": "archive",
           "size": "137656204"
+        },
+        "liberty23.0.0.8": {
+          "name": "WebSphere Liberty 23.0.0.8",
+          "fullVersion": "23.0.0.8",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.8/wlp-javaee8-23.0.0.8.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.8/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "144809371"
         }
       },
       "type": {
