@@ -60,6 +60,7 @@ echo "We will now depend on the latest rsp-server!"
 read -p "Press enter to continue"
 cat rsp/targetplatform/rsp-community-target.target | sed "s/rsp-server\/p2\/.*/rsp-server\/p2\/$latestRspServerVersion\/\"\/>/g" > rsp/targetplatform/rsp-community-target.target2
 mv rsp/targetplatform/rsp-community-target.target2 rsp/targetplatform/rsp-community-target.target
+read -p "Press enter to continue"
 
 
 
