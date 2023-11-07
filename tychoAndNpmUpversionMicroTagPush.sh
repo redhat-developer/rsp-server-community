@@ -58,8 +58,12 @@ mv targetplatform/$tpFile.bak targetplatform/$tpFile
 echo ""
 echo "We will now depend on the latest rsp-server!"
 read -p "Press enter to continue"
-cat rsp/targetplatform/rsp-community-target.target | sed "s/rsp-server\/p2\/.*/rsp-server\/p2\/$latestRspServerVersion\/\"\/>/g" > rsp/targetplatform/rsp-community-target.target2
-mv rsp/targetplatform/rsp-community-target.target2 rsp/targetplatform/rsp-community-target.target
+
+cat targetplatform/rsp-community-target.target | sed "s/rsp-server\/p2\/.*/rsp-server\/p2\/$latestRspServerVersion\/\"\/>/g" > targetplatform/rsp-community-target.target2
+
+mv targetplatform/rsp-community-target.target2 targetplatform/rsp-community-target.target
+
+echo "Done with target file..."
 read -p "Press enter to continue"
 
 
