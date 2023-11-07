@@ -13,6 +13,9 @@ else
 fi
 read -p "Press enter to continue"
 
+echo ""
+echo "Please go run rm -rf ~/.m2/repository/*"
+read -p "Press enter to continue"
 
 apiStatus=`git status -s | wc -l`
 if [ $apiStatus -ne 0 ]; then
@@ -80,6 +83,11 @@ npm run build
 echo "Did it succeed?"
 read -p "Press enter to continue"
 
+echo ""
+echo ""
+msgLine1=`ls server/bundle/*spi* | cut -f 2 -d "_" | cut -f 1,2,3 -d "." | awk '{ print "Now using the " $0 " release of rsp-server. "}'`
+echo $msgLine1
+
 echo "Running vsce package"
 vsce package
 echo "Did it succeed?"
@@ -122,7 +130,15 @@ fi
 
 echo "Making a release on github for $oldVerVscFinal"
 commitMsgsClean=`git log --color --pretty=format:'%s' --abbrev-commit | head -n $commits | awk '{ print " * " $0;}' | awk '{printf "%s\\\\n", $0}' | sed 's/"/\\"/g'`
-createReleasePayload="{\"tag_name\":\"$vscTagName\",\"target_commitish\":\"$curBranch\",\"name\":\"$oldVerVscFinal\",\"body\":\"Release of $oldVerVscFinal:\n\n"$commitMsgsClean"\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
+msgLine1=`ls server/bundle/*spi* | cut -f 2 -d "_" | cut -f 1,2,3 -d "." | awk '{ print "Now using the " $0 " release of rsp-server. "}'`
+msgLine2=`ls server/bundle/*spi* | cut -f 2 -d "_" | cut -f 1,2,3 -d "." | sed 's/\./_/g' | awk '{ print "See rsp-server CHANGELOG at https://github.com/redhat-developer/rsp-server/releases/tag/v" $0;}'`
+commitMsgsFinal="$msgLine1\n$msgLine2\n$commitMsgsClean"
+
+echo "Release commit log: $commitMsgsFinal"
+read -p "Press enter to continue"
+
+
+createReleasePayload="{\"tag_name\":\"$vscTagName\",\"target_commitish\":\"$curBranch\",\"name\":\"$oldVerVscFinal\",\"body\":\"Release of $oldVerVscFinal:\n\n"$commitMsgsFinal"\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
 
 if [ "$debug" -eq 0 ]; then
 	curl -L \
