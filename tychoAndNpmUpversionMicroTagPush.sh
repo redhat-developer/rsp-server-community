@@ -48,18 +48,23 @@ newverRspFinal=$newverRsp.Final
 
 echo "Old version (RSP) is $oldverRspRaw"
 echo "New version (RSP) is $newverRspFinal"
-echo "Updating pom.xml with new version"
-mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newverRspFinal
+
 
 # Handle target platform
+echo "Updating target platform with new version"
 tpFile=`ls -1 targetplatform | grep target`
 cat targetplatform/$tpFile | sed "s/-target-$oldver/-target-$newver/g" > targetplatform/$tpFile.bak
 mv targetplatform/$tpFile.bak targetplatform/$tpFile
 echo ""
-echo "Did you require upstream changes from rsp-server?? If yes,"
-echo "Please go update the TP to depend on newest rsp-server if required"
+echo "We will now depend on the latest rsp-server!"
 read -p "Press enter to continue"
+cat rsp/targetplatform/rsp-community-target.target | sed "s/rsp-server\/p2\/.*/rsp-server\/p2\/$latestRspServerVersion\/\"\/>/g" > rsp/targetplatform/rsp-community-target.target2
+mv rsp/targetplatform/rsp-community-target.target2 rsp/targetplatform/rsp-community-target.target
 
+
+
+echo "Updating pom.xml with new version"
+mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newverRspFinal
 
 echo "Lets build the RSP"
 read -p "Press enter to continue"
