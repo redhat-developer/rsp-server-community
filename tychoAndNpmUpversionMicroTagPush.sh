@@ -55,8 +55,10 @@ echo "Updating target platform with new version"
 tpFile=`ls -1 targetplatform | grep target`
 cat targetplatform/$tpFile | sed "s/-target-$oldver/-target-$newver/g" > targetplatform/$tpFile.bak
 mv targetplatform/$tpFile.bak targetplatform/$tpFile
+
+latestRspServerVersion=`curl https://download.jboss.org/jbosstools/adapters/stable/rsp-server/LATEST | grep version | cut -f 2 -d "="`
 echo ""
-echo "We will now depend on the latest rsp-server!"
+echo "We will now depend on the latest rsp-server $latestRspServerVersion"
 read -p "Press enter to continue"
 
 cat targetplatform/rsp-community-target.target | sed "s/rsp-server\/p2\/.*/rsp-server\/p2\/$latestRspServerVersion\/\"\/>/g" > targetplatform/rsp-community-target.target2
