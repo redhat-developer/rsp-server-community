@@ -23,15 +23,15 @@ import org.jboss.tools.rsp.launching.memento.JSONMemento;
 import org.jboss.tools.rsp.server.generic.servertype.DefaultExternalVariableResolver;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerActionSupport;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
+import org.jboss.tools.rsp.server.generic.servertype.launch.GenericJavaLauncher;
 import org.jboss.tools.rsp.server.generic.servertype.variables.ServerStringVariableManager.IExternalVariableResolver;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.IJettyServerAttributes;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.InitializeJettyActionHandler;
 import org.jboss.tools.rsp.server.jetty.servertype.impl.JettyContextRootSupport;
 import org.jboss.tools.rsp.server.spi.servertype.IServer;
-import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.servertype.IServerWorkingCopy;
 
-public class JettyServerDelegate extends GenericServerBehavior implements IServerDelegate {
+public class JettyServerDelegate extends GenericServerBehavior {
 
 	public JettyServerDelegate(IServer server, JSONMemento behaviorMemento) {
 		super(server, behaviorMemento);
@@ -39,6 +39,13 @@ public class JettyServerDelegate extends GenericServerBehavior implements IServe
 
 	@Override
 	public void setDependentDefaults(IServerWorkingCopy server) {
+		String wd = GenericJavaLauncher.getWorkingDirectory(getBehaviorMemento(), this);
+		if( wd != null && !wd.isEmpty()) {
+			File wdf = new File(wd);
+			if( !wdf.exists()) {
+				wdf.mkdirs();
+			}
+		}
 		setJavaLaunchDependentDefaults(server);
 	}
 	

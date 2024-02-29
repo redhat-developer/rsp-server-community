@@ -314,7 +314,7 @@
             "jetty.base.dir": {
               "type": "string",
               "description": "A relative path from the server root to the basedir to be used.",
-              "defaultValue": "demo-base",
+              "defaultValue": "${server.home.dir}/demo-base",
               "secret": "false"
             }
           },
