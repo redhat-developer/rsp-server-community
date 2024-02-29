@@ -19,8 +19,10 @@ import org.jboss.tools.rsp.api.dao.WorkflowResponseItem;
 import org.jboss.tools.rsp.eclipse.core.runtime.CoreException;
 import org.jboss.tools.rsp.eclipse.core.runtime.IStatus;
 import org.jboss.tools.rsp.eclipse.core.runtime.Status;
+import org.jboss.tools.rsp.server.generic.IStringSubstitutionProvider;
 import org.jboss.tools.rsp.server.generic.servertype.GenericServerBehavior;
 import org.jboss.tools.rsp.server.jetty.impl.Activator;
+import org.jboss.tools.rsp.server.spi.servertype.IServerDelegate;
 import org.jboss.tools.rsp.server.spi.util.StatusConverter;
 
 public class InitializeJettyActionHandler {
@@ -63,12 +65,17 @@ public class InitializeJettyActionHandler {
 		initializeServer(genericServerDelegate);
 		return okWorkflow().getActionWorkflow();
 	}
-	
+
+	private static String applySubstitutions(IServerDelegate del, String input) throws CoreException {
+		return (del instanceof IStringSubstitutionProvider) ? 
+				((IStringSubstitutionProvider)del).applySubstitutions(input) : input;
+	}
 	public static final void initializeServer(GenericServerBehavior behavior) {
 		AbstractGenericJavaLauncher launcher = createLauncher(behavior);
 		try {
 			launcher.launch("run");
 		} catch(CoreException ce) {
+			ce.printStackTrace();
 		}
 	}
 	
@@ -77,7 +84,17 @@ public class InitializeJettyActionHandler {
 
 			@Override
 			protected String getWorkingDirectory() {
-				return behavior.getServer().getAttribute(IJettyServerAttributes.JETTY_BASEDIR, (String)null);
+				String wd = behavior.getServer().getAttribute(IJettyServerAttributes.JETTY_BASEDIR, (String)null);
+				try {
+					wd = applySubstitutions(behavior, wd);
+				} catch( CoreException ce) {
+					ce.printStackTrace();
+				}
+				File f = new File(wd);
+				if( !f.exists()) {
+					f.mkdirs();
+				}
+				return wd;
 			}
 
 			@Override
