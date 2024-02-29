@@ -11,7 +11,9 @@ package org.jboss.tools.rsp.server.payara.servertype.impl;
 import org.jboss.tools.rsp.api.DefaultServerAttributes;
 
 public interface IPayaraServerAttributes extends DefaultServerAttributes {
+	public static final String PAYARA_SERVER_TYPE_ID_PREFIX = "org.jboss.ide.eclipse.as.server.payara.";
 	public static final String PAYARA_5X_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.payara.5x";
+	public static final String PAYARA_6X_SERVER_TYPE_ID = "org.jboss.ide.eclipse.as.server.payara.6x";
 	
 
 	/*
