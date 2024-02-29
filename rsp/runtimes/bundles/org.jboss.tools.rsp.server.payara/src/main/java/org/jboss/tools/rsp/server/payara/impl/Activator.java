@@ -63,7 +63,7 @@ public class Activator extends GenericServerActivator {
 				return new IServerBehaviorProvider() {
 					@Override
 					public IServerDelegate createServerDelegate(String typeId, IServer server) {
-						if (IPayaraServerAttributes.PAYARA_5X_SERVER_TYPE_ID.equals(typeId)) {
+						if (typeId != null && typeId.startsWith(IPayaraServerAttributes.PAYARA_SERVER_TYPE_ID_PREFIX)) {
 							return new PayaraServerDelegate(server, behaviorMemento);
 						}
 						return null;

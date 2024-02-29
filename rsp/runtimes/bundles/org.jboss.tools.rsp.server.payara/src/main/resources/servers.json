@@ -38,7 +38,7 @@
           "name": "Payara 6.x",
           "nameFile": "glassfish/modules/glassfish.jar",
           "nameKey": "Bundle-SymbolicName",
-          "nameRequiredPrefix": "fish.payara.server.internal.core.glassfish",
+          "nameRequiredPrefix": "fish.payara.server.core.nucleus.glassfish",
           "versionFile": "glassfish/modules/glassfish.jar",
           "versionKey": "Bundle-Version",
           "versionRequiredPrefix": "6."
