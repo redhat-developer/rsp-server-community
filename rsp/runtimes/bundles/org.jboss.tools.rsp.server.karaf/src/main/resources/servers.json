@@ -195,6 +195,14 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "36835993"
+        },
+        "karaf-4.4.5": {
+          "name": "Apache Karaf 4.4.5",
+          "fullVersion": "4.4.5",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.5/apache-karaf-4.4.5.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "36964953"
         }
       },
       "type": {
