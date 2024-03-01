@@ -339,11 +339,65 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.10/lafiles/en.html",
           "installationMethod": "archive",
           "size": "145107408"
+        },
+        "liberty23.0.0.11": {
+          "name": "WebSphere Liberty 23.0.0.11",
+          "fullVersion": "23.0.0.11",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.11/wlp-javaee8-23.0.0.11.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.11/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "145190259"
+        },
+        "liberty23.0.0.12": {
+          "name": "WebSphere Liberty 23.0.0.12",
+          "fullVersion": "23.0.0.12",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/23.0.0.12/wlp-javaee8-23.0.0.12.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/23.0.0.12/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "146722507"
         }
       },
       "type": {
         "name": "WebSphere Liberty 23.0.x",
         "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 23.x runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.liberty.24.0.0": {
+      "template": "liberty.template",
+      "discoveries": {
+        "payara.24.x": {
+          "discoveryType": "properties",
+          "name": "WebSphere Liberty 24.x",
+          "nameFile": "lib/versions/openliberty.properties",
+          "nameKey": "com.ibm.websphere.productId",
+          "nameRequiredPrefix": "io.openliberty",
+          "versionFile": "lib/versions/openliberty.properties",
+          "versionKey": "com.ibm.websphere.productVersion",
+          "versionRequiredPrefix": "24.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "liberty24.0.x",
+        "liberty24.0.0.1": {
+          "name": "WebSphere Liberty 24.0.0.1",
+          "fullVersion": "24.0.0.1",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.1/wlp-javaee8-24.0.0.1.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.1/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "147691011"
+        },
+        "liberty24.0.0.2": {
+          "name": "WebSphere Liberty 24.0.0.2",
+          "fullVersion": "24.0.0.2",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.2/wlp-javaee8-24.0.0.2.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.2/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "146511041"
+        }
+      },
+      "type": {
+        "name": "WebSphere Liberty 24.0.x",
+        "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 24.x runtime instance."
       }
     }
   },

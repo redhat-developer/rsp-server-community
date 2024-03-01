@@ -167,6 +167,22 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "14700131"
+        },
+        "jetty-11.0.20": {
+          "name": "Jetty 11.0.20",
+          "fullVersion": "11.0.20",
+          "downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/11.0.20/jetty-home-11.0.20.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "14733662"
+        },
+        "jetty-11.0.19": {
+          "name": "Jetty 11.0.19",
+          "fullVersion": "11.0.19",
+          "downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/11.0.19/jetty-home-11.0.19.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "14732057"
         }
       },
       "type": {
@@ -289,6 +305,30 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "33636096"
+        },
+        "jetty-12.0.6": {
+          "name": "Jetty 12.0.6",
+          "fullVersion": "12.0.6",
+          "downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/12.0.6/jetty-home-12.0.6.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "34024874"
+        },
+        "jetty-12.0.5": {
+          "name": "Jetty 12.0.5",
+          "fullVersion": "12.0.5",
+          "downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/12.0.5/jetty-home-12.0.5.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33994693"
+        },
+        "jetty-12.0.4": {
+          "name": "Jetty 12.0.4",
+          "fullVersion": "12.0.4",
+          "downloadUrl": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/12.0.4/jetty-home-12.0.4.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "33970155"
         }
       },
       "type": {
