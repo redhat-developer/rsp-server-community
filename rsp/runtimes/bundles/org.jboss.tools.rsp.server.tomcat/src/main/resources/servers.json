@@ -16,29 +16,37 @@
       },
       "downloads": {
         "downloadProviderId": "tomcat10.0.x",
-        "tomcat-10.0.2": {
-          "name": "Apache Tomcat 10.0.2",
-          "fullVersion": "10.0.2",
-          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.2/bin/apache-tomcat-10.0.2.zip",
+        "tomcat-10.1.23": {
+          "name": "Apache Tomcat 10.1.23",
+          "fullVersion": "10.1.23",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.zip",
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
-          "size": "11897156"
+          "size": "13554664"
         },
-        "tomcat-10.0.8": {
-          "name": "Apache Tomcat 10.0.8",
-          "fullVersion": "10.0.8",
-          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.zip",
+        "tomcat-10.1.20": {
+          "name": "Apache Tomcat 10.1.20",
+          "fullVersion": "10.1.20",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.20/bin/apache-tomcat-10.1.20.zip",
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
-          "size": "12395383"
+          "size": "13293635"
         },
-        "tomcat-10.0.27": {
-          "name": "Apache Tomcat 10.0.27",
-          "fullVersion": "10.0.27",
-          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.zip",
+        "tomcat-10.1.15": {
+          "name": "Apache Tomcat 10.1.15",
+          "fullVersion": "10.1.15",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.15/bin/apache-tomcat-10.1.15.zip",
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
-          "size": "12525287"
+          "size": "12962515"
+        },
+        "tomcat-10.1.10": {
+          "name": "Apache Tomcat 10.1.10",
+          "fullVersion": "10.1.10",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.10/bin/apache-tomcat-10.1.10.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12695268"
         },
         "tomcat-10.1.4": {
           "name": "Apache Tomcat 10.1.4",
@@ -72,6 +80,22 @@
           "installationMethod": "archive",
           "size": "12408523"
         },
+        "tomcat-10.0.27": {
+          "name": "Apache Tomcat 10.0.27",
+          "fullVersion": "10.0.27",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12525287"
+        },
+        "tomcat-10.0.8": {
+          "name": "Apache Tomcat 10.0.8",
+          "fullVersion": "10.0.8",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "12395383"
+        },
         "tomcat-10.0.6": {
           "name": "Apache Tomcat 10.0.6",
           "fullVersion": "10.0.6",
@@ -95,6 +119,14 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "12356103"
+        },
+        "tomcat-10.0.2": {
+          "name": "Apache Tomcat 10.0.2",
+          "fullVersion": "10.0.2",
+          "downloadUrl": "https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.2/bin/apache-tomcat-10.0.2.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "11897156"
         },
         "tomcat-10.0.0": {
           "name": "Apache Tomcat 10.0.0",
