@@ -67,7 +67,7 @@ jobs:
   release-job:
     environment: ${{ (inputs.publishToMarketPlace == 'true' || inputs.publishToOVSX == 'true') && 'release' }}
     runs-on: ubuntu-latest
-    needs: packaging-job
+    needs: build-job
     steps:
       - name: Set Up NodeJS
         uses: actions/setup-node@v4
