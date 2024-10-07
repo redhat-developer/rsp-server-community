@@ -5,7 +5,9 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
+  workflow_dispatch:
+    branches: [master]
+  
 jobs:
   test:
     runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
@@ -32,6 +34,10 @@ jobs:
     - name: Build RSP part using Maven
       working-directory: rsp
       run: mvn clean install -U -fae -e -B
+    - name: Cache Version
+      working-directory: vscode
+      run: |
+        echo "EXT_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
     - name: Install NPM prerequisities
       working-directory: vscode
       run: |
@@ -61,4 +67,5 @@ jobs:
           vscode/test-resources/screenshots/*.png
           vscode/test-resources/*.log
           vscode/test-resources/test-report.xml
+          vscode/vscode-community-server-connector-${{ env.EXT_VERSION }}.vsix
         retention-days: 2

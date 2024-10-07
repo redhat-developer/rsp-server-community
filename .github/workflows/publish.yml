@@ -1,4 +1,4 @@
-name: Generate plugin archive for new release
+name: Publish release to marketplaces
 on:
   workflow_dispatch:
     inputs:
@@ -86,7 +86,7 @@ jobs:
           ls -la #debug
           for platformVsix in vscode-community-server-connector/*.vsix; do
             echo "Running command: vsce publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
-            #vsce publish --skip-duplicate -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+            vsce publish --skip-duplicate -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
           done
       - name: Publish to OpenVSX Registry
         if: ${{ inputs.publishToOVSX == 'true' }}
@@ -94,5 +94,5 @@ jobs:
           ls -la #debug
           for platformVsix in vscode-community-server-connector/*.vsix; do
             echo "Running command: ovsx publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
-            #ovsx publish --skip-duplicate -p ${{ secrets.OVSX_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+            ovsx publish --skip-duplicate -p ${{ secrets.OVSX_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
           done

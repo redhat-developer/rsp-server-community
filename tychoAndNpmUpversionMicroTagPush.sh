@@ -56,7 +56,7 @@ tpFile=`ls -1 targetplatform | grep target`
 cat targetplatform/$tpFile | sed "s/-target-$oldver/-target-$newver/g" > targetplatform/$tpFile.bak
 mv targetplatform/$tpFile.bak targetplatform/$tpFile
 
-latestRspServerVersion=`curl https://download.jboss.org/jbosstools/adapters/stable/rsp-server/LATEST | grep version | cut -f 2 -d "="`
+latestRspServerVersion=`curl https://raw.githubusercontent.com/redhat-developer/rsp-server/refs/heads/master/LATEST | grep version | cut -f 2 -d "="`
 echo ""
 echo "We will now depend on the latest rsp-server $latestRspServerVersion"
 read -p "Press enter to continue"
