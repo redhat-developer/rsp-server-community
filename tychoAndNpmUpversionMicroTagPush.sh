@@ -75,7 +75,7 @@ mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newv
 
 echo "Lets build the RSP"
 read -p "Press enter to continue"
-mvn clean install -DskipTests
+mvn clean install -DskipTests -Dtycho.localArtifacts=ignore
 echo "Did it succeed?"
 read -p "Press enter to continue"
 
