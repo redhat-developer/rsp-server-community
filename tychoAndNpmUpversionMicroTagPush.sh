@@ -106,7 +106,7 @@ echo "Did it succeed?"
 read -p "Press enter to continue"
 
 
-echo "Go kick a Jenkins Job please. Come back when its DONE and green."
+echo "Go kick a build: https://github.com/redhat-developer/rsp-server-community/actions/workflows/actions.yml"
 read -p "Press enter to continue"
 
 
@@ -122,11 +122,6 @@ if [ "$debug" -eq 0 ]; then
 else 
 	echo git push origin $curBranch
 fi
-
-
-echo "Go kick another jenkins job with a release flag."
-read -p "Press enter to continue"
-
 
 
 echo "Are you absolutely sure you want to tag?"
@@ -199,6 +194,14 @@ fi
 echo ""
 echo "Please go verify the release looks correct and the distribution was added correctly."
 read -p "Press enter to continue"
+
+
+
+
+echo "Now we need to publish to marketplace: "
+echo "Go kick a release build: https://github.com/redhat-developer/rsp-server-community/actions/workflows/publish.yml"
+read -p "Press enter to continue"
+
 
 
 echo ""
