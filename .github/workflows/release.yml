@@ -64,7 +64,7 @@ jobs:
       with:
         name: vscode-community-server-connector
         path: |
-          vscode-community-server-connector-${{ env.EXT_VERSION }}.vsix
+          vscode/vscode-community-server-connector-${{ env.EXT_VERSION }}.vsix
         if-no-files-found: error
   release-job:
     environment: ${{ (inputs.publishToMarketPlace == 'true' || inputs.publishToOVSX == 'true') && 'release' }}
