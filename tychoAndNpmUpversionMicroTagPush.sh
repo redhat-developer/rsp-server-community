@@ -171,8 +171,9 @@ read -p "Press enter to continue"
 
 assetUrl=`cat createReleaseResponse.json | grep assets_url | cut -c 1-17 --complement | rev | cut -c3- | rev | sed 's/api.github.com/uploads.github.com/g'`
 rm createReleaseResponse.json
-zipFileName=` ls -1 -t *.vsix  | head -n 1`
-echo "Running command to add artifact to release: "
+
+zipFileName=`ls -1 -t ../rsp/distribution/distribution.community/target/*.zip | head -n 1`
+echo "Running command to add zip artifact to release: "
 	echo curl -L \
 	  -X POST \
 	  -H "Accept: application/vnd.github+json" \
@@ -190,6 +191,27 @@ if [ "$debug" -eq 0 ]; then
 	  -H "Content-Type: application/octet-stream" \
 	  $assetUrl?name=$zipFileName \
 	  --data-binary "@$zipFileName"
+fi
+
+vsixFileName=` ls -1 -t *.vsix  | head -n 1`
+echo "Running command to add vsix artifact to release: "
+	echo curl -L \
+	  -X POST \
+	  -H "Accept: application/vnd.github+json" \
+	  -H "Authorization: Bearer $ghtoken"\
+	  -H "X-GitHub-Api-Version: 2022-11-28" \
+	  -H "Content-Type: application/octet-stream" \
+	  $assetUrl?name=$vsixFileName \
+	  --data-binary "@$vsixFileName"
+if [ "$debug" -eq 0 ]; then
+	curl -L \
+	  -X POST \
+	  -H "Accept: application/vnd.github+json" \
+	  -H "Authorization: Bearer $ghtoken"\
+	  -H "X-GitHub-Api-Version: 2022-11-28" \
+	  -H "Content-Type: application/octet-stream" \
+	  $assetUrl?name=$vsixFileName \
+	  --data-binary "@$vsixFileName"
 fi
 echo ""
 echo "Please go verify the release looks correct and the distribution was added correctly."
@@ -231,8 +253,12 @@ read -p "Press enter to continue"
 mvn clean install -DskipTests
 echo "Did it succeed?"
 read -p "Press enter to continue"
+cd ../
 
-cd ../vscode
+echo "org.jboss.tools.rsp.community.distribution.latest.version=${newverRsp}\norg.jboss.tools.rsp.community.distribution.latest.url=https://github.com/redhat-developer/rsp-server-community/releases/download/v0_26_17.Final/vscode-community-server-connector-0.26.17.vsix" > LATEST
+git add LATEST
+
+cd vscode
 newVscVer=`cat package.json  | grep "\"version\":" | cut -f 2 -d ":" | sed 's/"//g' | sed 's/,//g' | awk '{$1=$1};1'`
 newVscLastSegment=`echo $newVscVer | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
 newVscPrefix=`echo $newVscVer | cut -f 1,2 -d "."`
