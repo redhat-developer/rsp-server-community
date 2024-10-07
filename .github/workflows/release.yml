@@ -54,10 +54,10 @@ jobs:
       working-directory: vscode
       run: |
         echo "EXT_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
-    - name: Package vscode-server-connector
+    - name: Package vscode-community-server-connector
       working-directory: vscode
       run: |
-        vsce package -o vscode-server-connector-${{ env.EXT_VERSION }}.vsix
+        vsce package -o vscode-community-server-connector-${{ env.EXT_VERSION }}.vsix
         ls -lash *.vsix
     - name: Upload VSIX Artifacts
       uses: actions/upload-artifact@v4
