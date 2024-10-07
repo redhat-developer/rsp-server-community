@@ -393,6 +393,70 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.2/lafiles/en.html",
           "installationMethod": "archive",
           "size": "146511041"
+        },
+        "liberty24.0.0.3": {
+          "name": "WebSphere Liberty 24.0.0.3",
+          "fullVersion": "24.0.0.3",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.3/wlp-javaee8-24.0.0.3.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.3/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "146720852"
+        },
+        "liberty24.0.0.4": {
+          "name": "WebSphere Liberty 24.0.0.4",
+          "fullVersion": "24.0.0.4",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.4/wlp-javaee8-24.0.0.4.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.4/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "147277448"
+        },
+        "liberty24.0.0.5": {
+          "name": "WebSphere Liberty 24.0.0.5",
+          "fullVersion": "24.0.0.5",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.5/wlp-javaee8-24.0.0.5.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.5/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "147439783"
+        },
+        "liberty24.0.0.6": {
+          "name": "WebSphere Liberty 24.0.0.6",
+          "fullVersion": "24.0.0.6",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.6/wlp-javaee8-24.0.0.6.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.6/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "147669237"
+        },
+        "liberty24.0.0.7": {
+          "name": "WebSphere Liberty 24.0.0.7",
+          "fullVersion": "24.0.0.7",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.7/wlp-javaee8-24.0.0.7.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.7/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "154285929"
+        },
+        "liberty24.0.0.8": {
+          "name": "WebSphere Liberty 24.0.0.8",
+          "fullVersion": "24.0.0.8",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.8/wlp-javaee8-24.0.0.8.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.8/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "154845151"
+        },
+        "liberty24.0.0.9": {
+          "name": "WebSphere Liberty 24.0.0.9",
+          "fullVersion": "24.0.0.9",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.9/wlp-javaee8-24.0.0.9.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.9/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "154970035"
+        },
+        "liberty24.0.0.10": {
+          "name": "WebSphere Liberty 24.0.0.10",
+          "fullVersion": "24.0.0.10",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/24.0.0.10/wlp-javaee8-24.0.0.10.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/24.0.0.10/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "155030447"
         }
       },
       "type": {

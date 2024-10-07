@@ -203,6 +203,14 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "36964953"
+        },
+        "karaf-4.4.6": {
+          "name": "Apache Karaf 4.4.6",
+          "fullVersion": "4.4.6",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.6/apache-karaf-4.4.6.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "37077770"
         }
       },
       "type": {

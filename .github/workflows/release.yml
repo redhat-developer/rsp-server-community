@@ -1,8 +1,25 @@
 name: Generate plugin archive for new release
-on: [workflow_dispatch]
-
+on:
+  workflow_dispatch:
+    inputs:
+        publishToMarketPlace:
+          description: 'Publish to VS Code Marketplace ?'
+          required: true
+          type: choice
+          options:
+            - 'true'
+            - 'false'
+          default: 'false'
+        publishToOVSX:
+          description: 'Publish to OpenVSX Registry ?'
+          required: true
+          type: choice
+          options:
+            - 'true'
+            - 'false'
+          default: 'false'
 jobs:
-  release:
+  build-job:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -33,33 +50,47 @@ jobs:
       with:
         working-directory: vscode
         run: npm run test
-    - name: Get current package version
-      id: package_version
-      uses: martinbeentjes/npm-get-version-action@95bc31c6dd3145896c110e382f840bb1e750d09c #v1.1.0
+    - name: Cache Version
+      run: |
+        echo "EXT_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
+    - name: Package vscode-server-connector
+      run: |
+        vsce package -o vscode-server-connector-${{ env.EXT_VERSION }}.vsix
+        ls -lash *.vsix
+    - name: Upload VSIX Artifacts
+      uses: actions/upload-artifact@v4
       with:
-        path: 'vscode'
-    - name: Create a Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-      with:
-        tag_name : ${{ steps.package_version.outputs.current-version}}
-        release_name: ${{ steps.package_version.outputs.current-version}}
-        body: Release ${{ steps.package_version.outputs.current-version}}
-    - name: Create vsix
-      id: create_vsix
-      uses: HaaLeo/publish-vscode-extension@aae4c55fd9e724685834ff0a9488ad57c8f3ecf1 #v0
-      with:
-        pat: 'no_necessary_as_we_do_not_publish_on_marketplace'
-        dryRun: true
-        packagePath: 'vscode'
-    - name: Attach vsix to release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ steps.create_vsix.outputs.vsixPath}}
-        asset_name: ${{ steps.create_vsix.outputs.vsixPath}}
-        asset_content_type: application/vsix
+        name: vscode-community-server-connector
+        path: |
+          vscode-community-server-connector-${{ env.EXT_VERSION }}.vsix
+        if-no-files-found: error
+  release-job:
+    environment: ${{ (inputs.publishToMarketPlace == 'true' || inputs.publishToOVSX == 'true') && 'release' }}
+    runs-on: ubuntu-latest
+    needs: packaging-job
+    steps:
+      - name: Set Up NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm install -g typescript "@vscode/vsce" "ovsx"
+      - name: Download VSIX
+        uses: actions/download-artifact@v4
+      - name: Publish to VS Code Marketplace
+        if: ${{ inputs.publishToMarketPlace == 'true' }}
+        run: |
+          ls -la #debug
+          for platformVsix in vscode-community-server-connector/*.vsix; do
+            echo "Running command: vsce publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
+            #vsce publish --skip-duplicate -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+          done
+      - name: Publish to OpenVSX Registry
+        if: ${{ inputs.publishToOVSX == 'true' }}
+        run: |
+          ls -la #debug
+          for platformVsix in vscode-community-server-connector/*.vsix; do
+            echo "Running command: ovsx publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
+            #ovsx publish --skip-duplicate -p ${{ secrets.OVSX_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+          done
