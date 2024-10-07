@@ -51,9 +51,11 @@ jobs:
         working-directory: vscode
         run: npm run test
     - name: Cache Version
+      working-directory: vscode
       run: |
         echo "EXT_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
     - name: Package vscode-server-connector
+      working-directory: vscode
       run: |
         vsce package -o vscode-server-connector-${{ env.EXT_VERSION }}.vsix
         ls -lash *.vsix
