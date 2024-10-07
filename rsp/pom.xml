@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.tools.rsp.server.community</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.26.17-SNAPSHOT</version>
+	<version>0.26.17.Final</version>
 	<packaging>pom</packaging>
 	<name>Runtime Server Protocol: Community</name>
 	<description>A runtime-server protocol distribution for servers and runtimes maintained by the community.</description>
