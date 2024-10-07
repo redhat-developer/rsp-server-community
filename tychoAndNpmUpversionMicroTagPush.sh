@@ -172,7 +172,8 @@ read -p "Press enter to continue"
 assetUrl=`cat createReleaseResponse.json | grep assets_url | cut -c 1-17 --complement | rev | cut -c3- | rev | sed 's/api.github.com/uploads.github.com/g'`
 rm createReleaseResponse.json
 
-zipFileName=`ls -1 -t ../rsp/distribution/distribution.community/target/*.zip | head -n 1`
+zipFilePath=`ls -1 -t ../rsp/distribution/distribution.community/target/*.zip | head -n 1`
+zipFileName=`ls -1 -t ../rsp/distribution/distribution.community/target/*.zip | head -n 1 | xargs -n1 basename`
 echo "Running command to add zip artifact to release: "
 	echo curl -L \
 	  -X POST \
@@ -181,7 +182,7 @@ echo "Running command to add zip artifact to release: "
 	  -H "X-GitHub-Api-Version: 2022-11-28" \
 	  -H "Content-Type: application/octet-stream" \
 	  $assetUrl?name=$zipFileName \
-	  --data-binary "@$zipFileName"
+	  --data-binary "@$zipFilePath"
 if [ "$debug" -eq 0 ]; then
 	curl -L \
 	  -X POST \
@@ -190,7 +191,7 @@ if [ "$debug" -eq 0 ]; then
 	  -H "X-GitHub-Api-Version: 2022-11-28" \
 	  -H "Content-Type: application/octet-stream" \
 	  $assetUrl?name=$zipFileName \
-	  --data-binary "@$zipFileName"
+	  --data-binary "@$zipFilePath"
 fi
 
 vsixFileName=` ls -1 -t *.vsix  | head -n 1`
@@ -225,11 +226,17 @@ echo "Go kick a release build: https://github.com/redhat-developer/rsp-server-co
 read -p "Press enter to continue"
 
 
-
 echo ""
 echo ""
 echo "Time to update versions for development"
 read -p "Press enter to continue"
+
+
+echo "First, update LATEST as part of the previous release process"
+echo -e "org.jboss.tools.rsp.community.distribution.latest.version=${newverRsp}\norg.jboss.tools.rsp.community.distribution.latest.url=https://github.com/redhat-developer/rsp-server-community/releases/download/${vscTagName}/org.jboss.tools.rsp.server.community.distribution-${oldVerVscFinal}.zip" > LATEST
+git add LATEST
+
+
 
 cd ../rsp
 echo "First the rsp"
@@ -253,12 +260,7 @@ read -p "Press enter to continue"
 mvn clean install -DskipTests
 echo "Did it succeed?"
 read -p "Press enter to continue"
-cd ../
-
-echo "org.jboss.tools.rsp.community.distribution.latest.version=${newverRsp}\norg.jboss.tools.rsp.community.distribution.latest.url=https://github.com/redhat-developer/rsp-server-community/releases/download/v0_26_17.Final/vscode-community-server-connector-0.26.17.vsix" > LATEST
-git add LATEST
-
-cd vscode
+cd ../vscode
 newVscVer=`cat package.json  | grep "\"version\":" | cut -f 2 -d ":" | sed 's/"//g' | sed 's/,//g' | awk '{$1=$1};1'`
 newVscLastSegment=`echo $newVscVer | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
 newVscPrefix=`echo $newVscVer | cut -f 1,2 -d "."`
