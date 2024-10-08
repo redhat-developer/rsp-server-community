@@ -32,7 +32,7 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v1
       with:
-        node-version: 18
+        node-version: 20
     - name: Build RSP part using Maven
       working-directory: rsp
       run: mvn clean install -U -fae -e -B
@@ -74,7 +74,7 @@ jobs:
       - name: Set Up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - name: Install dependencies
         run: |
           npm install -g typescript "@vscode/vsce" "ovsx"
