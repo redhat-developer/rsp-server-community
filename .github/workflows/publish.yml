@@ -88,6 +88,8 @@ jobs:
           ls -1a vscode-community-server-connector
           echo ""
           for platformVsix in vscode-community-server-connector/*.vsix; do
+            echo "Sanity check - ls -l platformVsix"
+            ls -l $platformVsix
             echo "Running command: vsce publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
             vsce publish --skip-duplicate -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
           done
