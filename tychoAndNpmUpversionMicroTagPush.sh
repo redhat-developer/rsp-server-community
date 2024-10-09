@@ -232,14 +232,15 @@ echo "Time to update versions for development"
 read -p "Press enter to continue"
 
 
+cd ../rsp
 echo "First, update LATEST as part of the previous release process"
 echo -e "org.jboss.tools.rsp.community.distribution.latest.version=${newverRsp}\norg.jboss.tools.rsp.community.distribution.latest.url=https://github.com/redhat-developer/rsp-server-community/releases/download/${vscTagName}/org.jboss.tools.rsp.server.community.distribution-${oldVerVscFinal}.zip" > LATEST
 git add LATEST
+read -p "Press enter to continue"
 
 
 
-cd ../rsp
-echo "First the rsp"
+echo "Next, upversion the rsp"
 read -p "Press enter to continue"
 nextLastSegmentRsp=`echo $newverRsp | cut -f 3 -d "." | awk '{ print $0 + 1;}' | bc`
 nextVerPrefixRsp=`echo $newverRsp | cut -f 1,2 -d "."`
