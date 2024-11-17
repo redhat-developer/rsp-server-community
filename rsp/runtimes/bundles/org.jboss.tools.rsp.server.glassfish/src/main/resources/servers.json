@@ -127,7 +127,7 @@
       },
       "type": {
         "name": "Glassfish 7.x",
-        "description": "A server adapter capable of discovering and controlling a Glassfish 7.x runtiem instance."
+        "description": "A server adapter capable of discovering and controlling a Glassfish 7.x runtime instance."
       }
     }
   },
