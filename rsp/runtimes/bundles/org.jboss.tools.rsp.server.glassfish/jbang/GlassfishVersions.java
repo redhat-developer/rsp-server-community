@@ -71,7 +71,7 @@ public class GlassfishVersions {
 
             JsonObject generatedInnerType = new JsonObject();
             generatedInnerType.addProperty("name", "Glassfish " + major(singleAddition) + ".x");
-            String descString = "A server adapter capable of discovering and controlling a Glassfish " + major(singleAddition) + ".x runtiem instance.";
+            String descString = "A server adapter capable of discovering and controlling a Glassfish " + major(singleAddition) + ".x runtime instance.";
             generatedInnerType.addProperty("description", descString);
             generatedType.add("type", generatedInnerType);
 
