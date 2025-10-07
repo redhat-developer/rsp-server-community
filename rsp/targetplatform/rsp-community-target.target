@@ -42,7 +42,7 @@
 
 
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-			<repository location="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/jbosstools-locus/1.8.0/jbosstools-locus-1.8.0-updatesite.zip-unzip"/>
+			<repository location="https://download.jboss.org/jbosstools/updates/stable/locus/1.8.0/" />
 			<!-- Test dependencies -->
 			<unit id="org.apache.felix.log" version="1.2.0"/>
 			<unit id="org.everit.osgi.bundles.org.apache.xmlcommons.full" version="1.4.1.20150918"/>
