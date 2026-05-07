@@ -325,11 +325,97 @@
           "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
           "installationMethod": "archive",
           "size": "172719483"
+        },
+        "payara-6.2025.11": {
+          "name": "Payara 6.2025.11",
+          "fullVersion": "6.2025.11",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2025.11/payara-6.2025.11.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "170086135"
+        },
+        "payara-6.2025.10": {
+          "name": "Payara 6.2025.10",
+          "fullVersion": "6.2025.10",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/6.2025.10/payara-6.2025.10.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "170080545"
         }
       },
       "type": {
         "name": "Payara 6.x",
         "description": "A server adapter capable of discovering and controlling a Payara 6.x runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.payara.7x": {
+      "template": "payara.template",
+      "discoveries": {
+        "payara.7.x": {
+          "discoveryType": "jarManifest",
+          "name": "Payara 7.x",
+          "nameFile": "glassfish/modules/glassfish.jar",
+          "nameKey": "Bundle-SymbolicName",
+          "nameRequiredPrefix": "fish.payara.server.internal.core.glassfish",
+          "versionFile": "glassfish/modules/glassfish.jar",
+          "versionKey": "Bundle-Version",
+          "versionRequiredPrefix": "7."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "payara7.x",
+        "payara-7.2026.4": {
+          "name": "Payara 7.2026.4",
+          "fullVersion": "7.2026.4",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.4/payara-7.2026.4.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164804653"
+        },
+        "payara-7.2026.3": {
+          "name": "Payara 7.2026.3",
+          "fullVersion": "7.2026.3",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.3/payara-7.2026.3.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "163883172"
+        },
+        "payara-7.2026.2": {
+          "name": "Payara 7.2026.2",
+          "fullVersion": "7.2026.2",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.2/payara-7.2026.2.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "163902706"
+        },
+        "payara-7.2026.1": {
+          "name": "Payara 7.2026.1",
+          "fullVersion": "7.2026.1",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.1/payara-7.2026.1.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "168073197"
+        },
+        "payara-7.2025.2": {
+          "name": "Payara 7.2025.2",
+          "fullVersion": "7.2025.2",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2025.2/payara-7.2025.2.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "167927552"
+        },
+        "payara-7.2025.1": {
+          "name": "Payara 7.2025.1",
+          "fullVersion": "7.2025.1",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2025.1/payara-7.2025.1.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "167639258"
+        }
+      },
+      "type": {
+        "name": "Payara 7.x",
+        "description": "A server adapter capable of discovering and controlling a Payara 7.x runtime instance."
       }
     }
   },

@@ -227,6 +227,30 @@
           "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
           "installationMethod": "archive",
           "size": "37372984"
+        },
+        "karaf-4.4.11": {
+          "name": "Apache Karaf 4.4.11",
+          "fullVersion": "4.4.11",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.11/apache-karaf-4.4.11.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "38004873"
+        },
+        "karaf-4.4.10": {
+          "name": "Apache Karaf 4.4.10",
+          "fullVersion": "4.4.10",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.10/apache-karaf-4.4.10.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "37535891"
+        },
+        "karaf-4.4.9": {
+          "name": "Apache Karaf 4.4.9",
+          "fullVersion": "4.4.9",
+          "downloadUrl": "https://archive.apache.org/dist/karaf/4.4.9/apache-karaf-4.4.9.zip",
+          "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "installationMethod": "archive",
+          "size": "38291764"
         }
       },
       "type": {

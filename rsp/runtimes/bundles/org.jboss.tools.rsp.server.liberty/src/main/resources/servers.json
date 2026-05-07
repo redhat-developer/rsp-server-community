@@ -575,11 +575,81 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/25.0.0.10/lafiles/en.html",
           "installationMethod": "archive",
           "size": "156200932"
+        },
+        "liberty25.0.0.11": {
+          "name": "WebSphere Liberty 25.0.0.11",
+          "fullVersion": "25.0.0.11",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/25.0.0.11/wlp-javaee8-25.0.0.11.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/25.0.0.11/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "156305841"
+        },
+        "liberty25.0.0.12": {
+          "name": "WebSphere Liberty 25.0.0.12",
+          "fullVersion": "25.0.0.12",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/25.0.0.12/wlp-javaee8-25.0.0.12.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/25.0.0.12/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "156652737"
         }
       },
       "type": {
         "name": "WebSphere Liberty 25.0.x",
         "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 25.x runtime instance."
+      }
+    },
+    "org.jboss.ide.eclipse.as.server.liberty.26.0.0": {
+      "template": "liberty.template",
+      "discoveries": {
+        "payara.26.x": {
+          "discoveryType": "properties",
+          "name": "WebSphere Liberty 26.x",
+          "nameFile": "lib/versions/openliberty.properties",
+          "nameKey": "com.ibm.websphere.productId",
+          "nameRequiredPrefix": "io.openliberty",
+          "versionFile": "lib/versions/openliberty.properties",
+          "versionKey": "com.ibm.websphere.productVersion",
+          "versionRequiredPrefix": "26.0."
+        }
+      },
+      "downloads": {
+        "downloadProviderId": "liberty26.0.x",
+        "liberty26.0.0.1": {
+          "name": "WebSphere Liberty 26.0.0.1",
+          "fullVersion": "26.0.0.1",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.1/wlp-javaee8-26.0.0.1.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.1/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157166586"
+        },
+        "liberty26.0.0.2": {
+          "name": "WebSphere Liberty 26.0.0.2",
+          "fullVersion": "26.0.0.2",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.2/wlp-javaee8-26.0.0.2.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.2/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157192967"
+        },
+        "liberty26.0.0.3": {
+          "name": "WebSphere Liberty 26.0.0.3",
+          "fullVersion": "26.0.0.3",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.3/wlp-javaee8-26.0.0.3.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.3/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157580328"
+        },
+        "liberty26.0.0.4": {
+          "name": "WebSphere Liberty 26.0.0.4",
+          "fullVersion": "26.0.0.4",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.4/wlp-javaee8-26.0.0.4.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.4/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157669014"
+        }
+      },
+      "type": {
+        "name": "WebSphere Liberty 26.0.x",
+        "description": "A server adapter capable of discovering and controlling a WebSphere Liberty 26.x runtime instance."
       }
     }
   },
