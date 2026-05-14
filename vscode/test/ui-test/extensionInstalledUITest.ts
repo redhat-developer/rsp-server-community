@@ -21,9 +21,32 @@ export function extensionInstalledUITest(): void {
 
     it('RSP server community extension is installed', async function () {
       this.timeout(20000);
-      const item = (await section.findItem(`@installed ` + AdaptersConstants.RSP_EXTENSTION_NAME)) as ExtensionsViewItem;
-      expect(item).not.undefined;
-      expect(await item.getTitle()).to.equal(AdaptersConstants.RSP_EXTENSTION_NAME);
+
+      // Retry logic to handle StaleElementReferenceError
+      const maxRetries = 3;
+      let lastError: Error | undefined;
+
+      for (let attempt = 0; attempt < maxRetries; attempt++) {
+        try {
+          const item = (await section.findItem(`@installed ` + AdaptersConstants.RSP_EXTENSTION_NAME)) as ExtensionsViewItem;
+          expect(item).not.undefined;
+          const title = await item.getTitle();
+          expect(title).to.equal(AdaptersConstants.RSP_EXTENSTION_NAME);
+          return; // Success, exit the test
+        } catch (error: any) {
+          lastError = error;
+          if (error.name === 'StaleElementReferenceError' && attempt < maxRetries - 1) {
+            // Wait a bit before retrying
+            await new Promise(resolve => setTimeout(resolve, 500));
+            continue;
+          }
+          // If it's not a stale element error, or we're out of retries, throw
+          throw error;
+        }
+      }
+
+      // If we get here, all retries failed
+      throw lastError!;
     });
 
     afterEach(async function () {
