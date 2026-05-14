@@ -71,11 +71,11 @@ read -p "Press enter to continue"
 
 
 echo "Updating pom.xml with new version"
-mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newverRspFinal
+MAVEN_OPTS="-Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0" mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$newverRspFinal
 
 echo "Lets build the RSP"
 read -p "Press enter to continue"
-mvn clean install -DskipTests -Dtycho.localArtifacts=ignore
+MAVEN_OPTS="-Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0" mvn clean install -DskipTests -Dtycho.localArtifacts=ignore
 echo "Did it succeed?"
 read -p "Press enter to continue"
 
@@ -249,7 +249,7 @@ nextVerRsp=$nextVerPrefixRsp.$nextLastSegmentRsp
 echo "Current version (RSP) is $newverRsp"
 echo "Next version (RSP) is $nextVerRsp"
 echo "Updating pom.xml with new version"
-mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$nextVerRsp-SNAPSHOT
+MAVEN_OPTS="-Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0" mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=$nextVerRsp-SNAPSHOT
 
 # Handle target platform
 tpFile=`ls -1 targetplatform | grep target`
@@ -258,7 +258,7 @@ mv targetplatform/$tpFile.bak targetplatform/$tpFile
 
 echo "Lets build the RSP After upversion"
 read -p "Press enter to continue"
-mvn clean install -DskipTests
+MAVEN_OPTS="-Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0" mvn clean install -DskipTests
 echo "Did it succeed?"
 read -p "Press enter to continue"
 cd ../vscode
