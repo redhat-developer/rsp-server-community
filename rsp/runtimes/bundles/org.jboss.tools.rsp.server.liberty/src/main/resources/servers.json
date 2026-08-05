@@ -645,6 +645,30 @@
           "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.4/lafiles/en.html",
           "installationMethod": "archive",
           "size": "157669014"
+        },
+        "liberty26.0.0.5": {
+          "name": "WebSphere Liberty 26.0.0.5",
+          "fullVersion": "26.0.0.5",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.5/wlp-javaee8-26.0.0.5.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.5/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157992876"
+        },
+        "liberty26.0.0.6": {
+          "name": "WebSphere Liberty 26.0.0.6",
+          "fullVersion": "26.0.0.6",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.6/wlp-javaee8-26.0.0.6.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.6/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "158028070"
+        },
+        "liberty26.0.0.7": {
+          "name": "WebSphere Liberty 26.0.0.7",
+          "fullVersion": "26.0.0.7",
+          "downloadUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/26.0.0.7/wlp-javaee8-26.0.0.7.zip",
+          "licenseUrl": "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/26.0.0.7/lafiles/en.html",
+          "installationMethod": "archive",
+          "size": "157843068"
         }
       },
       "type": {

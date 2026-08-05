@@ -411,6 +411,30 @@
           "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
           "installationMethod": "archive",
           "size": "167639258"
+        },
+        "payara-7.2026.7": {
+          "name": "Payara 7.2026.7",
+          "fullVersion": "7.2026.7",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.7/payara-7.2026.7.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164575714"
+        },
+        "payara-7.2026.6": {
+          "name": "Payara 7.2026.6",
+          "fullVersion": "7.2026.6",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.6/payara-7.2026.6.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "164534211"
+        },
+        "payara-7.2026.5": {
+          "name": "Payara 7.2026.5",
+          "fullVersion": "7.2026.5",
+          "downloadUrl": "https://repo1.maven.org/maven2/fish/payara/distributions/payara/7.2026.5/payara-7.2026.5.zip",
+          "licenseUrl": "ttps://raw.githubusercontent.com/payara/Payara/master/LICENSE.txt",
+          "installationMethod": "archive",
+          "size": "162305408"
         }
       },
       "type": {
