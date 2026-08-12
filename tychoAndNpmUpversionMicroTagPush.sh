@@ -53,7 +53,7 @@ echo "New version (RSP) is $newverRspFinal"
 # Handle target platform
 echo "Updating target platform with new version"
 tpFile=`ls -1 targetplatform | grep target`
-cat targetplatform/$tpFile | sed "s/-target-$oldver/-target-$newver/g" > targetplatform/$tpFile.bak
+cat targetplatform/$tpFile | sed "s/-target-$oldverRsp/-target-$newverRsp/g" > targetplatform/$tpFile.bak
 mv targetplatform/$tpFile.bak targetplatform/$tpFile
 
 latestRspServerVersion=`curl https://raw.githubusercontent.com/redhat-developer/rsp-server/refs/heads/master/LATEST | grep version | cut -f 2 -d "="`
