@@ -78,8 +78,7 @@ public class JettyServerDelegate extends GenericServerBehavior {
 
 		private String resolveJettyHost() {
 			File basedir = getBaseDir();
-			File startd = new File(basedir, "start.d");
-			File http_ini = new File(startd, "http.ini");
+			File http_ini = new File(new File(basedir, "start.d"), "http.ini");
 			if( http_ini.exists()) {
 				try (InputStream input = new FileInputStream(http_ini)) {
 		            Properties prop = new Properties();
@@ -88,7 +87,19 @@ public class JettyServerDelegate extends GenericServerBehavior {
 		            	return prop.getProperty("jetty.http.host");
 		            }
 				} catch( IOException ioe) {
-					// TODO 
+					// TODO
+				}
+			}
+			File start_ini = new File(basedir, "start.ini");
+			if( start_ini.exists()) {
+				try (InputStream input = new FileInputStream(start_ini)) {
+		            Properties prop = new Properties();
+		            prop.load(input);
+		            if( prop.getProperty("jetty.http.host") != null ) {
+		            	return prop.getProperty("jetty.http.host");
+		            }
+				} catch( IOException ioe) {
+					// TODO
 				}
 			}
 			return "localhost";
@@ -96,8 +107,7 @@ public class JettyServerDelegate extends GenericServerBehavior {
 
 		private String resolveJettyPort() {
 			File basedir = getBaseDir();
-			File startd = new File(basedir, "start.d");
-			File http_ini = new File(startd, "http.ini");
+			File http_ini = new File(new File(basedir, "start.d"), "http.ini");
 			if( http_ini.exists()) {
 				try (InputStream input = new FileInputStream(http_ini)) {
 		            Properties prop = new Properties();
@@ -106,7 +116,19 @@ public class JettyServerDelegate extends GenericServerBehavior {
 		            	return prop.getProperty("jetty.http.port");
 		            }
 				} catch( IOException ioe) {
-					// TODO 
+					// TODO
+				}
+			}
+			File start_ini = new File(basedir, "start.ini");
+			if( start_ini.exists()) {
+				try (InputStream input = new FileInputStream(start_ini)) {
+		            Properties prop = new Properties();
+		            prop.load(input);
+		            if( prop.getProperty("jetty.http.port") != null ) {
+		            	return prop.getProperty("jetty.http.port");
+		            }
+				} catch( IOException ioe) {
+					// TODO
 				}
 			}
 			return "8080";
