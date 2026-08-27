@@ -4,7 +4,7 @@ Bundle-Name: org.jboss.tools.rsp.server.karaf
 Bundle-SymbolicName: org.jboss.tools.rsp.server.karaf
 Automatic-Module-Name: org.jboss.tools.rsp.server.karaf
 Bundle-Version: 0.26.23.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: org.eclipse.lsp4j.jsonrpc,
  org.eclipse.lsp4j.jsonrpc.json,
  org.eclipse.lsp4j.jsonrpc.json.adapters,
