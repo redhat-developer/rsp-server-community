@@ -44,6 +44,8 @@ This extension depends on VSCode RSP UI Extension which is going to be installed
 
 Set `"args.override.boolean"` to `true` via `Edit Server`. On the next server start, two properties will be generated: `"args.vm.override.string"` and `"args.program.override.string"`. You can then edit these to customize the launch arguments. If you set `"args.override.boolean"` back to `false`, the server will auto-generate the arguments as normal.
 
+These argument strings support Eclipse-style `${env_var:NAME}` references, which are resolved against the RSP server's process environment before launching. For example: `-Dapp.name=${env_var:MY_APP}`.
+
 See the [vscode-rsp-ui documentation](https://github.com/redhat-developer/vscode-rsp-ui#provisional-global-server-parameters) for more details.
 
 ### 2. My server fails to start with `UnsatisfiedLinkError` for a native library — how do I set `LD_LIBRARY_PATH`?
