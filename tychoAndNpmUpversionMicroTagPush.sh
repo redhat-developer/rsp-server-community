@@ -25,7 +25,7 @@ fi
 
 echo ""
 echo "These are the commits for the release"
-commits=`git lg | grep -n -m 1 "Upversion to " |sed  's/\([0-9]*\).*/\1/' | tail -n 1`
+commits=`git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | grep -n -m 1 "Upversion to " |sed  's/\([0-9]*\).*/\1/' | tail -n 1`
 commitMsgs=`git log --color --pretty=format:'%h - %s' --abbrev-commit | head -n $commits`
 echo "$commitMsgs"
 read -p "Press enter to continue"
@@ -139,13 +139,13 @@ echo "Making a release on github for $oldVerVscFinal"
 commitMsgsClean=`git log --color --pretty=format:'%s' --abbrev-commit | head -n $commits | awk '{ print " * " $0;}' | awk '{printf "%s\\n", $0}' | sed 's/"/\\"/g'`
 msgLine1=`ls server/bundle/*spi* | cut -f 2 -d "_" | cut -f 1,2,3 -d "." | awk '{ print "Now using the " $0 " release of rsp-server. "}'`
 msgLine2=`ls server/bundle/*spi* | cut -f 2 -d "_" | cut -f 1,2,3 -d "." | sed 's/\./_/g' | awk '{ print "See rsp-server CHANGELOG at https://github.com/redhat-developer/rsp-server/releases/tag/v" $0;}'`
-commitMsgsFinal="$msgLine1\n$msgLine2\n$commitMsgsClean"
+commitMsgsFinal="$msgLine1\\n$msgLine2\\n$commitMsgsClean"
 
 echo "Release commit log: $commitMsgsFinal"
 read -p "Press enter to continue"
 
 
-createReleasePayload="{\"tag_name\":\"$vscTagName\",\"target_commitish\":\"$curBranch\",\"name\":\"$oldVerVscFinal\",\"body\":\"Release of $oldVerVscFinal:\n\n"$commitMsgsFinal"\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
+createReleasePayload="{\"tag_name\":\"$vscTagName\",\"target_commitish\":\"$curBranch\",\"name\":\"$oldVerVscFinal\",\"body\":\"Release of $oldVerVscFinal:\\n\\n$commitMsgsFinal\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
 
 if [ "$debug" -eq 0 ]; then
 	curl -L \
