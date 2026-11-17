@@ -32,7 +32,7 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v1
       with:
-        node-version: 20
+        node-version: 22
     - name: Build RSP part using Maven
       working-directory: rsp
       run: mvn clean install -U -fae -e -B
@@ -69,12 +69,15 @@ jobs:
   release-job:
     environment: ${{ (inputs.publishToMarketPlace == 'true' || inputs.publishToOVSX == 'true') && 'release' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     needs: build-job
     steps:
       - name: Set Up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - name: Install dependencies
         run: |
           npm install -g typescript "@vscode/vsce" "ovsx"
@@ -91,7 +94,7 @@ jobs:
             echo "Sanity check - ls -l platformVsix"
             ls -l $platformVsix
             echo "Running command: vsce publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
-            vsce publish --skip-duplicate -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+            vsce publish --skip-duplicate --oidc --packagePath ${platformVsix}
           done
       - name: Publish to OpenVSX Registry
         if: ${{ inputs.publishToOVSX == 'true' }}
@@ -99,5 +102,5 @@ jobs:
           ls -la #debug
           for platformVsix in vscode-community-server-connector/*.vsix; do
             echo "Running command: ovsx publish --skip-duplicate -p SOME_SECRET --packagePath ${platformVsix}"
-            ovsx publish --skip-duplicate -p ${{ secrets.OVSX_MARKETPLACE_TOKEN }} --packagePath ${platformVsix}
+            ovsx publish --skip-duplicate --trusted-publishing --packagePath ${platformVsix}
           done
